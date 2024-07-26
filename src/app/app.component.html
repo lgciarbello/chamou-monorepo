@@ -3,83 +3,82 @@
 
 <!--<app-item-modal></app-item-modal>-->
 <!--<app-generic-modal></app-generic-modal>-->
-<div class="min-h-screen flex flex-col justify-between">
-  <div class="grow">
+<div class="flex h-dvh flex-col justify-between">
+  <div class="flex flex-col grow">
     <div class="sticky top-0 z-50">
       <app-navbar></app-navbar>
     </div>
-    <div class="flex flex-col gap-2 pb-24">
-<!--        <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16 backdrop-filter backdrop-blur-[128px] z-10">-->
-        <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16 bg-[#F0E5BD] z-10">
-          <div class="px-5">
-            <app-search-bar></app-search-bar>
-          </div>
-          <div class="flex no-scrollbar px-4 overflow-x-scroll">
-            <app-categoria-row></app-categoria-row>
-          </div>
+    <div class="flex flex-col">
+      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16  backdrop-filter backdrop-blur-[128px] z-10">
+<!--      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16 bg-[#F0E5BD] z-10">-->
+        <div class="px-5">
+          <app-search-bar></app-search-bar>
         </div>
-        <div class="flex flex-col gap-3 px-4">
-          <div class="flex flex-col gap-2">
-            <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="entradas">Entradas</h1>
-            <app-card-item titulo="Bolinho de Mandioca" [preco]=30.00 imageLink="/assets/img/bolinho.png"></app-card-item>
-            <app-card-item titulo="Pão de Alho" [preco]=25 imageLink="/assets/img/pao-de-alho.png"></app-card-item>
-            <app-card-item titulo="Bruschettas" [preco]=20 imageLink="/assets/img/bruschetta.png"></app-card-item>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="lanches">Lanches</h1>
-            <app-card-item titulo="X-Burguer" [preco]=10.00 imageLink="/assets/img/x-burguer.png"></app-card-item>
-            <app-card-item titulo="X-Bacon" [preco]=10.00 imageLink="/assets/img/x-bacon.png"></app-card-item>
-            <app-card-item titulo="X-Salada" [preco]=10.00 imageLink="/assets/img/x-salada.png"></app-card-item>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="porcoes">Porções</h1>
-            <app-card-item titulo="Batatas Fritas" [preco]=10.00 imageLink="/assets/img/como-fazer-batata-frita-topo.jpg"></app-card-item>
-            <app-card-item titulo="Mandioca Frita" [preco]=10.00 imageLink="/assets/img/mandioca.png"></app-card-item>
-            <app-card-item titulo="Torresmo" [preco]=10.00 imageLink="/assets/img/torresmo.png"></app-card-item>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="combos">Combos</h1>
-            <app-card-item titulo="X-Salada + Fritas" [preco]=10.00 imageLink="/assets/img/combos.png"></app-card-item>
-            <app-card-item titulo="X-Bacon + Refrigerante" [preco]=10.00 imageLink="/assets/img/combos.png"></app-card-item>
-            <app-card-item titulo="2x X-Burgers" [preco]=10.00 imageLink="/assets/img/combos.png"></app-card-item>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="bebidas">Bebidas</h1>
-            <app-card-item titulo="Água" [preco]=10.00 imageLink="/assets/img/agua.png"></app-card-item>
-            <app-card-item titulo="Refrigerante" [preco]=10.00 imageLink="/assets/img/refri.png"></app-card-item>
-            <app-card-item titulo="Suco de laranja (500ml)" [preco]=10.00 imageLink="/assets/img/suco.png"></app-card-item>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="drinks">Drinks</h1>
-            <app-card-item titulo="Sex on the Beach" [preco]=10.00 imageLink="/assets/img/sex-on-the-beach.png"></app-card-item>
-            <app-card-item titulo="Margarita" [preco]=10.00 imageLink="/assets/img/margarita.png"></app-card-item>
-            <app-card-item titulo="Moscow Mule" [preco]=10.00 imageLink="/assets/img/moscou-mule.png"></app-card-item>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="sobremesas">Sobremesas</h1>
-            <app-card-item titulo="Tiramisu" [preco]=10.00 imageLink="/assets/img/tiramisu.png"></app-card-item>
-            <app-card-item titulo="Cheesecake" [preco]=10.00 imageLink="/assets/img/cheesecake.png"></app-card-item>
-            <app-card-item titulo="Sorvete" [preco]=10.00 imageLink="/assets/img/sorvete.png"></app-card-item>
-          </div>
+        <div class="flex no-scrollbar px-4 overflow-x-scroll">
+          <app-categoria-row></app-categoria-row>
         </div>
+      </div>
+      <div class="flex flex-col gap-3 px-4 pb-3">
+        <div class="flex flex-col gap-2">
+          <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="entradas">Entradas</h1>
+          <app-card-item titulo="Bolinho de Mandioca" [preco]=30.00 imageLink="/assets/img/bolinho.png"></app-card-item>
+          <app-card-item titulo="Pão de Alho" [preco]=25 imageLink="/assets/img/pao-de-alho.png"></app-card-item>
+          <app-card-item titulo="Bruschettas" [preco]=20 imageLink="/assets/img/bruschetta.png"></app-card-item>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="lanches">Lanches</h1>
+          <app-card-item titulo="X-Burguer" [preco]=10.00 imageLink="/assets/img/x-burguer.png"></app-card-item>
+          <app-card-item titulo="X-Bacon" [preco]=10.00 imageLink="/assets/img/x-bacon.png"></app-card-item>
+          <app-card-item titulo="X-Salada" [preco]=10.00 imageLink="/assets/img/x-salada.png"></app-card-item>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="porcoes">Porções</h1>
+          <app-card-item titulo="Batatas Fritas" [preco]=10.00 imageLink="/assets/img/como-fazer-batata-frita-topo.jpg"></app-card-item>
+          <app-card-item titulo="Mandioca Frita" [preco]=10.00 imageLink="/assets/img/mandioca.png"></app-card-item>
+          <app-card-item titulo="Torresmo" [preco]=10.00 imageLink="/assets/img/torresmo.png"></app-card-item>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="combos">Combos</h1>
+          <app-card-item titulo="X-Salada + Fritas" [preco]=10.00 imageLink="/assets/img/combos.png"></app-card-item>
+          <app-card-item titulo="X-Bacon + Refrigerante" [preco]=10.00 imageLink="/assets/img/combos.png"></app-card-item>
+          <app-card-item titulo="2x X-Burgers" [preco]=10.00 imageLink="/assets/img/combos.png"></app-card-item>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="bebidas">Bebidas</h1>
+          <app-card-item titulo="Água" [preco]=10.00 imageLink="/assets/img/agua.png"></app-card-item>
+          <app-card-item titulo="Refrigerante" [preco]=10.00 imageLink="/assets/img/refri.png"></app-card-item>
+          <app-card-item titulo="Suco de laranja (500ml)" [preco]=10.00 imageLink="/assets/img/suco.png"></app-card-item>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="drinks">Drinks</h1>
+          <app-card-item titulo="Sex on the Beach" [preco]=10.00 imageLink="/assets/img/sex-on-the-beach.png"></app-card-item>
+          <app-card-item titulo="Margarita" [preco]=10.00 imageLink="/assets/img/margarita.png"></app-card-item>
+          <app-card-item titulo="Moscow Mule" [preco]=10.00 imageLink="/assets/img/moscou-mule.png"></app-card-item>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="sobremesas">Sobremesas</h1>
+          <app-card-item titulo="Tiramisu" [preco]=10.00 imageLink="/assets/img/tiramisu.png"></app-card-item>
+          <app-card-item titulo="Cheesecake" [preco]=10.00 imageLink="/assets/img/cheesecake.png"></app-card-item>
+          <app-card-item titulo="Sorvete" [preco]=10.00 imageLink="/assets/img/sorvete.png"></app-card-item>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<!--<div class="flex items-center sticky bottom-0 right-0 inset-0">-->
-<!--  <div class="flex grow items-center bg-white rounded-[0.6rem] border-[0.05rem] border-[#A0A0A0] drop-shadow-cart-price z-10">-->
-<!--    <div class="w-full flex gap-10 justify-between items-center">-->
-<!--      <div class="flex w-64 grow">-->
-<!--        <div class="flex items-center justify-between py-1 px-4 w-full rounded-[0.3rem]">-->
-<!--          <p class="font-bioRhyme font-bold text-xl tracking-tighter text-[#3D3D3D]">Total</p>-->
-<!--          <p class="font-bioRhyme font-extrabold text-lg tracking-tighter text-black">R$120,00</p>-->
+  <div class="sticky bottom-0 inset-x-0 z-50">
+<!--    <div class="flex grow items-center bg-white rounded-[0.6rem] border-[0.05rem] border-[#A0A0A0] drop-shadow-cart-price z-10">-->
+<!--      <div class="w-full flex gap-10 justify-between items-center">-->
+<!--        <div class="flex w-64 grow">-->
+<!--          <div class="flex items-center justify-between py-1 px-4 w-full rounded-[0.3rem]">-->
+<!--            <p class="font-bioRhyme font-bold text-xl tracking-tighter text-[#3D3D3D]">Total</p>-->
+<!--            <p class="font-bioRhyme font-extrabold text-lg tracking-tighter text-black">R$120,00</p>-->
+<!--          </div>-->
 <!--        </div>-->
 <!--      </div>-->
 <!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<div class="fixed bottom-0 inset-x-0 z-50">
-  <app-bottom-navbar></app-bottom-navbar>
+    <app-bottom-navbar></app-bottom-navbar>
+  </div>
 </div>
+
 
 
 
