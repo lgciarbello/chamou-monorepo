@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-generic-modal',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './generic-modal.component.scss'
 })
 export class GenericModalComponent {
+  @Input() hasButton: boolean = false;
 
 }
