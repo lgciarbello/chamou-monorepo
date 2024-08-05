@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-banner-preco-total',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './banner-preco-total.component.scss'
 })
 export class BannerPrecoTotalComponent {
+  @Input({ required: true }) public preco: number = 0.00;
 
 }

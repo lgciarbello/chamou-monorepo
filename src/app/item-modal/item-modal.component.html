@@ -35,10 +35,10 @@
           <div class="flex w-full rounded-b-[0.3rem] bg-white px-5 py-4 drop-shadow-card">
             <div class="flex flex-col w-full gap-2 divide-y-[0.1rem] divide-[#A0A0A0]">
               <div class="flex items-center justify-between">
-                <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">Batatas Fritas</p>
-                <p class="leading-4 font-bioRhyme font-bold text-md text-[#A0A0A0] tracking-tighter">R$10,00</p>
+                <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">{{ titulo }}</p>
+                <p class="leading-4 font-bioRhyme font-bold text-md text-[#A0A0A0] tracking-tighter">R$ {{ preco }}</p>
               </div>
-              <p class="font-cutive leading-3 text-[0.65rem] text-[#A0A0A0] flex-grow pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas justo purus, vel laoreet odio rhoncus a.</p>
+              <p class="font-cutive leading-3 text-[0.65rem] text-[#A0A0A0] flex-grow pt-2">{{ descricao }}</p>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
               <button class="flex items-center justify-center bg-[#DBC164] text-white py-2 px-2.5 w-full rounded-[0.3rem] default-button">
                 <fa-icon icon="minus" size="xl"></fa-icon>
               </button>
-              <p class="leading-4 font-bioRhyme font-normal text-xl text-black tracking-tighter">1</p>
+              <p class="leading-4 font-bioRhyme font-normal text-xl text-black tracking-tighter">{{ quantidade }}</p>
               <button class="flex items-center justify-center bg-[#DBC164] text-white py-2 px-2.5 w-full rounded-[0.3rem] default-button">
                 <fa-icon icon="plus" size="xl"></fa-icon>
               </button>

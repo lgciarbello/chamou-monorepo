@@ -27,18 +27,18 @@
       <div class="flex flex-col transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all pt-4 pb-5 px-6 h-[calc(100dvh-theme(space.40))] w-full max-w-lg">
         <div class="flex flex-col gap-1 sticky">
           <div class="flex justify-between items-center">
-            <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">Carrinho</p>
+            <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">{{ titulo }}</p>
             <button class="flex justify-center items-center z-50">
-              <fa-icon icon="xmark" size="xl" class="text-inherit" title="Conta"></fa-icon>
+              <fa-icon icon="xmark" size="xl" class="text-inherit" title="Fechar"></fa-icon>
             </button>
           </div>
           <hr class="h-[0.05rem] border-t-0 bg-[#A0A0A0]" />
         </div>
         <div class="flex flex-col grow w-full gap-3 px-[0.1rem] py-3 overflow-y-auto">
-          <app-cart-item></app-cart-item>
-          <app-cart-item></app-cart-item>
-          <app-cart-item></app-cart-item>
-          <app-cart-item></app-cart-item>
+          <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
+          <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>
+          <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>
+          <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>
         </div>
 
         <div class="flex items-center sticky bottom-0 right-0 inset-0">
@@ -48,7 +48,7 @@
               <app-default-button class="grow" [titulo]="'Fechar conta'"></app-default-button>
             </ng-template>
             <ng-template #displayPreco>
-              <app-banner-preco-total class="grow"></app-banner-preco-total>
+              <app-banner-preco-total class="grow" [preco]="120" ></app-banner-preco-total>
             </ng-template>
           </div>
         </div>

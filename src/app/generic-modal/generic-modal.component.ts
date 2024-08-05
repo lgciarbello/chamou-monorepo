@@ -6,6 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrl: './generic-modal.component.scss'
 })
 export class GenericModalComponent {
+  @Input({required: true}) titulo: string = '';
   @Input() hasButton: boolean = false;
 
 }

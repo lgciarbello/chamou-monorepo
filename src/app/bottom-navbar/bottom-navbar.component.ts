@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-bottom-navbar',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './bottom-navbar.component.scss'
 })
 export class BottomNavbarComponent {
+  @Input({ required: true }) public quantidadeItens: number = 0.00;
 
 }
