@@ -15,6 +15,9 @@ import { BottomNavbarComponent } from './bottom-navbar/bottom-navbar.component';
 import { ItemModalComponent } from './item-modal/item-modal.component';
 import { GenericModalComponent } from './generic-modal/generic-modal.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { DefaultButtonComponent } from './default-button/default-button.component';
+import { BannerPrecoTotalComponent } from './banner-preco-total/banner-preco-total.component';
+import { BannerTempoEsperaComponent } from './banner-tempo-espera/banner-tempo-espera.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     BottomNavbarComponent,
     ItemModalComponent,
     GenericModalComponent,
-    CartItemComponent
+    CartItemComponent,
+    DefaultButtonComponent,
+    BannerPrecoTotalComponent,
+    BannerTempoEsperaComponent
   ],
   imports: [
     BrowserModule,
