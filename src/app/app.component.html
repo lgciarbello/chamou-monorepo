@@ -1,3 +1,5 @@
+<!--https://github.com/tailwindlabs/headlessui/discussions/412-->
+
 <meta name="theme-color" content="#DBC164">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
@@ -9,8 +11,8 @@
       <app-navbar></app-navbar>
     </div>
     <div class="flex flex-col">
-      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16  backdrop-filter backdrop-blur-[128px] z-10">
-<!--      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16 bg-[#F0E5BD] z-10">-->
+<!--      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16  backdrop-filter backdrop-blur-[128px] z-10">-->
+      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16 bg-[#F0E5BD] z-10">
         <div class="px-5">
           <app-search-bar></app-search-bar>
         </div>
@@ -64,17 +66,8 @@
       </div>
     </div>
   </div>
-  <div class="sticky bottom-0 inset-x-0 z-50">
-<!--    <div class="flex grow items-center bg-white rounded-[0.6rem] border-[0.05rem] border-[#A0A0A0] drop-shadow-cart-price z-10">-->
-<!--      <div class="w-full flex gap-10 justify-between items-center">-->
-<!--        <div class="flex w-64 grow">-->
-<!--          <div class="flex items-center justify-between py-1 px-4 w-full rounded-[0.3rem]">-->
-<!--            <p class="font-bioRhyme font-bold text-xl tracking-tighter text-[#3D3D3D]">Total</p>-->
-<!--            <p class="font-bioRhyme font-extrabold text-lg tracking-tighter text-black">R$120,00</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+  <div class="sticky bottom-0 inset-x-0">
+    <app-banner-tempo-espera></app-banner-tempo-espera>
     <app-bottom-navbar></app-bottom-navbar>
   </div>
 </div>
