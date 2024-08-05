@@ -8,5 +8,6 @@ import {Component, Input} from '@angular/core';
 export class DefaultButtonComponent {
 
   @Input({required: true}) titulo: string = '';
+  @Input() public paddingY: string = '2.5'
 
 }

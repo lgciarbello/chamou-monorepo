@@ -30,7 +30,7 @@
             <fa-icon icon="xmark" size="2x" class="text-inherit" title="Conta"></fa-icon>
           </button>
           <div class="flex items-center grow shrink-0 w-full drop-shadow-card">
-            <img class="object-cover w-full h-32 rounded-t-md" src="/assets/img/bolinho.png" alt="juju">
+            <img class="object-cover w-full h-32 rounded-t-md" src="{{ imageLink }}" alt="juju">
           </div>
           <div class="flex w-full rounded-b-[0.3rem] bg-white px-5 py-4 drop-shadow-card">
             <div class="flex flex-col w-full gap-2 divide-y-[0.1rem] divide-[#A0A0A0]">
@@ -42,8 +42,9 @@
             </div>
           </div>
         </div>
-        <div class="grow flex items-center justify-center">
-          <p>Não há customizações disponíveis.</p>
+        <div class="grow flex flex-col gap-2 items-center justify-center text-[#8D8D8D]">
+          <fa-icon icon="face-sad-tear" size="3x"></fa-icon>
+          <p class="font-bioRhyme tracking-tighter" >Não há customizações disponíveis.</p>
         </div>
         <div class="flex items-center sticky bottom-0 right-0 inset-0 border-0 bg-white rounded-[0.6rem] drop-shadow-bottom-navbar px-7 py-5 z-10">
           <div class="w-full flex gap-10 justify-between items-center">
@@ -57,9 +58,7 @@
               </button>
             </div>
             <div class="flex w-64 grow">
-              <button class="flex items-center justify-center bg-[#DBC164] py-2 w-full rounded-[0.3rem] default-button">
-                <p class="font-bioRhyme font-extrabold text-xl tracking-tighter text-white drop-shadow-title">Adicionar</p>
-              </button>
+              <app-default-button class="grow" titulo="Adicionar" paddingY="2"></app-default-button>
             </div>
           </div>
         </div>

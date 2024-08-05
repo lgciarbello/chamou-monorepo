@@ -10,6 +10,6 @@ export class ItemModalComponent {
   @Input({required: true}) public preco: number = 0.00;
   @Input({required: true}) public descricao: string = '';
   @Input({required: true}) public quantidade: number = 0.00;
-  @Input({required: true}) public imageLink: string = '';
+  @Input() public imageLink: string = '/assets/img/bolinho.jpg';
 }
 
