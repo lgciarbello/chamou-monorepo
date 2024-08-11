@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-default-button',
@@ -8,6 +8,12 @@ import {Component, Input} from '@angular/core';
 export class DefaultButtonComponent {
 
   @Input({required: true}) titulo: string = '';
-  @Input() public paddingY: string = '2.5'
+  @Input() public paddingY: string = '2'
+
+  @Output() public clickEmitter = new EventEmitter<any>();
+
+  onClick() {
+    this.clickEmitter.emit();
+  }
 
 }
