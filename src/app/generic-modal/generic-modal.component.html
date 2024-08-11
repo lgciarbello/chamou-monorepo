@@ -1,4 +1,4 @@
-<dialog open class="relative z-50" aria-labelledby="modal-title" role="alertdialog" aria-modal="true">
+<dialog open #genericModal [id]="dialogId" class="relative z-50" aria-labelledby="modal-title" role="alertdialog" aria-modal="true">
   <!--
     Background backdrop, show/hide based on modal state.
 
@@ -28,28 +28,25 @@
         <div class="flex flex-col gap-1 sticky">
           <div class="flex justify-between items-center">
             <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">{{ titulo }}</p>
-            <button class="flex justify-center items-center z-50">
+            <button class="flex justify-center items-center z-50" (click)="closeModal()">
               <fa-icon icon="xmark" size="xl" class="text-inherit" title="Fechar"></fa-icon>
             </button>
           </div>
-          <hr class="h-[0.05rem] border-t-0 bg-[#A0A0A0]" />
+          <hr class="h-[0.05rem] border-t-0 bg-[#A0A0A0]"/>
         </div>
-        <div class="flex flex-col grow w-full gap-3 px-[0.1rem] py-3 overflow-y-auto">
-          <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
-          <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>
-          <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>
-          <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>
+        <div class="flex flex-col grow w-full px-[0.1rem] py-3 overflow-y-auto">
+          <ng-content select="[modal-content]"></ng-content>
         </div>
-
         <div class="flex items-center sticky bottom-0 right-0 inset-0">
           <div class="flex grow z-10">
-            <div *ngIf="hasButton; then displayButton else displayPreco"></div>
-            <ng-template #displayButton>
-              <app-default-button class="grow" [titulo]="'Fechar conta'"></app-default-button>
-            </ng-template>
-            <ng-template #displayPreco>
-              <app-banner-preco-total class="grow" [preco]="120" ></app-banner-preco-total>
-            </ng-template>
+            <ng-content select="[modal-footer]"></ng-content>
+<!--            <div *ngIf="hasButton; then displayButton else displayPreco"></div>-->
+<!--            <ng-template #displayButton>-->
+<!--              <app-default-button class="grow" [titulo]="buttonTitle"></app-default-button>-->
+<!--            </ng-template>-->
+<!--            <ng-template #displayPreco>-->
+<!--              <app-banner-preco-total class="grow" [preco]="120" ></app-banner-preco-total>-->
+<!--            </ng-template>-->
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-generic-modal',
@@ -7,6 +7,16 @@ import {Component, Input} from '@angular/core';
 })
 export class GenericModalComponent {
   @Input({required: true}) titulo: string = '';
-  @Input() hasButton: boolean = false;
+  // @Input() hasButton: boolean = false;
+  // @Input() buttonTitle: string = '';
+  @Input({ required: true }) dialogId: string = '';
 
+  @ViewChild('genericModal') public dialog!: ElementRef<HTMLDialogElement>;
+
+  closeModal() {
+    console.log(this.dialog);
+    if (this.dialog) {
+      this.dialog.nativeElement.close();
+    }
+  }
 }
