@@ -1,0 +1,74 @@
+<!--https://github.com/tailwindlabs/headlessui/discussions/412-->
+
+<meta name="theme-color" content="#DBC164">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+<app-item-modal
+  titulo="Bolinho de Mandioca"
+  [preco]="30"
+  [quantidade]="1"
+  descricao="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
+</app-item-modal>
+<app-generic-modal dialogId="carrinho" titulo="Carrinho">
+  <div modal-content class="flex flex-col gap-3">
+    <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
+    <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>
+    <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>
+    <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>
+  </div>
+  <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
+</app-generic-modal>
+
+<app-generic-modal dialogId="garcom" titulo="Garçom">
+  <app-default-button modal-footer class="grow" [titulo]="'Chamar garçom'"></app-default-button>
+</app-generic-modal>
+<app-generic-modal dialogId="conta" titulo="Conta">
+  <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
+</app-generic-modal>
+<app-generic-modal dialogId="avaliacao" titulo="Avaliação">
+  <app-default-button modal-footer class="grow" [titulo]="'Enviar avaliação'"></app-default-button>
+</app-generic-modal>
+
+<div class="flex h-dvh flex-col justify-between">
+  <div class="flex flex-col grow">
+    <div class="sticky top-0 z-50">
+      <app-navbar titulo="Alabama Burguer" [numeroMesa]="7" ></app-navbar>
+    </div>
+    <div class="flex flex-col">
+<!--      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16  backdrop-filter backdrop-blur-[128px] z-10">-->
+      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16 bg-[#F0E5BD] z-10">
+        <div class="px-5">
+          <app-search-bar></app-search-bar>
+        </div>
+        <div class="flex no-scrollbar px-4 overflow-x-scroll">
+          <app-categoria-row></app-categoria-row>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3 px-4 pb-3">
+          <ng-container *ngIf="(cardapio$ | async) as cardapio" >
+            <ng-container *ngFor="let categoria of cardapio.categorias">
+              <div class="flex flex-col gap-2">
+                <h1 class="px-1 font-bioRhyme font-extrabold text-2xl text-[#987C1B] tracking-tighter scroll-mt-44" id="entradas">{{ categoria.nome }}</h1>
+                <ng-container *ngFor="let item of categoria.itensModelo">
+                  <app-card-item [titulo]=item.nome
+                                 [preco]=item.preco
+                                 [descricao]=item.descricao
+                                 imageLink="/assets/img/bolinho.jpg">
+                  </app-card-item>
+                </ng-container>
+              </div>
+            </ng-container>
+          </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="sticky bottom-0 inset-x-0">
+    <app-banner-tempo-espera [numeroPedido]="1" [tempoEspera]="30.00" ></app-banner-tempo-espera>
+    <app-bottom-navbar [quantidadeItens]="12"></app-bottom-navbar>
+  </div>
+</div>
+<script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+
+
+
+

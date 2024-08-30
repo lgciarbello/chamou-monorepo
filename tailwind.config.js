@@ -2,12 +2,16 @@
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
+    "./projects/admin/src/**/*.{html,ts}",
+    "./projects/chamou/src/**/*.{html,ts}",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {
       fontFamily: {
         'bioRhyme': ['BioRhyme', 'sans-serif'],
         'cutive': ['Cutive', 'sans-serif'],
+        'dmSans': ['DM Sans', 'sans-serif'],
       },
       dropShadow: {
         'title': '1px 1px rgba(0, 0, 0, 0.15)',
@@ -19,6 +23,8 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 
