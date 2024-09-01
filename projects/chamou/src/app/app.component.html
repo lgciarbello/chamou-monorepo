@@ -3,12 +3,6 @@
 <meta name="theme-color" content="#DBC164">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
-<app-item-modal
-  titulo="Bolinho de Mandioca"
-  [preco]="30"
-  [quantidade]="1"
-  descricao="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
-</app-item-modal>
 <app-generic-modal dialogId="carrinho" titulo="Carrinho">
   <div modal-content class="flex flex-col gap-3">
     <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
@@ -53,7 +47,7 @@
                   <app-card-item [titulo]=item.nome
                                  [preco]=item.preco
                                  [descricao]=item.descricao
-                                 imageLink="/assets/img/bolinho.jpg">
+                                 (clicked)="onItemCardClick($event)">
                   </app-card-item>
                 </ng-container>
               </div>
@@ -67,7 +61,7 @@
     <app-bottom-navbar [quantidadeItens]="12"></app-bottom-navbar>
   </div>
 </div>
-<script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+<!--<script src="/node_modules/flowbite/dist/flowbite.min.js"></script>-->
 
 
 

@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {list} from "postcss";
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-item-modal',
@@ -17,12 +17,24 @@ export class ItemModalComponent implements OnInit {
 
   hasCustomizations: boolean = false;
 
+  constructor(private readonly dialogRef: MatDialogRef<ItemModalComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.insertData(data);
+  }
+
   ngOnInit() {
    this.updateCustomizations();
   }
 
   updateCustomizations() {
     this.hasCustomizations = this.customizacoes.length !== 0;
+  }
+
+  insertData(data: any) {
+    this.titulo = data.nome;
+    this.descricao = data.descricao;
+    this.preco = data.preco;
+    this.imageLink = data.foto;
   }
 }
 
