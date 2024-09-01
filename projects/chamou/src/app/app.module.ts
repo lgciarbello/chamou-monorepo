@@ -21,7 +21,9 @@ import { DefaultButtonComponent } from './components/default-button/default-butt
 import { BannerPrecoTotalComponent } from './components/banner-preco-total/banner-preco-total.component';
 import { BannerTempoEsperaComponent } from './components/banner-tempo-espera/banner-tempo-espera.component';
 import { QuantitySelectorComponent } from './components/quantity-selector/quantity-selector.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
+import { MatDialogModule } from "@angular/material/dialog";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -49,13 +51,16 @@ registerLocaleData(localePt, 'pt-BR');
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     {
       provide: DEFAULT_CURRENCY_CODE,
       useValue: 'BRL'
-    }
+    },
+    provideAnimationsAsync('animations')
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // entryComponents: [ItemModalComponent],
 })
 export class AppModule { }
