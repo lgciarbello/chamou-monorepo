@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {ModalService} from "../../services/modal.service";
+import {GenericModalComponent} from "../generic-modal/generic-modal.component";
+import {GenericModalInput} from "../../interfaces/generic-modal-input.interface";
 
 @Component({
   selector: 'app-navbar-menu',
@@ -8,24 +11,11 @@ import { Component } from '@angular/core';
 export class NavbarMenuComponent {
   lastModalOpened!: HTMLDialogElement | null;
 
-  handleModalVisibility(eventValue: string) {
-    if (this.lastModalOpened) {
-      this.lastModalOpened.close();
-    }
+  @Output() clicked = new EventEmitter<string>();
 
-    const dialog = <HTMLDialogElement>document.getElementById(eventValue);
+  constructor(private readonly _modalService: ModalService) {}
 
-    if (!dialog) {
-      return;
-    }
-
-    if (dialog.open) {
-      dialog.close();
-      this.lastModalOpened = null;
-    } else {
-      dialog.showModal();
-      this.lastModalOpened = dialog;
-    }
-
+  openModal(event: string) {
+    this.clicked.emit(event);
   }
 }

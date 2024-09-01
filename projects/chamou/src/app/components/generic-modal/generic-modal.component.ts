@@ -1,4 +1,6 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, Input, ViewChild} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {GenericModalInput} from "../../interfaces/generic-modal-input.interface";
 
 @Component({
   selector: 'app-generic-modal',
@@ -7,16 +9,14 @@ import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 })
 export class GenericModalComponent {
   @Input({required: true}) titulo: string = '';
+
+  // @ViewChild('modal-content')
   // @Input() hasButton: boolean = false;
   // @Input() buttonTitle: string = '';
-  @Input({ required: true }) dialogId: string = '';
 
-  @ViewChild('genericModal') public dialog!: ElementRef<HTMLDialogElement>;
-
-  closeModal() {
-    console.log(this.dialog);
-    if (this.dialog) {
-      this.dialog.nativeElement.close();
-    }
+  constructor(private readonly dialogRef: MatDialogRef<GenericModalComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: GenericModalInput) {
   }
+
+
 }

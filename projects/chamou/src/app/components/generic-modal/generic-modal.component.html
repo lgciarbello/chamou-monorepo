@@ -1,56 +1,44 @@
-<dialog #genericModal [id]="dialogId" class="relative z-50" aria-labelledby="modal-title" role="alertdialog" aria-modal="true">
-  <!--
-    Background backdrop, show/hide based on modal state.
+<div class="fixed inset-0 z-10 overflow-y-auto">
+  <div class="flex min-h-full h-max items-start justify-center px-2 pt-[4.5rem] text-center">
+    <!--
+      Modal panel, show/hide based on modal state.
 
-    Entering: "ease-out duration-300"
-      From: "opacity-0"
-      To: "opacity-100"
-    Leaving: "ease-in duration-200"
-      From: "opacity-100"
-      To: "opacity-0"
-  -->
-  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+      Entering: "ease-out duration-300"
+        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        To: "opacity-100 translate-y-0 sm:scale-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100 translate-y-0 sm:scale-100"
+        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    -->
 
-  <div class="fixed inset-0 z-10 overflow-y-auto">
-    <div class="flex min-h-full h-max items-start justify-center px-2 pt-[4.5rem] text-center">
-      <!--
-        Modal panel, show/hide based on modal state.
-
-        Entering: "ease-out duration-300"
-          From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          To: "opacity-100 translate-y-0 sm:scale-100"
-        Leaving: "ease-in duration-200"
-          From: "opacity-100 translate-y-0 sm:scale-100"
-          To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-      -->
-
-      <div class="flex flex-col transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all pt-4 pb-5 px-6 h-[calc(100dvh-theme(space.40))] w-full max-w-lg">
-        <div class="flex flex-col gap-1 sticky">
-          <div class="flex justify-between items-center">
-            <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">{{ titulo }}</p>
-            <button class="flex justify-center items-center z-50" (click)="closeModal()">
-              <fa-icon icon="xmark" size="xl" class="text-inherit" title="Fechar"></fa-icon>
-            </button>
-          </div>
-          <hr class="h-[0.05rem] border-t-0 bg-[#A0A0A0]"/>
+    <div class="flex flex-col transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all pt-4 pb-5 px-6 h-[calc(100dvh-theme(space.40))] w-full max-w-lg">
+      <div class="flex flex-col gap-1 sticky">
+        <div class="flex justify-between items-center">
+          <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">{{ data.titulo }}</p>
+          <button mat-dialog-close class="flex justify-center items-center z-50">
+            <fa-icon icon="xmark" size="xl" class="text-inherit" title="Fechar"></fa-icon>
+          </button>
         </div>
-        <div class="flex flex-col grow w-full px-[0.1rem] py-3 overflow-y-auto">
-          <ng-content select="[modal-content]"></ng-content>
-        </div>
-        <div class="flex items-center sticky bottom-0 right-0 inset-0">
-          <div class="flex grow z-10">
-            <ng-content select="[modal-footer]"></ng-content>
-<!--            <div *ngIf="hasButton; then displayButton else displayPreco"></div>-->
-<!--            <ng-template #displayButton>-->
-<!--              <app-default-button class="grow" [titulo]="buttonTitle"></app-default-button>-->
-<!--            </ng-template>-->
-<!--            <ng-template #displayPreco>-->
-<!--              <app-banner-preco-total class="grow" [preco]="120" ></app-banner-preco-total>-->
-<!--            </ng-template>-->
-          </div>
+        <hr class="h-[0.05rem] border-t-0 bg-[#A0A0A0]"/>
+      </div>
+      <div class="flex flex-col grow w-full px-[0.1rem] py-3 overflow-y-auto">
+<!--        <ng-content modal-content select="[modal-content]"></ng-content>-->
+        <ng-container *ngTemplateOutlet="data.content"></ng-container>
+      </div>
+      <div class="flex items-center sticky bottom-0 right-0 inset-0">
+        <div class="flex grow z-10">
+          <ng-container *ngTemplateOutlet="data.footer"></ng-container>
+<!--          <ng-content select="[modal-footer]"></ng-content>-->
+  <!--            <div *ngIf="hasButton; then displayButton else displayPreco"></div>-->
+  <!--            <ng-template #displayButton>-->
+  <!--              <app-default-button class="grow" [titulo]="buttonTitle"></app-default-button>-->
+  <!--            </ng-template>-->
+  <!--            <ng-template #displayPreco>-->
+  <!--              <app-banner-preco-total class="grow" [preco]="120" ></app-banner-preco-total>-->
+  <!--            </ng-template>-->
         </div>
       </div>
     </div>
   </div>
-</dialog>
+</div>
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-bottom-navbar',
@@ -7,5 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class BottomNavbarComponent {
   @Input({ required: true }) public quantidadeItens: number = 0.00;
+
+  @Output('clicked') clickEmitter = new EventEmitter<any>();
+
+  onCartClick(event: MouseEvent) {
+    this.clickEmitter.emit();
+  }
 
 }

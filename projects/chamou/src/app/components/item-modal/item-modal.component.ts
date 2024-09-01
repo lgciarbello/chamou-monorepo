@@ -1,5 +1,6 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {ItemModalInput} from "../../interfaces/item-modal-input.interface";
 
 @Component({
   selector: 'app-item-modal',
@@ -7,19 +8,20 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
   styleUrl: './item-modal.component.scss'
 })
 export class ItemModalComponent implements OnInit {
+  @Input({required: true}) public id!: string;
   @Input({required: true}) public titulo: string = '';
   @Input({required: true}) public preco: number = 0.00;
   @Input({required: true}) public descricao: string = '';
   @Input({required: true}) public quantidade: number = 0.00;
 
   @Input() public customizacoes: string[] = [];
-  @Input() public imageLink: string = '/assets/img/bolinho.jpg';
+  @Input() public imagePath: string = '/assets/img/bolinho.jpg';
 
   hasCustomizations: boolean = false;
 
   constructor(private readonly dialogRef: MatDialogRef<ItemModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.insertData(data);
+              @Inject(MAT_DIALOG_DATA) public data: ItemModalInput) {
+    this.insertDataIntoComponent(data);
   }
 
   ngOnInit() {
@@ -30,11 +32,11 @@ export class ItemModalComponent implements OnInit {
     this.hasCustomizations = this.customizacoes.length !== 0;
   }
 
-  insertData(data: any) {
-    this.titulo = data.nome;
+  insertDataIntoComponent(data: ItemModalInput) {
+    this.titulo = data.titulo;
     this.descricao = data.descricao;
     this.preco = data.preco;
-    this.imageLink = data.foto;
+    this.imagePath = data.imagePath;
   }
 }
 

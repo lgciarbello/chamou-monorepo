@@ -3,30 +3,32 @@
 <meta name="theme-color" content="#DBC164">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
-<app-generic-modal dialogId="carrinho" titulo="Carrinho">
-  <div modal-content class="flex flex-col gap-3">
-    <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
-    <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>
-    <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>
-    <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>
-  </div>
-  <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
-</app-generic-modal>
+<ng-template #itensCarrinho>
+    <div class="flex flex-col gap-3">
+      <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
+      <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>
+      <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>
+      <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>
+    </div>
+</ng-template>
 
-<app-generic-modal dialogId="garcom" titulo="Garçom">
-  <app-default-button modal-footer class="grow" [titulo]="'Chamar garçom'"></app-default-button>
-</app-generic-modal>
-<app-generic-modal dialogId="conta" titulo="Conta">
-  <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
-</app-generic-modal>
-<app-generic-modal dialogId="avaliacao" titulo="Avaliação">
-  <app-default-button modal-footer class="grow" [titulo]="'Enviar avaliação'"></app-default-button>
-</app-generic-modal>
+<ng-template #avaliacao>
+    <app-default-button modal-footer class="grow" [titulo]="'Enviar avaliação'"></app-default-button>
+</ng-template>
+<ng-template #garcom>
+    <app-default-button modal-footer class="grow" [titulo]="'Chamar garçom'"></app-default-button>
+</ng-template>
+<ng-template #conta>
+    <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
+</ng-template>
+<ng-template #carrinho>
+    <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
+</ng-template>
 
 <div class="flex h-dvh flex-col justify-between">
   <div class="flex flex-col grow">
     <div class="sticky top-0 z-50">
-      <app-navbar titulo="Alabama Burguer" [numeroMesa]="7" ></app-navbar>
+      <app-navbar titulo="Alabama Burguer" [numeroMesa]="7" (clicked)="onNavbarButtonClick($event)" ></app-navbar>
     </div>
     <div class="flex flex-col">
 <!--      <div class="pt-4 pb-2 flex flex-col gap-1 sticky top-16  backdrop-filter backdrop-blur-[128px] z-10">-->
@@ -58,7 +60,7 @@
   </div>
   <div class="sticky bottom-0 inset-x-0">
     <app-banner-tempo-espera [numeroPedido]="1" [tempoEspera]="30.00" ></app-banner-tempo-espera>
-    <app-bottom-navbar [quantidadeItens]="12"></app-bottom-navbar>
+    <app-bottom-navbar [quantidadeItens]="12" (clicked)="onCartClick()"></app-bottom-navbar>
   </div>
 </div>
 <!--<script src="/node_modules/flowbite/dist/flowbite.min.js"></script>-->
