@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CategoriaButtonComponent } from './categoria-button.component';
+import {CategoriaButtonComponent} from './categoria-button.component';
 
 describe('CategoriaButtonComponent', () => {
   let component: CategoriaButtonComponent;
@@ -11,7 +11,7 @@ describe('CategoriaButtonComponent', () => {
       declarations: [CategoriaButtonComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(CategoriaButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

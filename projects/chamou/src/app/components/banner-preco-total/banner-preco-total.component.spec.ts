@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BannerPrecoTotalComponent } from './banner-preco-total.component';
+import {BannerPrecoTotalComponent} from './banner-preco-total.component';
 
 describe('BannerPrecoTotalComponent', () => {
   let component: BannerPrecoTotalComponent;
@@ -11,7 +11,7 @@ describe('BannerPrecoTotalComponent', () => {
       declarations: [BannerPrecoTotalComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(BannerPrecoTotalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

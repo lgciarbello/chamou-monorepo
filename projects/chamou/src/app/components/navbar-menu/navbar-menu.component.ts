@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
-import {GenericModalComponent} from "../generic-modal/generic-modal.component";
-import {GenericModalInput} from "../../interfaces/generic-modal-input.interface";
 
 @Component({
   selector: 'app-navbar-menu',

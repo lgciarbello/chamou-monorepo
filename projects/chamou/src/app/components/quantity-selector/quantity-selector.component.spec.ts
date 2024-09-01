@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { QuantitySelectorComponent } from './quantity-selector.component';
+import {QuantitySelectorComponent} from './quantity-selector.component';
 
 describe('QuantitySelectorComponent', () => {
   let component: QuantitySelectorComponent;
@@ -11,7 +11,7 @@ describe('QuantitySelectorComponent', () => {
       declarations: [QuantitySelectorComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(QuantitySelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

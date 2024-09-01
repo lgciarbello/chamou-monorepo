@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DefaultButtonComponent } from './default-button.component';
+import {DefaultButtonComponent} from './default-button.component';
 
 describe('DefaultButtonComponent', () => {
   let component: DefaultButtonComponent;
@@ -11,7 +11,7 @@ describe('DefaultButtonComponent', () => {
       declarations: [DefaultButtonComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(DefaultButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

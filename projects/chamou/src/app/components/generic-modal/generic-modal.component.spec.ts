@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GenericModalComponent } from './generic-modal.component';
+import {GenericModalComponent} from './generic-modal.component';
 
 describe('GenericModalComponent', () => {
   let component: GenericModalComponent;
@@ -11,7 +11,7 @@ describe('GenericModalComponent', () => {
       declarations: [GenericModalComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(GenericModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

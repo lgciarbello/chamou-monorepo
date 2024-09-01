@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BannerTempoEsperaComponent } from './banner-tempo-espera.component';
+import {BannerTempoEsperaComponent} from './banner-tempo-espera.component';
 
 describe('BannerTempoEsperaComponent', () => {
   let component: BannerTempoEsperaComponent;
@@ -11,7 +11,7 @@ describe('BannerTempoEsperaComponent', () => {
       declarations: [BannerTempoEsperaComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(BannerTempoEsperaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
