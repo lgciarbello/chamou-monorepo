@@ -22,7 +22,7 @@ export class ModalService {
     return this._matDialogService.open(component, dialogConfig);
   }
 
-  openItemModal(data: ItemModalInput): MatDialogRef<ItemModalComponent> {
+  openItemModal(data: ItemModalInput): MatDialogRef<ItemModalComponent, ItemModalInput> {
     return this.openAny(ItemModalComponent, data);
   }
 
