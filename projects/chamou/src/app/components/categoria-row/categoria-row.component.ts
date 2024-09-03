@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {CategoriaResponse} from "../../interfaces/categoria/categoria-response-interface";
 
 @Component({
   selector: 'app-categoria-row',
@@ -6,5 +7,5 @@ import {Component} from '@angular/core';
   styleUrl: './categoria-row.component.scss'
 })
 export class CategoriaRowComponent {
-
+  @Input() public categorias!: CategoriaResponse[] | null;
 }

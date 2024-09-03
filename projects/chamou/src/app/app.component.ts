@@ -2,14 +2,16 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FaIconLibrary} from '@fortawesome/angular-fontawesome'
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import {CardapioService} from "./services/cardapio.service";
-import {Observable} from "rxjs";
-import {CardapioResponse} from "./interfaces/cardapio-response.interface";
-import {ItemModelo} from "./interfaces/item-modelo.interface";
+import {lastValueFrom, Observable} from "rxjs";
+import {CardapioResponse} from "./interfaces/cardapio/cardapio-response.interface";
+import {ItemModelo} from "./interfaces/item/item-modelo.interface";
 import {ItemModalComponent} from "./components/item-modal/item-modal.component";
 import {ModalService} from "./services/modal.service";
-import {ItemModalInput} from "./interfaces/item-modal-input.interface";
+import {ItemModalInput} from "./interfaces/modal/item-modal-input.interface";
 import {GenericModalComponent} from "./components/generic-modal/generic-modal.component";
-import {GenericModalInput} from "./interfaces/generic-modal-input.interface";
+import {GenericModalInput} from "./interfaces/modal/generic-modal-input.interface";
+import {CategoriaResponse} from "./interfaces/categoria/categoria-response-interface";
+import {CategoriaService} from "./services/categoria.service";
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ import {GenericModalInput} from "./interfaces/generic-modal-input.interface";
 export class AppComponent implements OnInit{
   title = 'chamou-monorepo';
   cardapio$!: Observable<CardapioResponse>;
+  categorias$!: Observable<CategoriaResponse[]>;
 
   @ViewChild('avaliacao') avaliacao!: TemplateRef<any>;
   @ViewChild('garcom') garcom!: TemplateRef<any>;
@@ -28,12 +31,14 @@ export class AppComponent implements OnInit{
 
   constructor(library: FaIconLibrary,
               private readonly _cardapioService: CardapioService,
-              private readonly _modalService: ModalService) {
+              private readonly _modalService: ModalService,
+              private readonly _categoriaService: CategoriaService) {
     library.addIconPacks(fas);
   }
 
   ngOnInit() {
     this.cardapio$ = this._cardapioService.getAll();
+    this.categorias$ = this._categoriaService.list();
   }
 
   onItemCardClick(event: ItemModelo) {

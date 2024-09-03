@@ -1,9 +1,15 @@
 <ul class="flex space-x-2.5 overflow-x-auto no-scrollbar pb-1 px-1">
-  <li><app-categoria-button categoria="Entradas" iconName="bowl-food" link="#entradas"></app-categoria-button></li>
-  <li><app-categoria-button categoria="Lanches" iconName="burger" link="#lanches"></app-categoria-button></li>
-  <li><app-categoria-button categoria="Porções" iconName="drumstick-bite" link="#porcoes"></app-categoria-button></li>
-  <li><app-categoria-button categoria="Combos" iconName="utensils" link="#combos"></app-categoria-button></li>
-  <li><app-categoria-button categoria="Bebidas" iconName="glass-water" link="#bebidas"></app-categoria-button></li>
-  <li><app-categoria-button categoria="Drinks" iconName="martini-glass" link="#drinks"></app-categoria-button></li>
-  <li><app-categoria-button categoria="Sobremesas" iconName="ice-cream" link="#sobremesas"></app-categoria-button></li>
+<!--  <li><app-categoria-button categoria="Entradas" iconName="bowl-food" link="#entradas"></app-categoria-button></li>-->
+<!--  <li><app-categoria-button categoria="Lanches" iconName="burger" link="#lanches"></app-categoria-button></li>-->
+<!--  <li><app-categoria-button categoria="Porções" iconName="drumstick-bite" link="#porcoes"></app-categoria-button></li>-->
+<!--  <li><app-categoria-button categoria="Combos" iconName="utensils" link="#combos"></app-categoria-button></li>-->
+<!--  <li><app-categoria-button categoria="Bebidas" iconName="glass-water" link="#bebidas"></app-categoria-button></li>-->
+<!--  <li><app-categoria-button categoria="Drinks" iconName="martini-glass" link="#drinks"></app-categoria-button></li>-->
+<!--  <li><app-categoria-button categoria="Sobremesas" iconName="ice-cream" link="#sobremesas"></app-categoria-button></li>-->
+  <li *ngFor="let categoria of categorias">
+    <app-categoria-button [categoria]="categoria.nome"
+                          [iconName]="categoria.icone"
+                          link="#{{ categoria.nome | lowercase }}">
+    </app-categoria-button>
+  </li>
 </ul>

@@ -3,28 +3,6 @@
 <meta name="theme-color" content="#DBC164">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
-<ng-template #itensCarrinho>
-    <div class="flex flex-col gap-3">
-      <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
-      <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>
-      <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>
-      <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>
-    </div>
-</ng-template>
-
-<ng-template #avaliacao>
-    <app-default-button modal-footer class="grow" [titulo]="'Enviar avaliação'"></app-default-button>
-</ng-template>
-<ng-template #garcom>
-    <app-default-button modal-footer class="grow" [titulo]="'Chamar garçom'"></app-default-button>
-</ng-template>
-<ng-template #conta>
-    <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
-</ng-template>
-<ng-template #carrinho>
-    <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
-</ng-template>
-
 <div class="flex h-dvh flex-col justify-between">
   <div class="flex flex-col grow">
     <div class="sticky top-0 z-50">
@@ -37,7 +15,7 @@
           <app-search-bar></app-search-bar>
         </div>
         <div class="flex no-scrollbar px-4 overflow-x-scroll">
-          <app-categoria-row></app-categoria-row>
+          <app-categoria-row [categorias]="categorias$ | async" ></app-categoria-row>
         </div>
       </div>
       <div class="flex flex-col gap-3 px-4 pb-3">
@@ -63,6 +41,27 @@
     <app-bottom-navbar [quantidadeItens]="12" (clicked)="onCartClick()"></app-bottom-navbar>
   </div>
 </div>
+
+<ng-template #itensCarrinho>
+  <div class="flex flex-col gap-3">
+    <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
+    <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>
+    <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>
+    <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>
+  </div>
+</ng-template>
+<ng-template #avaliacao>
+  <app-default-button modal-footer class="grow" [titulo]="'Enviar avaliação'"></app-default-button>
+</ng-template>
+<ng-template #garcom>
+  <app-default-button modal-footer class="grow" [titulo]="'Chamar garçom'"></app-default-button>
+</ng-template>
+<ng-template #conta>
+  <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
+</ng-template>
+<ng-template #carrinho>
+  <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
+</ng-template>
 <!--<script src="/node_modules/flowbite/dist/flowbite.min.js"></script>-->
 
 
