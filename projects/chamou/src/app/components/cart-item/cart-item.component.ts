@@ -10,7 +10,7 @@ export class CartItemComponent {
   @Input({required: true}) public preco: number = 0.00;
   @Input({required: true}) public quantidade: number = 0.00;
   @Input() public informacoes: string = '';
-  @Input() public linkImagem: string = "/assets/img/bolinho.jpg";
+  @Input() public linkImagem: string = "/assets/img/default_banner.png";
 
 
 }
