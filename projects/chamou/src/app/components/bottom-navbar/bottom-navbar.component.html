@@ -3,9 +3,11 @@
     <div class="flex shrink grow w-28 justify-center">
       <button class="relative" (click)="onCartClick($event)">
         <fa-icon icon="shopping-basket" class="text-inherit relative" title="Conta" size="2xl"></fa-icon>
-        <span class="absolute -top-2 -right-1 inline-flex items-center rounded-xl bg-[#BC3434] px-[0.3rem] py-[0.05rem]">
+        <ng-container *ngIf="quantidadeItens > 0">
+          <span class="absolute -top-2 -right-1 inline-flex items-center rounded-xl bg-[#BC3434] px-[0.3rem] py-[0.05rem]">
           <p class="font-bioRhyme font-extrabold text-white text-xs drop-shadow-title">{{ quantidadeItens }}</p>
         </span>
+        </ng-container>
       </button>
     </div>
     <div class="flex w-64 grow shrink-0">
