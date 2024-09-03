@@ -39,7 +39,7 @@
         <div class="w-full flex gap-10 justify-between items-center">
           <app-quantity-selector [(quantity)]="quantidade"></app-quantity-selector>
           <div class="flex w-64 grow">
-            <app-default-button class="grow" titulo="Adicionar" paddingY="2"></app-default-button>
+            <app-default-button class="grow" titulo="Adicionar" paddingY="2" (clicked)="addIntoCart()" ></app-default-button>
           </div>
         </div>
       </div>

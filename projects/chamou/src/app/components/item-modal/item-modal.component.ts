@@ -38,5 +38,24 @@ export class ItemModalComponent implements OnInit {
     this.preco = data.preco;
     this.imagePath = data.imagePath;
   }
+
+  addIntoCart() {
+    if (this.quantidade <= 0) {
+      //TODO tratar erro
+      return;
+    }
+
+    const itemModalInput: ItemModalInput = {
+      id: this.id,
+      titulo: this.titulo,
+      preco: this.preco,
+      descricao: this.descricao,
+      imagePath: this.imagePath,
+      customizacoes: this.customizacoes,
+      quantidade: this.quantidade,
+    } as ItemModalInput;
+
+    this.dialogRef.close(itemModalInput);
+  }
 }
 
