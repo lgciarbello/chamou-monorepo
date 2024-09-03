@@ -1,6 +1,6 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ItemModalInput} from "../../interfaces/item-modal-input.interface";
+import {ItemModalInput} from "../../interfaces/modal/item-modal-input.interface";
 
 @Component({
   selector: 'app-item-modal',

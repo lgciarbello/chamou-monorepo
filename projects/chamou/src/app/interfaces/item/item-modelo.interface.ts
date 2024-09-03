@@ -1,4 +1,4 @@
-import {IdNameMap} from "./id-name-map.interface";
+import {IdNameMap} from "../generic/id-name-map.interface";
 
 export interface ItemModelo {
   id?: string;

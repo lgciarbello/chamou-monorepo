@@ -1,4 +1,4 @@
-import {ItemModelo} from "./item-modelo.interface";
+import {ItemModelo} from "../item/item-modelo.interface";
 
 export interface CategoriaCardapio {
   id: string;

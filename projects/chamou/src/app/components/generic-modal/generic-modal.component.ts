@@ -1,6 +1,6 @@
 import {Component, Inject, Input} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {GenericModalInput} from "../../interfaces/generic-modal-input.interface";
+import {GenericModalInput} from "../../interfaces/modal/generic-modal-input.interface";
 
 @Component({
   selector: 'app-generic-modal',
