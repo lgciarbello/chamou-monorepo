@@ -38,28 +38,39 @@
   </div>
   <div class="sticky bottom-0 inset-x-0">
     <app-banner-tempo-espera [numeroPedido]="1" [tempoEspera]="30.00" ></app-banner-tempo-espera>
-    <app-bottom-navbar [quantidadeItens]="12" (clicked)="onCartClick()"></app-bottom-navbar>
+    <app-bottom-navbar [quantidadeItens]="carrinho.itens.length" (clicked)="onCartClick()"></app-bottom-navbar>
   </div>
 </div>
 
 <ng-template #itensCarrinho>
-  <div class="flex flex-col gap-3">
-    <app-cart-item [preco]="40" titulo="Batatas Fritas" [quantidade]="1"></app-cart-item>
-    <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>
-    <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>
-    <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>
-  </div>
+  <ng-container *ngIf="carrinho.itens.length > 0 else semItens">
+    <div class="flex flex-col gap-3">
+        <ng-container *ngFor="let item of carrinho.itens">
+          <app-cart-item [preco]="item.preco" [titulo]="item.titulo" [quantidade]="item.quantidade"></app-cart-item>
+          <!--      <app-cart-item [preco]="50" titulo="Bolinho de Mandioca" [quantidade]="2"></app-cart-item>-->
+          <!--      <app-cart-item [preco]="8" titulo="Refrigerante" [quantidade]="3"></app-cart-item>-->
+          <!--      <app-cart-item [preco]="5" titulo="Água" [quantidade]="1"></app-cart-item>-->
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-template #semItens>
+    <div class="grow flex flex-col gap-2 items-center justify-center text-[#8D8D8D]">
+      <fa-icon icon="face-sad-tear" size="3x"></fa-icon>
+      <p class="font-bioRhyme tracking-tighter">Não há itens em seu carrinho.</p>
+    </div>
+  </ng-template>
 </ng-template>
-<ng-template #avaliacao>
+
+<ng-template #avaliacaoTemplate>
   <app-default-button modal-footer class="grow" [titulo]="'Enviar avaliação'"></app-default-button>
 </ng-template>
-<ng-template #garcom>
+<ng-template #garcomTemplate>
   <app-default-button modal-footer class="grow" [titulo]="'Chamar garçom'"></app-default-button>
 </ng-template>
-<ng-template #conta>
+<ng-template #contaTemplate>
   <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
 </ng-template>
-<ng-template #carrinho>
+<ng-template #carrinhoTemplate>
   <app-banner-preco-total modal-footer class="grow" [preco]="40"></app-banner-preco-total>
 </ng-template>
 <!--<script src="/node_modules/flowbite/dist/flowbite.min.js"></script>-->
