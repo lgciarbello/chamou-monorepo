@@ -1,16 +1,19 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {CardapioResponse} from "../interfaces/cardapio-response.interface";
+import {CardapioResponse} from "../interfaces/cardapio/cardapio-response.interface";
+import {environment} from "../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardapioService {
 
+  private baseUrl: string = `${environment.apiUrl}/chamou/cardapio`;
+
   constructor(private readonly _http: HttpClient) {}
 
   getAll() : Observable<CardapioResponse> {
-    return this._http.get<CardapioResponse>('http://localhost:8080/chamou/cardapio');
+    return this._http.get<CardapioResponse>(this.baseUrl);
   }
 }
