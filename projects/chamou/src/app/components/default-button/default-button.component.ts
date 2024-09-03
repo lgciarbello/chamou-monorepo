@@ -10,7 +10,7 @@ export class DefaultButtonComponent {
   @Input({required: true}) titulo: string = '';
   @Input() public paddingY: string = '2'
 
-  @Output() public clickEmitter = new EventEmitter<any>();
+  @Output("clicked") public clickEmitter = new EventEmitter<void>();
 
   onClick() {
     this.clickEmitter.emit();
