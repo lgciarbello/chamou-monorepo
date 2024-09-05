@@ -4,6 +4,7 @@ import {BannerPrecoTotalComponent} from "../../components/banner-preco-total/ban
 
 export interface GenericModalInput {
   titulo: string,
+  hasFullSize: boolean,
   data: any,
   content: TemplateRef<any>,
   footer: TemplateRef<DefaultButtonComponent | BannerPrecoTotalComponent>

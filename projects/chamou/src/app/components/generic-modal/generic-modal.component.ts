@@ -9,6 +9,7 @@ import {GenericModalInput} from "../../interfaces/modal/generic-modal-input.inte
 })
 export class GenericModalComponent {
   @Input({required: true}) titulo: string = '';
+  @Input({required: true}) hasFullSize: boolean = true;
 
   // @ViewChild('modal-content')
   // @Input() hasButton: boolean = false;

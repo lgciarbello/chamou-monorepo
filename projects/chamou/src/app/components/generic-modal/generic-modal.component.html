@@ -1,5 +1,6 @@
 <div class="fixed inset-0 z-10 overflow-y-auto">
-  <div class="flex min-h-full h-max items-start justify-center px-2 pt-[4.5rem] text-center">
+  <div [class]="{'items-start': data.hasFullSize, 'items-center': !(data.hasFullSize)}"
+       class="flex min-h-full h-max justify-center px-2 pt-[4.5rem] text-center">
     <!--
       Modal panel, show/hide based on modal state.
 
@@ -11,7 +12,8 @@
         To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
     -->
 
-    <div class="flex flex-col transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all pt-4 pb-5 px-6 h-[calc(100dvh-theme(space.40))] w-full max-w-lg">
+    <div [class]="{'h-[calc(100dvh-theme(space.40))]': data.hasFullSize}"
+         class="flex flex-col transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all pt-4 pb-5 px-6 max-h-[calc(100dvh-theme(space.40))] w-full max-w-lg">
       <div class="flex flex-col gap-1 sticky">
         <div class="flex justify-between items-center">
           <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">{{ data.titulo }}</p>
