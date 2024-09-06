@@ -14,10 +14,10 @@
   </div>
   <div class="flex flex-col gap-5 justify-center">
     <button class="flex justify-center items-center">
-      <fa-icon icon="pen-to-square" size="2xl" class="text-inherit" title="Editar"></fa-icon>
+      <fa-icon icon="pen-to-square" size="2xl" class="text-inherit" title="Editar" (click)="onEdit()"></fa-icon>
     </button>
     <button class="flex justify-center items-center text-[#BC3434]">
-      <fa-icon icon="trash-can" size="2xl" class="text-inherit" title="Excluir"></fa-icon>
+      <fa-icon icon="trash-can" size="2xl" class="text-inherit" title="Excluir" (click)="onDelete()"></fa-icon>
     </button>
   </div>
 </div>
