@@ -1,6 +1,6 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ItemModalInput} from "../../interfaces/modal/item-modal-input.interface";
+import {ItemModalInput} from "../../../interfaces/modal/item-modal-input.interface";
 
 @Component({
   selector: 'app-item-modal',
@@ -37,6 +37,10 @@ export class ItemModalComponent implements OnInit {
     this.descricao = data.descricao;
     this.preco = data.preco;
     this.imagePath = data.imagePath;
+
+    if (data.quantidade > 0) {
+      this.quantidade = data.quantidade;
+    }
   }
 
   addIntoCart() {
