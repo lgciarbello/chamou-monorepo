@@ -1,4 +1,5 @@
-<button class="flex items-center justify-center bg-[#DBC164] py-{{ paddingY }} w-full rounded-[0.3rem] default-button"
+<button class="flex items-center justify-center bg-[#DBC164] py-{{ paddingY }} w-full rounded-[0.3rem] default-button disabled:bg-[#C6C6C6]"
+        [disabled]="disabled"
         (click)="onClick()">
   <p class="font-bioRhyme font-extrabold text-xl tracking-tighter text-white drop-shadow-title">{{ titulo }}</p>
 </button>

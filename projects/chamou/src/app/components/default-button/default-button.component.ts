@@ -9,6 +9,8 @@ export class DefaultButtonComponent {
 
   @Input({required: true}) titulo: string = '';
   @Input() public paddingY: string = '2'
+  @Input() public disabled: boolean = false;
+  @Input() public color: any = 'bg-[#DBC164]';
 
   @Output("clicked") public clickEmitter = new EventEmitter<void>();
 
