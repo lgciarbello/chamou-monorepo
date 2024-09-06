@@ -1,0 +1,17 @@
+<app-generic-modal-layout [title]="data.title" [hasFullSize]="false">
+
+  <ng-container modal-content>
+    <div class="flex flex-col gap-2 grow items-center my-2">
+      <fa-icon class="text-[#454545]" [icon]="data.icon" size="3x"></fa-icon>
+      <p class="font-bioRhyme text-[#454545] tracking-tighter">{{ data.message }}</p>
+    </div>
+  </ng-container>
+
+  <ng-container modal-footer>
+    <div class="grid grid-cols-2 grow gap-4 justify-between">
+      <app-default-button color="bg-blue" class="grow" [titulo]="data.buttonAcceptText" (clicked)="onAccept()" ></app-default-button>
+      <app-default-button class="grow" [titulo]="data.buttonDeclineText" (clicked)="onDecline()"></app-default-button>
+    </div>
+  </ng-container>
+
+</app-generic-modal-layout>

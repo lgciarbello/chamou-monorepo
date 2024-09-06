@@ -14,8 +14,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CategoriaRowComponent } from './components/categoria-row/categoria-row.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.component';
-import { ItemModalComponent } from './components/item-modal/item-modal.component';
-import { GenericModalComponent } from './components/generic-modal/generic-modal.component';
+import { ItemModalComponent } from './components/modals/item-modal/item-modal.component';
+import { GenericModalComponent } from './components/modals/generic-modal/generic-modal.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { DefaultButtonComponent } from './components/default-button/default-button.component';
 import { BannerPrecoTotalComponent } from './components/banner-preco-total/banner-preco-total.component';
@@ -24,6 +24,11 @@ import { QuantitySelectorComponent } from './components/quantity-selector/quanti
 import { HttpClientModule } from "@angular/common/http";
 import { MatDialogModule } from "@angular/material/dialog";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { GenericModalLayoutComponent } from './components/modals/generic-modal-layout/generic-modal-layout.component';
+import { SingleButtonModalComponent } from './components/modals/single-button-modal/single-button-modal.component';
+import { CarrinhoModalComponent } from './components/modals/carrinho-modal/carrinho-modal.component';
+import { PriceTextModalComponent } from './components/modals/price-text-modal/price-text-modal.component';
+import { AlertModalComponent } from './components/modals/alert-modal/alert-modal.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -44,7 +49,12 @@ registerLocaleData(localePt, 'pt-BR');
     DefaultButtonComponent,
     BannerPrecoTotalComponent,
     BannerTempoEsperaComponent,
-    QuantitySelectorComponent
+    QuantitySelectorComponent,
+    GenericModalLayoutComponent,
+    SingleButtonModalComponent,
+    CarrinhoModalComponent,
+    PriceTextModalComponent,
+    AlertModalComponent
   ],
   imports: [
     BrowserModule,

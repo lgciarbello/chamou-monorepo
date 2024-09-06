@@ -1,0 +1,11 @@
+<app-generic-modal-layout [title]="titulo" [hasFullSize]="true">
+
+  <ng-container modal-content>
+    <ng-content></ng-content>
+  </ng-container>
+
+  <ng-container modal-footer>
+    <app-banner-preco-total class="grow" [preco]="preco"></app-banner-preco-total>
+  </ng-container>
+
+</app-generic-modal-layout>

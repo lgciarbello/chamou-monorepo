@@ -1,0 +1,23 @@
+<app-price-text-modal [titulo]="data.titulo" [preco]="preco">
+  <ng-container *ngIf="data.carrinho.itens.length > 0 else semItens">
+    <div class="flex flex-col gap-3">
+      <ng-container *ngFor="let item of data.carrinho.itens; let i = index;">
+        <app-cart-item [id]="item.id"
+                       [preco]="item.preco"
+                       [titulo]="item.titulo"
+                       [quantidade]="item.quantidade"
+                       [customizacoes]="item.customizacoes"
+                       [descricao]="item.descricao"
+                       (editarItem)="onCartItemEdit($event, i)"
+                       (excluirItem)="onCartItemDelete(i)">
+        </app-cart-item>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-template #semItens>
+    <div class="grow flex flex-col gap-2 items-center justify-center text-[#8D8D8D]">
+      <fa-icon icon="face-sad-tear" size="3x"></fa-icon>
+      <p class="font-bioRhyme tracking-tighter">Não há itens em seu carrinho.</p>
+    </div>
+  </ng-template>
+</app-price-text-modal>
