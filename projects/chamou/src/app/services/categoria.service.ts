@@ -9,7 +9,7 @@ import {CategoriaResponse} from "../interfaces/categoria/categoria-response-inte
 })
 export class CategoriaService {
 
-  private baseUrl: string = `${environment.apiUrl}/chamou/categoria`;
+  private baseUrl: string = `${environment.apiUrl}/categoria`;
 
   constructor(private readonly _http: HttpClient) {}
 

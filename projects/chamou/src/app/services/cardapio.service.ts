@@ -9,7 +9,7 @@ import {environment} from "../../environments/environment.development";
 })
 export class CardapioService {
 
-  private baseUrl: string = `${environment.apiUrl}/chamou/cardapio`;
+  private baseUrl: string = `${environment.apiUrl}/cardapio`;
 
   constructor(private readonly _http: HttpClient) {}
 
