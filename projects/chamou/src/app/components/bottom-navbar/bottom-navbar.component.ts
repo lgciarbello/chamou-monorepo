@@ -8,10 +8,15 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class BottomNavbarComponent {
   @Input({ required: true }) public quantidadeItens: number = 0.00;
 
-  @Output('clicked') clickEmitter = new EventEmitter<any>();
+  @Output('cartClicked') cartClickEmitter = new EventEmitter<any>();
+  @Output('buttonClicked') buttonClickEmitter = new EventEmitter<any>();
 
   onCartClick(event: MouseEvent) {
-    this.clickEmitter.emit();
+    this.cartClickEmitter.emit();
+  }
+
+  onButtonClick() {
+    this.buttonClickEmitter.emit();
   }
 
 }

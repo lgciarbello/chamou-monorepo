@@ -1,4 +1,4 @@
-<div class="h-20 flex items-center sticky bottom-0 right-0 inset-0 border-0 bg-white rounded-t-[0.6rem] drop-shadow-bottom-navbar px-6 z-10">
+<div class="h-20 flex items-center sticky bottom-0 right-0 inset-0 border-0 bg-white rounded-t-[0.6rem] drop-shadow-bottom-navbar px-6">
   <div class="w-full flex gap-5 justify-between items-center">
     <div class="flex shrink grow w-28 justify-center">
       <button class="relative" (click)="onCartClick($event)">
@@ -11,7 +11,11 @@
       </button>
     </div>
     <div class="flex w-64 grow shrink-0">
-      <app-default-button class="grow" paddingY="3" titulo="Fazer pedido"></app-default-button>
+      <app-default-button class="grow"
+                          paddingY="3"
+                          titulo="Fazer pedido"
+                          [disabled]="quantidadeItens === 0"
+                          (clicked)="onButtonClick()"></app-default-button>
     </div>
   </div>
 </div>
