@@ -1,5 +1,5 @@
-import {ItemModalInput} from "../modal/item-modal-input.interface";
+import {ItemModalOutput} from "../modal/item-modal-output.interface";
 
 export interface CarrinhoInterface {
-  itens: ItemModalInput[];
+  itens: ItemModalOutput[];
 }

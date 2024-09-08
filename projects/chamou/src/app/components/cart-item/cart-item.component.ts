@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
 import {ItemModalInput} from "../../interfaces/modal/item-modal-input.interface";
 import {AlertModalInput} from "../../interfaces/modal/alert-modal-input.interface";
+import {ItemModalOutput} from "../../interfaces/modal/item-modal-output.interface";
 
 @Component({
   selector: 'app-cart-item',
@@ -19,7 +20,7 @@ export class CartItemComponent {
   @Input() public linkImagem: string = "/assets/img/default_banner.png";
 
   @Output() public excluirItem = new EventEmitter<void>();
-  @Output() public editarItem = new EventEmitter<ItemModalInput>();
+  @Output() public editarItem = new EventEmitter<ItemModalOutput>();
 
   constructor(private readonly _modalService: ModalService) {
   }
@@ -28,11 +29,12 @@ export class CartItemComponent {
     const data: ItemModalInput = {
       customizacoes: this.customizacoes,
       descricao: this.descricao,
-      id: this.id,
+      itemModeloId: this.id,
       imagePath: this.linkImagem,
       preco: this.preco,
       quantidade: this.quantidade,
-      titulo: this.titulo
+      titulo: this.titulo,
+      tituloBotao: "Editar"
     } as ItemModalInput;
 
     this._modalService.openItemModal(data)

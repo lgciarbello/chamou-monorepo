@@ -2,7 +2,7 @@
   <ng-container *ngIf="data.carrinho.itens.length > 0 else semItens">
     <div class="flex flex-col gap-3">
       <ng-container *ngFor="let item of data.carrinho.itens; let i = index;">
-        <app-cart-item [id]="item.id"
+        <app-cart-item [id]="item.itemModeloId"
                        [preco]="item.preco"
                        [titulo]="item.titulo"
                        [quantidade]="item.quantidade"
