@@ -1,7 +1,7 @@
 import {IdNameMap} from "../generic/id-name-map.interface";
 
 export interface ItemModelo {
-  id?: string;
+  id: string;
   nome: string;
   descricao: string;
   preco: number;
