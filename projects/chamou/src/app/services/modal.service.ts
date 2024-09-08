@@ -9,6 +9,7 @@ import {AlertModalInput} from "../interfaces/modal/alert-modal-input.interface";
 import {AlertModalComponent} from "../components/modals/alert-modal/alert-modal.component";
 import {CarrinhoModalInput} from "../interfaces/modal/carrinho-modal-input.interface";
 import {CarrinhoModalComponent} from "../components/modals/carrinho-modal/carrinho-modal.component";
+import {ItemModalOutput} from "../interfaces/modal/item-modal-output.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class ModalService {
     return this._matDialogService.open(component, dialogConfig);
   }
 
-  openItemModal(data: ItemModalInput): MatDialogRef<ItemModalComponent, ItemModalInput> {
+  openItemModal(data: ItemModalInput): MatDialogRef<ItemModalComponent, ItemModalOutput> {
     return this.openAny(ItemModalComponent, data);
   }
 

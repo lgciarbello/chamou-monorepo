@@ -1,7 +1,6 @@
-export interface ItemModalInput {
+export interface ItemModalOutput {
   itemModeloId: string,
   titulo: string,
-  tituloBotao: string,
   preco: number,
   descricao: string,
   quantidade: number,

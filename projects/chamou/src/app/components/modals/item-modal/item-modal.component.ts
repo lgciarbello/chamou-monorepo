@@ -1,6 +1,7 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ItemModalInput} from "../../../interfaces/modal/item-modal-input.interface";
+import {ItemModalOutput} from "../../../interfaces/modal/item-modal-output.interface";
 
 @Component({
   selector: 'app-item-modal',
@@ -8,12 +9,6 @@ import {ItemModalInput} from "../../../interfaces/modal/item-modal-input.interfa
   styleUrl: './item-modal.component.scss'
 })
 export class ItemModalComponent implements OnInit {
-  @Input({required: true}) public id!: string;
-  @Input({required: true}) public titulo: string = '';
-  @Input({required: true}) public preco: number = 0.00;
-  @Input({required: true}) public descricao: string = '';
-  @Input({required: true}) public quantidade: number = 0.00;
-
   @Input() public customizacoes: string[] = [];
   @Input() public imagePath: string = '/assets/img/bolinho.jpg';
 
@@ -21,7 +16,6 @@ export class ItemModalComponent implements OnInit {
 
   constructor(private readonly dialogRef: MatDialogRef<ItemModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ItemModalInput) {
-    this.insertDataIntoComponent(data);
   }
 
   ngOnInit() {
@@ -32,34 +26,23 @@ export class ItemModalComponent implements OnInit {
     this.hasCustomizations = this.customizacoes.length !== 0;
   }
 
-  insertDataIntoComponent(data: ItemModalInput) {
-    this.titulo = data.titulo;
-    this.descricao = data.descricao;
-    this.preco = data.preco;
-    this.imagePath = data.imagePath;
-
-    if (data.quantidade > 0) {
-      this.quantidade = data.quantidade;
-    }
-  }
-
   addIntoCart() {
-    if (this.quantidade <= 0) {
+    if (this.data.quantidade <= 0) {
       //TODO tratar erro
       return;
     }
 
-    const itemModalInput: ItemModalInput = {
-      id: this.id,
-      titulo: this.titulo,
-      preco: this.preco,
-      descricao: this.descricao,
+    const output: ItemModalOutput = {
+      itemModeloId: this.data.itemModeloId,
+      titulo: this.data.titulo,
+      preco: this.data.preco,
+      descricao: this.data.descricao,
       imagePath: this.imagePath,
       customizacoes: this.customizacoes,
-      quantidade: this.quantidade,
-    } as ItemModalInput;
+      quantidade: this.data.quantidade,
+    } as ItemModalOutput;
 
-    this.dialogRef.close(itemModalInput);
+    this.dialogRef.close(output);
   }
 }
 
