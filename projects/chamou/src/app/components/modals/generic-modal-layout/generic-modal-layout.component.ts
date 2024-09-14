@@ -8,5 +8,6 @@ import {Component, Input} from '@angular/core';
 export class GenericModalLayoutComponent {
   @Input({ required: true }) public title!: string;
   @Input({ required: true }) public hasFullSize: boolean = true;
+  @Input() public defaultCloseObject: any;
 
 }

@@ -1,0 +1,22 @@
+<ng-container *ngIf="(pedidos$ | async) as pedidos else semPedidos">
+  <app-button-text-modal titulo="Comanda"
+                         tituloBotao="Fechar comanda"
+                         [preco]="getPrecoTotal(pedidos)"
+                         (mainButtonClicked)="fecharComanda()">
+    <div class="flex flex-col gap-2">
+      <ng-container *ngFor="let pedido of pedidos; let i = index">
+        <app-card-pedido titulo="Pedido {{ i + 1 }}" [pedido]="pedido"></app-card-pedido>
+      </ng-container>
+    </div>
+  </app-button-text-modal>
+</ng-container>
+
+<ng-template #semPedidos>
+  <app-price-text-modal titulo="Comanda" [preco]="0">
+    <div class="grow flex flex-col gap-2 items-center justify-center text-[#8D8D8D]">
+      <fa-icon icon="face-sad-tear" size="3x"></fa-icon>
+      <p class="font-bioRhyme tracking-tighter">Não há pedidos em sua comanda.</p>
+    </div>
+  </app-price-text-modal>
+</ng-template>
+

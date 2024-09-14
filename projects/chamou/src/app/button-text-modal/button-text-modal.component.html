@@ -5,7 +5,10 @@
   </ng-container>
 
   <ng-container modal-footer>
-    <app-banner-preco-total class="grow" [preco]="preco"></app-banner-preco-total>
+    <div class="flex flex-col grow gap-1">
+      <app-banner-preco-total [preco]="preco"></app-banner-preco-total>
+      <app-default-button class="grow" [titulo]="tituloBotao" (clicked)="onButtonClick()" ></app-default-button>
+    </div>
   </ng-container>
 
 </app-generic-modal-layout>

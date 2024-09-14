@@ -10,6 +10,8 @@ import {AlertModalComponent} from "../components/modals/alert-modal/alert-modal.
 import {CarrinhoModalInput} from "../interfaces/modal/carrinho-modal-input.interface";
 import {CarrinhoModalComponent} from "../components/modals/carrinho-modal/carrinho-modal.component";
 import {ItemModalOutput} from "../interfaces/modal/item-modal-output.interface";
+import {ComandaModalInput} from "../interfaces/modal/comanda-modal-input.interface";
+import {ComandaModalComponent} from "../components/modals/comanda-modal/comanda-modal.component";
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +39,10 @@ export class ModalService {
 
   openCarrinhoModal(data: CarrinhoModalInput): MatDialogRef<CarrinhoModalComponent> {
     return this.openAny(CarrinhoModalComponent, data);
+  }
+
+  openComandaModal(data: ComandaModalInput): MatDialogRef<ComandaModalComponent> {
+    return this.openAny(ComandaModalComponent, data);
   }
 
   openGenericModal(data: GenericModalInput): MatDialogRef<GenericModalComponent> {

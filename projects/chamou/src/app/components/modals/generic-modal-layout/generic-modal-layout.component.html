@@ -6,7 +6,7 @@
       <div class="flex flex-col gap-1 sticky">
         <div class="flex justify-between items-center">
           <p class="leading-4 font-bioRhyme font-bold text-xl text-black tracking-tighter">{{ title }}</p>
-          <button mat-dialog-close class="flex justify-center items-center z-50">
+          <button [mat-dialog-close]="defaultCloseObject ? defaultCloseObject : null" class="flex justify-center items-center z-50">
             <fa-icon icon="xmark" size="xl" class="text-inherit" title="Fechar"></fa-icon>
           </button>
         </div>

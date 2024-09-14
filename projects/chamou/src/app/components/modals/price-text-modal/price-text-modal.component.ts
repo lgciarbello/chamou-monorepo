@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class PriceTextModalComponent {
   @Input({ required: true }) public titulo!: string;
   @Input({ required: true }) public preco!: number;
+  @Input() public defaultCloseObject: any;
 
 }

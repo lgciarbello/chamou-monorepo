@@ -1,4 +1,4 @@
-<app-price-text-modal [titulo]="data.titulo" [preco]="preco">
+<app-price-text-modal [titulo]="data.titulo" [preco]="data.precoPedidoAtual" [defaultCloseObject]="data.precoPedidoAtual">
   <ng-container *ngIf="data.carrinho.itens.length > 0 else semItens">
     <div class="flex flex-col gap-3">
       <ng-container *ngFor="let item of data.carrinho.itens; let i = index;">

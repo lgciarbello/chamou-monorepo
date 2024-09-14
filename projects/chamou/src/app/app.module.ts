@@ -1,6 +1,6 @@
 import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { registerLocaleData } from "@angular/common";
+import {registerLocaleData, TitleCasePipe} from "@angular/common";
 import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,9 @@ import { SingleButtonModalComponent } from './components/modals/single-button-mo
 import { CarrinhoModalComponent } from './components/modals/carrinho-modal/carrinho-modal.component';
 import { PriceTextModalComponent } from './components/modals/price-text-modal/price-text-modal.component';
 import { AlertModalComponent } from './components/modals/alert-modal/alert-modal.component';
+import { ComandaModalComponent } from './components/modals/comanda-modal/comanda-modal.component';
+import { CardPedidoComponent } from './components/card-pedido/card-pedido.component';
+import { ButtonTextModalComponent } from './button-text-modal/button-text-modal.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -54,21 +57,25 @@ registerLocaleData(localePt, 'pt-BR');
     SingleButtonModalComponent,
     CarrinhoModalComponent,
     PriceTextModalComponent,
-    AlertModalComponent
+    AlertModalComponent,
+    ComandaModalComponent,
+    CardPedidoComponent,
+    ButtonTextModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [
     {
       provide: DEFAULT_CURRENCY_CODE,
       useValue: 'BRL'
     },
-    provideAnimationsAsync('animations')
+    provideAnimationsAsync('animations'),
+    TitleCasePipe
   ],
   bootstrap: [AppComponent],
   // entryComponents: [ItemModalComponent],

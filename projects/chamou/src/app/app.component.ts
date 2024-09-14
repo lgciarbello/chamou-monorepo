@@ -15,12 +15,14 @@ import {LocalStorageService} from "./services/localstorage.service";
 import {CarrinhoModalInput} from "./interfaces/modal/carrinho-modal-input.interface";
 import {MatDialogRef} from "@angular/material/dialog";
 import {AlertModalInput} from "./interfaces/modal/alert-modal-input.interface";
-import {Item} from "./interfaces/item/item.interface";
-import {PedidoRequest} from "./interfaces/pedido/pedido-request.interface";
+import {ItemPedido} from "./interfaces/item/item-pedido.interface";
+import {PedidoCreateRequest} from "./interfaces/pedido/pedido-create-request.interface";
 import {Comanda} from "./interfaces/comanda/comanda.interface";
 import {ComandaService} from "./services/comanda.service";
 import {PedidoService} from "./services/pedido.service";
-import {PedidoResponse} from "./interfaces/pedido/pedido-response.interface";
+import {PedidoCreateResponse} from "./interfaces/pedido/pedido-create-response.interface";
+import {ComandaModalInput} from "./interfaces/modal/comanda-modal-input.interface";
+import {ItemModalOutput} from "./interfaces/modal/item-modal-output.interface";
 
 @Component({
   selector: 'app-root',
@@ -31,7 +33,8 @@ export class AppComponent implements OnInit{
   title = 'chamou-monorepo';
   carrinho!: CarrinhoInterface;
   comanda!: string;
-  pedido!: PedidoResponse;
+  pedido!: PedidoCreateResponse;
+  precoPedidoAtual: number = 0;
 
   cardapio$!: Observable<CardapioResponse>;
   categorias$!: Observable<CategoriaResponse[]>;
@@ -59,16 +62,11 @@ export class AppComponent implements OnInit{
 
     this.initComanda();
     this.initCarrinho();
+    this.initPreco();
   }
 
   initComanda() {
     this.comanda = this._localstorage.getItem("chamou.comanda");
-
-    // if (!this.comanda) {
-    //   this.comanda = uuid();
-    //   this._localstorage.setItem("chamou.comanda", this.comanda);
-    // }
-
     console.log(this.comanda);
   }
 
@@ -84,9 +82,26 @@ export class AppComponent implements OnInit{
     console.log(this.carrinho);
   }
 
+  initPreco() {
+    if (this.carrinho.itens.length > 0) {
+      this.precoPedidoAtual = this.carrinho.itens
+        .reduce((accumulator, item) => accumulator + (item.preco * item.quantidade), 0);
+    }
+  }
+
+  clearVariables() {
+    this.clearCarrinho();
+    this.precoPedidoAtual = 0;
+  }
+
   clearCarrinho() {
     this.carrinho.itens = [];
-    this._localstorage.setItem("chamou.carrinho", this.carrinho);
+    this._localstorage.removeItem("chamou.carrinho");
+  }
+
+  clearComanda() {
+    this.comanda = "";
+    this._localstorage.removeItem("chamou.comanda");
   }
 
   onItemCardClick(event: ItemModelo) {
@@ -106,6 +121,7 @@ export class AppComponent implements OnInit{
 
     itemModal.afterClosed().subscribe(itemModalOutput => {
       if (itemModalOutput && itemModalOutput.quantidade > 0) {
+        this.updatePreco(itemModalInput);
         this.carrinho.itens.push(itemModalOutput);
         this._localstorage.setItem("chamou.carrinho", this.carrinho);
       }
@@ -113,57 +129,78 @@ export class AppComponent implements OnInit{
     })
   }
 
+  updatePreco(itemModalOutput: ItemModalOutput) {
+    this.precoPedidoAtual += (itemModalOutput.preco * itemModalOutput.quantidade);
+  }
+
   onNavbarButtonClick(event: string) {
-    let data: GenericModalInput;
 
     this._modalService.closeAll();
 
     switch (event) {
       case "avaliacao": {
+        let data: GenericModalInput;
         data = {
           titulo: 'Avaliação',
           hasFullSize: true,
           footer: this.avaliacaoTemplate
         } as GenericModalInput;
+        this._modalService.openGenericModal(data);
         break;
       }
 
       case "garcom": {
+        let data: GenericModalInput;
+
         data = {
           titulo: 'Garçom',
           hasFullSize: true,
           footer: this.garcomTemplate
         } as GenericModalInput;
+        this._modalService.openGenericModal(data);
         break;
       }
 
-      case "conta": {
+      case "comanda": {
+        let data: ComandaModalInput;
+
         data = {
-          titulo: 'Conta',
-          hasFullSize: true,
-          footer: this.contaTemplate
-        } as GenericModalInput;
+          comandaId: this.comanda
+        } as ComandaModalInput;
+        const comandaModal =  this._modalService.openComandaModal(data);
+
+        comandaModal.afterClosed().subscribe(fecharComanda => {
+          if (fecharComanda) {
+            this.clearComanda();
+          }
+        });
         break;
       }
 
       default: {
+        let data: GenericModalInput;
         data = {
           titulo: 'Default',
           hasFullSize: true,
         } as GenericModalInput;
       }
     }
-
-    this._modalService.openGenericModal(data);
   }
 
   onCartClick() {
     const data: CarrinhoModalInput = {
       carrinho: this.carrinho,
+      precoPedidoAtual: this.precoPedidoAtual,
       titulo: "Carrinho"
     } as CarrinhoModalInput;
 
-    this._modalService.openCarrinhoModal(data);
+    this._modalService.openCarrinhoModal(data)
+      .afterClosed().subscribe(preco => {
+        if (preco) {
+          // TODO quando for possivel fazer o pedido com esta modal aberta, a lógica terá que ser outra (two-way-data-binding??);
+          this.precoPedidoAtual = preco;
+        }
+    })
   }
 
   onPedidoButtonClick() {
@@ -178,11 +215,11 @@ export class AppComponent implements OnInit{
     this._modalService.openAlertModal(data)
       .afterClosed().subscribe(isAccept => {
         if (isAccept) {
-          const itens: Item[] = this.carrinho.itens.map((item) => {
+          const itens: ItemPedido[] = this.carrinho.itens.map((item) => {
             return {
               itemModeloId: item.itemModeloId,
               quantidade: item.quantidade,
-              opcaoPersonalizadaValores: item.customizacoes } as Item;
+              opcaoPersonalizadaValores: item.customizacoes } as ItemPedido;
           });
 
           console.log(itens);
@@ -192,24 +229,25 @@ export class AppComponent implements OnInit{
               .then(() => this.createPedido(itens))
               .then(pedido => {
                 console.log(pedido);
-                this.clearCarrinho();
+                this.clearVariables();
               });
           } else {
             this.createPedido(itens)
               .then(pedido => {
                 console.log(pedido);
-                this.clearCarrinho();
+                this.clearVariables();
               });
           }
         }
     });
   }
 
-  async createPedido(itens: Item[]): Promise<PedidoResponse> {
-    const pedido: PedidoRequest = {
+  async createPedido(itens: ItemPedido[]): Promise<PedidoCreateResponse> {
+    const pedido: PedidoCreateRequest = {
       comandaId: this.comanda,
+      precoTotal: this.precoPedidoAtual,
       itens: itens
-    } as PedidoRequest;
+    } as PedidoCreateRequest;
 
     const pedidoResponse$ = this._pedidoService.create(pedido);
 

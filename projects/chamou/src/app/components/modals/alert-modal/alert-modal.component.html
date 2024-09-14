@@ -3,7 +3,8 @@
   <ng-container modal-content>
     <div class="flex flex-col gap-2 grow items-center my-2">
       <fa-icon class="text-[#454545]" [icon]="data.icon" size="3x"></fa-icon>
-      <p class="font-bioRhyme text-[#454545] tracking-tighter">{{ data.message }}</p>
+      <p class="font-bioRhyme text-[#454545] text-center tracking-tighter"
+         [innerText]="data.message"></p>
     </div>
   </ng-container>
 
