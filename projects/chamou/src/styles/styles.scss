@@ -52,6 +52,8 @@ $chamou-theme: mat.define-light-theme((
   }
 }
 
+@import 'css-star-rating/scss/star-rating';
+
 * {
   margin: 0;
 }

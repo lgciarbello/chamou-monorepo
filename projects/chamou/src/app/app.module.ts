@@ -31,7 +31,11 @@ import { PriceTextModalComponent } from './components/modals/price-text-modal/pr
 import { AlertModalComponent } from './components/modals/alert-modal/alert-modal.component';
 import { ComandaModalComponent } from './components/modals/comanda-modal/comanda-modal.component';
 import { CardPedidoComponent } from './components/card-pedido/card-pedido.component';
-import { ButtonTextModalComponent } from './button-text-modal/button-text-modal.component';
+import { ButtonTextModalComponent } from './components/modals/button-text-modal/button-text-modal.component';
+import { AvaliacaoModalComponent } from './components/modals/avaliacao-modal/avaliacao-modal.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {StarRatingModule} from "angular-star-rating";
+import { InfoModalComponent } from './components/modals/info-modal/info-modal.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -60,7 +64,9 @@ registerLocaleData(localePt, 'pt-BR');
     AlertModalComponent,
     ComandaModalComponent,
     CardPedidoComponent,
-    ButtonTextModalComponent
+    ButtonTextModalComponent,
+    AvaliacaoModalComponent,
+    InfoModalComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +74,8 @@ registerLocaleData(localePt, 'pt-BR');
     FontAwesomeModule,
     HttpClientModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    StarRatingModule.forRoot(),
   ],
   providers: [
     {

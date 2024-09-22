@@ -23,6 +23,7 @@ import {PedidoService} from "./services/pedido.service";
 import {PedidoCreateResponse} from "./interfaces/pedido/pedido-create-response.interface";
 import {ComandaModalInput} from "./interfaces/modal/comanda-modal-input.interface";
 import {ItemModalOutput} from "./interfaces/modal/item-modal-output.interface";
+import {AvaliacaoModalInput} from "./interfaces/modal/avaliacao-modal-input.interface";
 
 @Component({
   selector: 'app-root',
@@ -139,13 +140,7 @@ export class AppComponent implements OnInit{
 
     switch (event) {
       case "avaliacao": {
-        let data: GenericModalInput;
-        data = {
-          titulo: 'Avaliação',
-          hasFullSize: true,
-          footer: this.avaliacaoTemplate
-        } as GenericModalInput;
-        this._modalService.openGenericModal(data);
+        this._modalService.openAvaliacaoModal(null);
         break;
       }
 

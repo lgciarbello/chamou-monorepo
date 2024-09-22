@@ -1,0 +1,28 @@
+<app-single-button-modal titulo="Avaliação" buttonTitle="Enviar avaliação" [buttonDisable]="!avaliacaoForm.valid" (mainButtonClicked)="submitForm()">
+  <ng-container *ngIf="perguntas">
+    <form [formGroup]="avaliacaoForm">
+      <div formArrayName="perguntas">
+        <div *ngFor="let perguntaForm of perguntasForm.controls; let i = index;">
+          <label class="text-[#6A6A6A] font-bioRhyme font-semibold text-md tracking-tighter" for="pergunta-{{ i }}}"> {{ perguntas.at(i)?.nome }} </label>
+          <star-rating-control starType="svg"
+                               id="pergunta-{{ i }}"
+                               [rating]="1"
+                               staticColor="ok"
+                               speed="immediately"
+                               size="large"
+                               [formControlName]="i">
+          </star-rating-control>
+          <br/>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="comentario" class="text-[#6A6A6A] font-bioRhyme font-semibold text-md tracking-tighter">Comentários</label>
+        <textarea id="comentario"
+                  placeholder="Conte mais sobre sua experiência..."
+                  class="font-bioRhyme font-normal text-md tracking-tighter"
+                  rows="4"
+                  formControlName="comentario"></textarea>
+      </div>
+    </form>
+  </ng-container>
+</app-single-button-modal>

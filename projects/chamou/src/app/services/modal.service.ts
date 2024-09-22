@@ -12,6 +12,8 @@ import {CarrinhoModalComponent} from "../components/modals/carrinho-modal/carrin
 import {ItemModalOutput} from "../interfaces/modal/item-modal-output.interface";
 import {ComandaModalInput} from "../interfaces/modal/comanda-modal-input.interface";
 import {ComandaModalComponent} from "../components/modals/comanda-modal/comanda-modal.component";
+import {AvaliacaoModalInput} from "../interfaces/modal/avaliacao-modal-input.interface";
+import {AvaliacaoModalComponent} from "../components/modals/avaliacao-modal/avaliacao-modal.component";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,7 @@ export class ModalService {
 
   constructor(private readonly _matDialogService: MatDialog) {}
 
-  private openAny(component: ComponentType<any>, data: any): MatDialogRef<any> {
+  public openAny(component: ComponentType<any>, data: any): MatDialogRef<any> {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.autoFocus = true;
@@ -43,6 +45,10 @@ export class ModalService {
 
   openComandaModal(data: ComandaModalInput): MatDialogRef<ComandaModalComponent> {
     return this.openAny(ComandaModalComponent, data);
+  }
+
+  openAvaliacaoModal(data: AvaliacaoModalInput | null): MatDialogRef<AvaliacaoModalComponent> {
+    return this.openAny(AvaliacaoModalComponent, data);
   }
 
   openGenericModal(data: GenericModalInput): MatDialogRef<GenericModalComponent> {

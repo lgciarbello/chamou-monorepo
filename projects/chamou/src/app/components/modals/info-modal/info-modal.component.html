@@ -1,0 +1,15 @@
+<app-generic-modal-layout [title]="data.title" [hasFullSize]="false">
+
+  <ng-container modal-content>
+    <div class="flex flex-col gap-2 grow items-center my-2">
+      <fa-icon class="text-[#454545]" [icon]="data.icon" size="3x"></fa-icon>
+      <p class="font-bioRhyme text-[#454545] text-center tracking-tighter"
+         [innerText]="data.message"></p>
+    </div>
+  </ng-container>
+
+  <ng-container modal-footer>
+      <app-default-button class="grow" [titulo]="data.buttonText" (clicked)="onButtonClick()"></app-default-button>
+  </ng-container>
+
+</app-generic-modal-layout>
