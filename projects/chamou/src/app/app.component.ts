@@ -24,6 +24,7 @@ import {PedidoCreateResponse} from "./interfaces/pedido/pedido-create-response.i
 import {ComandaModalInput} from "./interfaces/modal/comanda-modal-input.interface";
 import {ItemModalOutput} from "./interfaces/modal/item-modal-output.interface";
 import {AvaliacaoModalInput} from "./interfaces/modal/avaliacao-modal-input.interface";
+import {GarcomModalComponent} from "./components/modals/garcom-modal/garcom-modal.component";
 
 @Component({
   selector: 'app-root',
@@ -145,14 +146,7 @@ export class AppComponent implements OnInit{
       }
 
       case "garcom": {
-        let data: GenericModalInput;
-
-        data = {
-          titulo: 'Garçom',
-          hasFullSize: true,
-          footer: this.garcomTemplate
-        } as GenericModalInput;
-        this._modalService.openGenericModal(data);
+        this._modalService.openAny(GarcomModalComponent, null);
         break;
       }
 

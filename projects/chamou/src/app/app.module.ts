@@ -36,6 +36,7 @@ import { AvaliacaoModalComponent } from './components/modals/avaliacao-modal/ava
 import {ReactiveFormsModule} from "@angular/forms";
 import {StarRatingModule} from "angular-star-rating";
 import { InfoModalComponent } from './components/modals/info-modal/info-modal.component';
+import { GarcomModalComponent } from './components/modals/garcom-modal/garcom-modal.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -66,7 +67,8 @@ registerLocaleData(localePt, 'pt-BR');
     CardPedidoComponent,
     ButtonTextModalComponent,
     AvaliacaoModalComponent,
-    InfoModalComponent
+    InfoModalComponent,
+    GarcomModalComponent
   ],
   imports: [
     BrowserModule,
