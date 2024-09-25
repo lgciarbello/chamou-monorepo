@@ -9,5 +9,6 @@ import {IconName} from "@fortawesome/fontawesome-svg-core";
 export class SidebarItemComponent {
   @Input({ required: true }) public titulo: string = "Titulo";
   @Input({ required: true }) public icone: IconName = 'accessible-icon';
+  @Input({ required: true }) public routeLink!: string;
   @Input() transform: string = "";
 }
