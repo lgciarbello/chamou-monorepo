@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
 
 @Component({
   selector: 'app-default-content-page',
@@ -7,5 +8,12 @@ import {Component, Input} from '@angular/core';
 })
 export class DefaultContentPageComponent {
   @Input({ required: true }) title!: string;
+  @Input({ }) actionButtons!: Map<string, IconProp>;
+
+  @Output() actionButtonClicked = new EventEmitter<string>();
+
+  onActionButtonClick(action: string) {
+    this.actionButtonClicked.emit(action);
+  }
 
 }
