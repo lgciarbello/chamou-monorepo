@@ -185,7 +185,7 @@ export class AppComponent implements OnInit{
 
     this._modalService.openCarrinhoModal(data)
       .afterClosed().subscribe(preco => {
-        if (preco) {
+        if (preco || preco >= 0) {
           // TODO quando for possivel fazer o pedido com esta modal aberta, a lógica terá que ser outra (two-way-data-binding??);
           this.precoPedidoAtual = preco;
         }
