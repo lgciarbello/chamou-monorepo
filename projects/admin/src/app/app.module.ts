@@ -20,6 +20,7 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
 import { ItensListComponent } from './components/pages/itens/itens-list/itens-list.component';
 import {NgOptimizedImage, registerLocaleData} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -40,13 +41,14 @@ registerLocaleData(localePt, 'pt-BR');
     ItemCardComponent,
     ItensListComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FaIconComponent,
-    HttpClientModule,
-    NgOptimizedImage
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FaIconComponent,
+        HttpClientModule,
+        NgOptimizedImage,
+        ReactiveFormsModule
+    ],
   providers: [
     {
       provide: DEFAULT_CURRENCY_CODE,
