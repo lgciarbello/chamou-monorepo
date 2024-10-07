@@ -9,10 +9,13 @@ import {ComandasPageComponent} from "./components/pages/comandas-page/comandas-p
 import {PedidosPageComponent} from "./components/pages/pedidos-page/pedidos-page.component";
 import {AvaliacoesPageComponent} from "./components/pages/avaliacoes-page/avaliacoes-page.component";
 import {ItensListComponent} from "./components/pages/itens/itens-list/itens-list.component";
+import {AuthGuard} from "./guards/auth.guard";
 const routes: Routes = [
   {
     path: '',
     component: DefaultPageLayoutComponent,
+    canActivate: [AuthGuard()],
+    canActivateChild: [AuthGuard()],
     children: [
       {
         path: 'itens',
@@ -47,7 +50,6 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginPageComponent },
-
 ];
 
 @NgModule({
