@@ -10,6 +10,8 @@ import {PedidosPageComponent} from "./components/pages/pedidos-page/pedidos-page
 import {AvaliacoesPageComponent} from "./components/pages/avaliacoes-page/avaliacoes-page.component";
 import {ItensListComponent} from "./components/pages/itens/itens-list/itens-list.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {LoginGuard} from "./guards/login.guard";
+import {ItensInfoComponent} from "./components/pages/itens/itens-info/itens-info.component";
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +26,10 @@ const routes: Routes = [
           {
             path: '',
             component: ItensListComponent
+          },
+          {
+            path: 'item',
+            component: ItensInfoComponent
           }
         ]
       },
@@ -49,7 +55,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'login', component: LoginPageComponent },
+  { path: 'login', component: LoginPageComponent, canActivate: [LoginGuard]},
 ];
 
 @NgModule({

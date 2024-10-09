@@ -1,0 +1,40 @@
+<!--<div class="flex shrink grow max-w-80 bg-amber-50 rounded-md drop-shadow-card">-->
+<!--  <div class="flex grow shrink w-32">-->
+<!--    <div class="shrink w-32 bg-gray-300 rounded-l-md"></div>-->
+<!--  </div>-->
+<!--  <div class="flex flex-col gap-3 py-3 pl-4 pr-12">-->
+<!--    <div class="flex">-->
+<!--      <div class="px-2 rounded-lg bg-amber-500">-->
+<!--        <p class="font-dmSans font-extrabold text-white text-sm tracking-tighter">Categoria</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="flex flex-col">-->
+<!--      <p class="leading-4 font-dmSans tracking-tighter font-bold text-xl text-wrap">Batata Frita</p>-->
+<!--      <p class="leading-2 font-dmSans tracking-tighter font-semibold text-gray-600 text-lg text-wrap">R$ 10,00</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="flex shrink grow max-w-80 bg-amber-50 rounded-md drop-shadow-card cursor-pointer"
+     (click)="onCardClick()">
+  <div class="flex grow shrink max-w-32">
+    <div class="shrink w-full bg-gray-300 rounded-l-md text-wrap">
+
+    </div>
+  </div>
+  <div class="flex flex-col gap-3 py-3 pl-4 pr-12">
+    <div class="flex">
+      <div class="px-2 rounded-lg bg-amber-500">
+        <p class="font-dmSans font-extrabold text-white text-sm tracking-tighter">{{ categoria }}</p>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <p class="leading-4 font-dmSans tracking-tighter font-bold text-xl text-wrap">{{ titulo }}</p>
+      <p class="leading-2 font-dmSans tracking-tighter font-semibold text-gray-600 text-lg text-wrap">
+        {{ preco | currency:undefined:undefined:undefined:'pt-BR' }}
+      </p>
+    </div>
+  </div>
+</div>
+
+

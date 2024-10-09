@@ -42,10 +42,10 @@ registerLocaleData(localePt, 'pt-BR');
     ComandasPageComponent,
     PedidosPageComponent,
     AvaliacoesPageComponent,
-    ItemCardComponent
-    // ItensListComponent,
-    // ItensInfoComponent,
-    // DefaultInfoPageComponent
+    ItemCardComponent,
+    ItensListComponent,
+    ItensInfoComponent,
+    DefaultInfoPageComponent
   ],
   imports: [
     BrowserModule,
