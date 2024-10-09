@@ -21,6 +21,10 @@ import { ItensListComponent } from './components/pages/itens/itens-list/itens-li
 import {NgOptimizedImage, registerLocaleData} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { ItensInfoComponent } from './components/pages/itens/itens-info/itens-info.component';
+import { DefaultInfoPageComponent } from './components/pages/default-info-page/default-info-page.component';
+import {NgxCurrencyDirective} from "ngx-currency";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -38,17 +42,21 @@ registerLocaleData(localePt, 'pt-BR');
     ComandasPageComponent,
     PedidosPageComponent,
     AvaliacoesPageComponent,
-    ItemCardComponent,
-    ItensListComponent
+    ItemCardComponent
+    // ItensListComponent,
+    // ItensInfoComponent,
+    // DefaultInfoPageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FaIconComponent,
-        HttpClientModule,
-        NgOptimizedImage,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FaIconComponent,
+    HttpClientModule,
+    NgOptimizedImage,
+    ReactiveFormsModule,
+    NgxCurrencyDirective,
+    NgSelectModule
+  ],
   providers: [
     {
       provide: DEFAULT_CURRENCY_CODE,
