@@ -8,4 +8,5 @@ import {Component, Input} from '@angular/core';
 export class DefaultInfoPageComponent {
   @Input({ required: true }) title!: string;
   @Input({ required: true }) backButtonTitle!: string;
+  @Input({ required: true }) backButtonRoute!: string;
 }

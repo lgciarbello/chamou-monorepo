@@ -16,16 +16,30 @@ export class ItemModeloService {
               private readonly localstorageService: LocalStorageService) {}
 
   create(request: ItemModeloRequest): Observable<ItemModeloResponse> {
-
-    console.log(this.baseUrl);
-
     return this._http.post<ItemModeloResponse>(this.baseUrl, request, {
       headers: {
         'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token"),
         'Content-Type': 'application/json',
       }
     });
-}
+  }
+
+  update(itemId: string, request: ItemModeloRequest): Observable<ItemModeloResponse> {
+    return this._http.put<ItemModeloResponse>(`${this.baseUrl}/${itemId}`, request, {
+      headers: {
+        'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token"),
+        'Content-Type': 'application/json',
+      }
+    });
+  }
+
+  get(itemId: string): Observable<ItemModeloResponse> {
+    return this._http.get<ItemModeloResponse>(`${this.baseUrl}/${itemId}`, {
+      headers: {
+        'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token")
+      }
+    });
+  }
 
   list(): Observable<ItemModeloResponse[]> {
     return this._http.get<ItemModeloResponse[]>(`${this.baseUrl}/list`, {

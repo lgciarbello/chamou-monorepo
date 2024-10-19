@@ -1,4 +1,4 @@
-<app-default-info-page title="Novo Item" backButtonTitle="Voltar para Itens">
+<app-default-info-page [title]="title" backButtonTitle="Voltar para Itens" [backButtonRoute]="backRoute">
   <ng-container form-content>
     <form class="flex gap-4 flex-wrap" [formGroup]="itensForm">
       <div class="flex flex-col font-dmSans w-[45%]">
@@ -41,7 +41,7 @@
       <fa-icon icon="save"></fa-icon>
       Salvar
     </button>
-    <button type="submit" routerLink=".." class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-red-500 rounded-md">
+    <button type="submit" [routerLink]="backRoute" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-red-500 rounded-md">
       <fa-icon icon="xmark" size="lg"></fa-icon>
       Cancelar
     </button>

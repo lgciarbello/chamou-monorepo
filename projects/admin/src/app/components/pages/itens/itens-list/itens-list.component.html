@@ -7,7 +7,7 @@
                        [titulo]="item.nome"
                        [preco]="item.preco"
                        [categoria]="item.categoria?.name!"
-                       (cardClicked)="onItemClick()">
+                       (cardClicked)="onItemClick($event)">
 
         </app-item-card>
       </ng-container>
