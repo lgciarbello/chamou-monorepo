@@ -1,8 +1,8 @@
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 
-export interface CategoriaResponse {
-  id: string;
+export interface CategoriaRequest {
+  id?: string;
   nome: string;
   icone: IconProp;
-  ordem: number;
+  ordem?: number;
 }

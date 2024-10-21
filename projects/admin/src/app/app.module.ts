@@ -11,7 +11,7 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
 import { DefaultPageLayoutComponent } from './components/page-layout/default-page-layout/default-page-layout.component';
 import { DefaultContentPageComponent } from './components/page-layout/default-content-page/default-content-page.component';
 import { ItensPageComponent } from './components/pages/itens/itens-page/itens-page.component';
-import { CategoriasPageComponent } from './components/pages/categorias-page/categorias-page.component';
+import { CategoriasPageComponent } from './components/pages/categorias/categorias-page/categorias-page.component';
 import { MesasPageComponent } from './components/pages/mesas-page/mesas-page.component';
 import { ComandasPageComponent } from './components/pages/comandas-page/comandas-page.component';
 import { PedidosPageComponent } from './components/pages/pedidos-page/pedidos-page.component';
@@ -25,6 +25,9 @@ import { ItensInfoComponent } from './components/pages/itens/itens-info/itens-in
 import { DefaultInfoPageComponent } from './components/pages/default-info-page/default-info-page.component';
 import {NgxCurrencyDirective} from "ngx-currency";
 import {NgSelectModule} from "@ng-select/ng-select";
+import { CategoriasListComponent } from './components/pages/categorias/categorias-list/categorias-list.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import { CategoriasInfoComponent } from './components/pages/categorias/categorias-info/categorias-info.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -45,7 +48,9 @@ registerLocaleData(localePt, 'pt-BR');
     ItemCardComponent,
     ItensListComponent,
     ItensInfoComponent,
-    DefaultInfoPageComponent
+    DefaultInfoPageComponent,
+    CategoriasListComponent,
+    CategoriasInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ registerLocaleData(localePt, 'pt-BR');
     NgOptimizedImage,
     ReactiveFormsModule,
     NgxCurrencyDirective,
-    NgSelectModule
+    NgSelectModule,
+    DragDropModule
   ],
   providers: [
     {

@@ -1,0 +1,66 @@
+<div class="flex h-full">
+  <div class="p-4 w-full overflow-y-auto">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full font-dmSans text-left table-fixed text-sm">
+        <thead class="text-sm text-white uppercase tracking-tight bg-[#DBC164] dark:text-white">
+        <tr>
+          <th scope="col" class="px-3 py-3 font-black w-28 text-center">
+            Ordem
+          </th>
+          <th scope="col" class="px-3 py-3 w-24 text-center">
+            Icone
+          </th>
+          <th scope="col" class="px-6 py-3 font-black">
+            Nome
+          </th>
+          <th scope="col" class="px-6 py-3 text-right">
+            Opções
+          </th>
+        </tr>
+        </thead>
+        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+          <tr *ngFor="let categoria of categorias; let i = index;" cdkDrag cdkDragLockAxis="y"
+              class="border-b text-[#543d08]"
+              [class]="i % 2 === 0 ? 'bg-[#f0e5bd] border-[#f0e5bd]' : 'bg-[#e0d2a1] border-[#e0d2a1]'">
+            <td class="px-6 py-4 text-center">
+              <fa-icon cdkDragHandle class="cursor-move" icon="bars" size="lg"></fa-icon>
+            </td>
+            <td class="px-6 py-4 text-center">
+              <fa-icon [icon]="categoria.icone" size="lg"></fa-icon>
+            </td>
+            <th scope="row" class="px-6 py-4 font-semibold tracking-tight whitespace-nowrap">
+              {{ categoria.nome }}
+            </th>
+            <td class="flex justify-end px-6 py-4 gap-2 text-right">
+              <fa-icon icon="pen-to-square" size="xl" class="cursor-pointer" routerLink="categoria/{{ categoria.id }}"></fa-icon>
+              <fa-icon icon="trash-can" size="xl" class="text-[#BC3434] cursor-pointer"></fa-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!--  <ng-container *ngIf="(itens$ | async) as itens; else carregandoCategorias">-->
+<!--    <div class="grid w-full grid-cols gap-4 p-4"-->
+<!--         style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">-->
+<!--      <ng-container *ngFor="let item of itens">-->
+<!--        <app-item-card [id]="item.id"-->
+<!--                       [titulo]="item.nome"-->
+<!--                       [preco]="item.preco"-->
+<!--                       [categoria]="item.categoria?.name!"-->
+<!--                       (cardClicked)="onItemClick($event)">-->
+
+<!--        </app-item-card>-->
+<!--      </ng-container>-->
+<!--    </div>-->
+<!--  </ng-container>-->
+</div>
+
+<ng-template #carregandoCategorias>
+  <div class="flex flex-col gap-2 w-full justify-center items-center bg-gray-100">
+    <fa-icon class="text-[#c6b065]" icon="arrows-rotate" size="3x" animation="spin"></fa-icon>
+    <p class="font-dmSans font-semibold text-xl text-[#b59f5a] tracking-tight">Carregando Categorias...</p>
+  </div>
+</ng-template>

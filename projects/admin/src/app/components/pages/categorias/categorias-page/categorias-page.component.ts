@@ -3,11 +3,11 @@ import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-itens-page',
-  templateUrl: './itens-page.component.html',
-  styleUrl: './itens-page.component.scss'
+  selector: 'app-categorias-page',
+  templateUrl: './categorias-page.component.html',
+  styleUrl: './categorias-page.component.scss'
 })
-export class ItensPageComponent implements OnInit {
+export class CategoriasPageComponent implements OnInit{
   actionButtons: Map<string, IconProp> = new Map();
 
   constructor(private readonly router: Router,
@@ -21,7 +21,7 @@ export class ItensPageComponent implements OnInit {
 
   buttonClicked(event: string) {
     if (event === 'adicionar') {
-      this.router.navigate(["item"], { relativeTo: this.route});
+      this.router.navigate(["categoria"], { relativeTo: this.route});
     }
 
     if (event === 'recarregar') {
