@@ -12,11 +12,11 @@ import { DefaultPageLayoutComponent } from './components/page-layout/default-pag
 import { DefaultContentPageComponent } from './components/page-layout/default-content-page/default-content-page.component';
 import { ItensPageComponent } from './components/pages/itens/itens-page/itens-page.component';
 import { CategoriasPageComponent } from './components/pages/categorias/categorias-page/categorias-page.component';
-import { MesasPageComponent } from './components/pages/mesas-page/mesas-page.component';
+import { MesasPageComponent } from './components/pages/mesas/mesas-page/mesas-page.component';
 import { ComandasPageComponent } from './components/pages/comandas-page/comandas-page.component';
 import { PedidosPageComponent } from './components/pages/pedidos-page/pedidos-page.component';
 import { AvaliacoesPageComponent } from './components/pages/avaliacoes-page/avaliacoes-page.component';
-import { ItemCardComponent } from './components/item-card/item-card.component';
+import { ItemCardComponent } from './components/cards/item-card/item-card.component';
 import { ItensListComponent } from './components/pages/itens/itens-list/itens-list.component';
 import {NgOptimizedImage, registerLocaleData} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
@@ -28,6 +28,12 @@ import {NgSelectModule} from "@ng-select/ng-select";
 import { CategoriasListComponent } from './components/pages/categorias/categorias-list/categorias-list.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { CategoriasInfoComponent } from './components/pages/categorias/categorias-info/categorias-info.component';
+import { MesasListComponent } from './components/pages/mesas/mesas-list/mesas-list.component';
+import { MesaCardComponent } from './components/cards/mesa-card/mesa-card.component';
+import { MesasInfoComponent } from './components/pages/mesas/mesas-info/mesas-info.component';
+import { MesasEditComponent } from './components/pages/mesas/mesas-edit/mesas-edit.component';
+import {QRCodeModule} from "angularx-qrcode";
+import { MesaComandaCardComponent } from './components/cards/mesa-comanda-card/mesa-comanda-card.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -50,7 +56,12 @@ registerLocaleData(localePt, 'pt-BR');
     ItensInfoComponent,
     DefaultInfoPageComponent,
     CategoriasListComponent,
-    CategoriasInfoComponent
+    CategoriasInfoComponent,
+    MesasListComponent,
+    MesaCardComponent,
+    MesasInfoComponent,
+    MesasEditComponent,
+    MesaComandaCardComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +72,8 @@ registerLocaleData(localePt, 'pt-BR');
     ReactiveFormsModule,
     NgxCurrencyDirective,
     NgSelectModule,
-    DragDropModule
+    DragDropModule,
+    QRCodeModule
   ],
   providers: [
     {

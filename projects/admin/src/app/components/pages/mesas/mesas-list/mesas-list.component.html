@@ -1,0 +1,7 @@
+<div class="flex flex-wrap gap-5 p-4">
+  <ng-container *ngIf="(mesas$ | async) as mesas">
+    <ng-container *ngFor="let mesa of mesas">
+      <app-mesa-card [mesa]="mesa" (cardClicked)="onMesaClick($event)"></app-mesa-card>
+    </ng-container>
+  </ng-container>
+</div>

@@ -1,12 +1,10 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {lastValueFrom} from "rxjs";
 import {CategoriaResponse} from "../../../../interfaces/categoria-response.interface";
-import {NgSelectComponent} from "@ng-select/ng-select";
 import {CategoriaService} from "../../../../services/categoria.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CategoriaRequest} from "../../../../interfaces/categoria-request.interface";
-import {freeFaIcons} from "../../../../free-fa-icons";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 
 @Component({
@@ -21,8 +19,6 @@ export class CategoriasInfoComponent implements OnInit, AfterViewInit {
   categoriasForm!: FormGroup;
 
   protected readonly freeFaIcons: IconProp[] = ['burger', 'check-circle'];
-
-  @ViewChild(NgSelectComponent) private selectComponent!: NgSelectComponent;
 
   constructor(private readonly categoriaService: CategoriaService,
               private readonly route: ActivatedRoute,
@@ -45,7 +41,6 @@ export class CategoriasInfoComponent implements OnInit, AfterViewInit {
         lastValueFrom(this.categoriaService.get(this.categoriaId)).then(categoria => {
           if (categoria) {
             this.setForm(categoria);
-            // this.selectComponent.writeValue( `<fa-icon icon="ear" size="sm"></fa-icon>`);
           }
         })
       }

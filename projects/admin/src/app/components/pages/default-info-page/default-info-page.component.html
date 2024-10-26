@@ -1,11 +1,13 @@
-<div class="flex flex-col w-full h-full justify-between p-4">
+<div class="flex flex-col w-full h-full justify-between p-4 overflow-y-auto">
   <div class="flex flex-col gap-5">
-    <button [routerLink]="backButtonRoute" class="flex items-center gap-3">
-      <div class="py-2 px-3 rounded-md bg-[#DBC164]">
-        <fa-icon icon="angle-left" size="lg" class="text-white"></fa-icon>
-      </div>
-      <p class="font-dmSans font-semibold text-lg tracking-tighter">{{ backButtonTitle }}</p>
-    </button>
+    <div class="flex">
+      <button [routerLink]="backButtonRoute" class="flex items-center gap-3">
+        <div class="py-2 px-3 rounded-md bg-[#DBC164]">
+          <fa-icon icon="angle-left" size="lg" class="text-white"></fa-icon>
+        </div>
+        <p class="font-dmSans font-semibold text-lg tracking-tighter">{{ backButtonTitle }}</p>
+      </button>
+    </div>
 
     <div class="flex flex-col gap-2">
       <p class="font-dmSans font-bold text-2xl tracking-tighter">{{ title }}</p>
