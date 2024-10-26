@@ -1,0 +1,10 @@
+<div class="flex gap-8 p-2 align-middle rounded-lg bg-white drop-shadow-cart-item justify-between cursor-pointer"
+     (click)="onCardClick()">
+  <div class="flex gap-2">
+    <fa-icon icon="id-badge" size="lg" class="text-[#C6B065]"></fa-icon>
+    <p class="font-dmSans font-bold tracking-tighter">{{ comanda.cliente }}</p>
+  </div>
+  <div class="flex rounded-lg comanda-status-{{ comanda.status }} items-center px-2">
+    <p class="font-dmSans font-bold tracking-tighter text-sm text-white leading-4">{{ comanda.status | titlecase }}</p>
+  </div>
+</div>

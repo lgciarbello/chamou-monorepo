@@ -1,0 +1,10 @@
+$color-comanda-status-enum: (
+  "ABERTA": #DBC164,
+  "FECHADA": #F05252,
+);
+
+@each $color, $value in $color-comanda-status-enum {
+  .comanda-status-#{$color} {
+    background-color: $value;
+  }
+}

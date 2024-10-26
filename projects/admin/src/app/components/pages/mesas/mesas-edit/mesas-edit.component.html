@@ -1,0 +1,25 @@
+<app-default-info-page [title]="title" [backButtonTitle]="backButtonTitle" [backButtonRoute]="backRoute">
+  <ng-container form-content>
+    <form class="flex gap-4 flex-wrap" [formGroup]="mesasForm">
+      <div class="flex flex-col font-dmSans w-[45%]">
+        <label for="numero" class="font-medium text-gray-700 tracking-tight">Número</label>
+        <input id="numero"
+               type="text"
+               formControlName="numero"
+               class="font-medium tracking-tight rounded-md border-gray-300 drop-shadow-title focus:border-amber-300 focus:ring-amber-300"
+               placeholder="Insira um número...">
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container buttons-content>
+    <button type="submit" (click)="onSubmit()" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-amber-500 rounded-md">
+      <fa-icon icon="save"></fa-icon>
+      Salvar
+    </button>
+    <button type="submit" [routerLink]="backRoute" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-red-500 rounded-md">
+      <fa-icon icon="xmark" size="lg"></fa-icon>
+      Cancelar
+    </button>
+  </ng-container>
+</app-default-info-page>

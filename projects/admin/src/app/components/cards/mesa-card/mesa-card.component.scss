@@ -1,0 +1,25 @@
+$color-mesa-background-enum: (
+  "LIVRE": #9BF19B,
+  "OCUPADA": #FFA6A6,
+  "RESERVADA": #93DEFF,
+  "BLOQUEADA": #CACACA,
+);
+
+$color-mesa-text-enum: (
+  "LIVRE": #2E882E,
+  "OCUPADA": #994747,
+  "RESERVADA": #2689BB,
+  "BLOQUEADA": #6C6C6C,
+);
+
+@each $color, $value in $color-mesa-background-enum {
+  .card-mesa-background-#{$color} {
+    background-color: $value;
+  }
+}
+
+@each $color, $value in $color-mesa-text-enum {
+  .card-mesa-text-#{$color} {
+    color: $value;
+  }
+}

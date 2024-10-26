@@ -1,0 +1,59 @@
+<app-default-info-page title="Mesa {{ mesa?.numero || null }}" backButtonTitle="Voltar para Mesas" backButtonRoute="../..">
+  <ng-container form-content>
+    <ng-container *ngIf="mesa">
+      <div class="flex flex-col gap-8">
+        <div class="flex">
+          <div class="py-1 px-3 rounded-xl card-mesa-status-{{ mesa.status }}">
+            <p class="font-dmSans font-bold tracking-tighter text-white">{{ mesa.status | titlecase }}</p>
+          </div>
+        </div>
+        <div class="flex grow overflow-x-auto">
+          <div class="flex flex-col gap-2 w-[70%]">
+            <p class="font-dmSans font-extrabold tracking-tighter text-xl">Comandas</p>
+            <div class="flex flex-col gap-2 pl-1 pr-6">
+              <app-mesa-comanda-card *ngFor="let comanda of mesa.comandas" [comanda]="comanda" (clicked)="onComandaClick($event)"></app-mesa-comanda-card>
+<!--              <app-mesa-comanda-card [comanda]="comanda1"></app-mesa-comanda-card>-->
+<!--              <app-mesa-comanda-card [comanda]="comanda2"></app-mesa-comanda-card>-->
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 pb-2">
+            <p class="font-dmSans font-extrabold tracking-tighter text-xl">QR Code</p>
+            <div class="flex">
+              <div class="p-4 bg-white rounded-lg drop-shadow-card justify-center text-center">
+                <qrcode *ngIf="mesa.status !== 'BLOQUEADA'; else qrcode_bloqueado" qrdata="data" [width]="384" [margin]="4"
+                        imageSrc="assets/images/logo-chamou-amigao.svg"
+                        [imageHeight]="60" [imageWidth]="60"
+                        colorDark="#aa9652"></qrcode>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #qrcode_bloqueado>
+    <qrcode qrdata="data" [width]="384" [margin]="4"
+            imageSrc="assets/images/ban-solid.svg"
+            [imageHeight]="100" [imageWidth]="100"
+            [errorCorrectionLevel]="'L'"
+            colorDark="#cacaca"></qrcode>
+  </ng-template>
+
+  <ng-container buttons-content>
+    <ng-container *ngIf="mesa">
+      <button type="submit" routerLink="edit" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-amber-500 rounded-md">
+        <fa-icon icon="pen-to-square" size="lg"></fa-icon>
+        Editar
+      </button>
+      <button type="submit" routerLink="edit" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-gray-400 rounded-md">
+        <fa-icon icon="ban" size="lg"></fa-icon>
+        Bloquear
+      </button>
+      <button type="submit" routerLink="edit" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-red-500 rounded-md">
+        <fa-icon icon="trash-can" size="lg"></fa-icon>
+        Excluir
+      </button>
+    </ng-container>
+  </ng-container>
+</app-default-info-page>
