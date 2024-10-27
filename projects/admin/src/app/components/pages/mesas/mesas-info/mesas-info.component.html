@@ -9,7 +9,7 @@
         </div>
         <div class="flex grow overflow-x-auto">
           <div class="flex flex-col gap-2 w-[70%]">
-            <p class="font-dmSans font-extrabold tracking-tighter text-xl">Comandas</p>
+            <p class="font-dmSans font-extrabold tracking-tighter text-xl">Comandas Ativas</p>
             <div class="flex flex-col gap-2 pl-1 pr-6">
               <app-mesa-comanda-card *ngFor="let comanda of mesa.comandas" [comanda]="comanda" (clicked)="onComandaClick($event)"></app-mesa-comanda-card>
             </div>

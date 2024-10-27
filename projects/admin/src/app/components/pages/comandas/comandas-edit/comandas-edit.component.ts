@@ -39,7 +39,7 @@ export class ComandasEditComponent implements OnInit, AfterViewInit {
 
       if (params['id']) {
         this.title = "Editar Comanda"
-        this.backRoute = '../..';
+        this.backButtonTitle = "Voltar para Comanda"
         this.comandaId = params['id'];
         lastValueFrom(this.comandaService.getForEdit(this.comandaId)).then(comanda => {
           if (comanda) {
@@ -58,8 +58,13 @@ export class ComandasEditComponent implements OnInit, AfterViewInit {
   }
 
   setForm(comanda: ComandaList)  {
+    const mesa: MesaList = {
+      id: comanda.mesa.id,
+      numero: comanda.mesa.name
+    } as MesaList;
+
     this.comandasForm.get('cliente')?.setValue(comanda.cliente);
-    this.comandasForm.get('mesa')?.setValue(comanda.mesa);
+    this.comandasForm.get('mesa')?.setValue(mesa);
 
     console.log(comanda);
   }
@@ -107,7 +112,7 @@ export class ComandasEditComponent implements OnInit, AfterViewInit {
     this.comandaService.update(request).subscribe({
       next: (response) => {
         console.log(response);
-        this.router.navigate(['../..'], { relativeTo: this.route });
+        this.router.navigate(['..'], { relativeTo: this.route });
         //TODO implements toast
       },
       error: (error) => {

@@ -26,13 +26,17 @@
 
   <ng-container buttons-content>
     <ng-container *ngIf="comanda">
-      <button *ngIf="comanda.status === ComandaStatus.ABERTA; else comandaFechada"
-              routerLink=".."
-              class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-red-500 rounded-md"
-              (click)="fecharComanda()">
-        <fa-icon icon="lock" size="lg"></fa-icon>
-        Fechar Comanda
-      </button>
+      <ng-container *ngIf="comanda.status === ComandaStatus.ABERTA; else comandaFechada">
+        <button routerLink="edit" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-amber-500 rounded-md">
+          <fa-icon icon="pen-to-square" size="lg"></fa-icon>
+          Editar
+        </button>
+        <button class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-red-500 rounded-md"
+                (click)="fecharComanda()">
+          <fa-icon icon="lock" size="lg"></fa-icon>
+          Fechar Comanda
+        </button>
+      </ng-container>
     </ng-container>
   </ng-container>
 </app-default-info-page>
