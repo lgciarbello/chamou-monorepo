@@ -1,0 +1,38 @@
+<app-default-info-page [title]="title" [backButtonTitle]="backButtonTitle" [backButtonRoute]="backRoute">
+  <ng-container form-content>
+    <form class="flex gap-4 flex-wrap" [formGroup]="comandasForm">
+      <div class="flex flex-col font-dmSans w-[45%]">
+        <label for="cliente" class="font-medium text-gray-700 tracking-tight">Cliente</label>
+        <input id="cliente"
+               type="text"
+               formControlName="cliente"
+               class="font-medium tracking-tight rounded-md border-gray-300 drop-shadow-title focus:border-amber-300 focus:ring-amber-300"
+               placeholder="Insira o nome do cliente...">
+      </div>
+      <div class="flex flex-col font-dmSans w-[45%]">
+        <label for="mesa" class="font-medium text-gray-700 tracking-tight">Mesa</label>
+        <ng-select class="font-medium tracking-tight rounded-md border-gray-300 drop-shadow-title focus:border-amber-300 focus:ring-amber-300"
+                   labelForId="mesa" placeholder="Selecione uma mesa..." formControlName="mesa"
+                   [items]="mesas$ | async">
+          <ng-template ng-label-tmp let-mesa="item">
+            <p>Mesa {{ mesa.numero }}</p>
+          </ng-template>
+          <ng-template ng-option-tmp let-mesa="item">
+            <p>Mesa {{ mesa.numero }}</p>
+          </ng-template>
+        </ng-select>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container buttons-content>
+    <button type="submit" (click)="onSubmit()" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-amber-500 rounded-md">
+      <fa-icon icon="save"></fa-icon>
+      Salvar
+    </button>
+    <button type="submit" [routerLink]="backRoute" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-red-500 rounded-md">
+      <fa-icon icon="xmark" size="lg"></fa-icon>
+      Cancelar
+    </button>
+  </ng-container>
+</app-default-info-page>

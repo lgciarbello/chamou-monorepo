@@ -13,7 +13,7 @@ import { DefaultContentPageComponent } from './components/page-layout/default-co
 import { ItensPageComponent } from './components/pages/itens/itens-page/itens-page.component';
 import { CategoriasPageComponent } from './components/pages/categorias/categorias-page/categorias-page.component';
 import { MesasPageComponent } from './components/pages/mesas/mesas-page/mesas-page.component';
-import { ComandasPageComponent } from './components/pages/comandas-page/comandas-page.component';
+import { ComandasPageComponent } from './components/pages/comandas/comandas-page/comandas-page.component';
 import { PedidosPageComponent } from './components/pages/pedidos-page/pedidos-page.component';
 import { AvaliacoesPageComponent } from './components/pages/avaliacoes-page/avaliacoes-page.component';
 import { ItemCardComponent } from './components/cards/item-card/item-card.component';
@@ -34,6 +34,11 @@ import { MesasInfoComponent } from './components/pages/mesas/mesas-info/mesas-in
 import { MesasEditComponent } from './components/pages/mesas/mesas-edit/mesas-edit.component';
 import {QRCodeModule} from "angularx-qrcode";
 import { MesaComandaCardComponent } from './components/cards/mesa-comanda-card/mesa-comanda-card.component';
+import { ComandasListComponent } from './components/pages/comandas/comandas-list/comandas-list.component';
+import { ComandasInfoComponent } from './components/pages/comandas/comandas-info/comandas-info.component';
+import { ComandasEditComponent } from './components/pages/comandas/comandas-edit/comandas-edit.component';
+import { ComandaPedidoCardComponent } from './components/cards/comanda-pedido-card/comanda-pedido-card.component';
+import { ComandasHistoryComponent } from './components/pages/comandas/comandas-history/comandas-history.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -61,7 +66,12 @@ registerLocaleData(localePt, 'pt-BR');
     MesaCardComponent,
     MesasInfoComponent,
     MesasEditComponent,
-    MesaComandaCardComponent
+    MesaComandaCardComponent,
+    ComandasListComponent,
+    ComandasInfoComponent,
+    ComandasEditComponent,
+    ComandaPedidoCardComponent,
+    ComandasHistoryComponent
   ],
   imports: [
     BrowserModule,

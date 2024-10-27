@@ -1,0 +1,12 @@
+$pedido-enum: (
+  "AGUARDANDO": #DF7533,
+  "PREPARANDO": #DFB933,
+  "PRONTO": #3FBB26,
+  "ENTREGUE": #2689BB
+);
+
+@each $color, $value in $pedido-enum {
+  .pedido-#{$color} {
+    background-color: $value;
+  }
+}

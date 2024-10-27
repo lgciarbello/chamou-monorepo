@@ -10,11 +10,13 @@
     </div>
 
     <div class="flex flex-col gap-2">
-      <p class="font-dmSans font-bold text-2xl tracking-tighter">{{ title }}</p>
+      <div class="flex flex-col">
+        <p class="font-dmSans font-bold text-2xl tracking-tighter">{{ title }}</p>
+        <p *ngIf="subtitle" class="font-dmSans font-semibold text-lg text-gray-500 tracking-tighter leading-3 pb-2">{{ subtitle }}</p>
+      </div>
         <ng-content select="[form-content]"></ng-content>
     </div>
   </div>
-
   <div class="flex justify-end gap-3">
       <ng-content select="[buttons-content]"></ng-content>
   </div>

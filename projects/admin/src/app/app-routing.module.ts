@@ -5,7 +5,7 @@ import {DefaultPageLayoutComponent} from "./components/page-layout/default-page-
 import {ItensPageComponent} from "./components/pages/itens/itens-page/itens-page.component";
 import {CategoriasPageComponent} from "./components/pages/categorias/categorias-page/categorias-page.component";
 import {MesasPageComponent} from "./components/pages/mesas/mesas-page/mesas-page.component";
-import {ComandasPageComponent} from "./components/pages/comandas-page/comandas-page.component";
+import {ComandasPageComponent} from "./components/pages/comandas/comandas-page/comandas-page.component";
 import {PedidosPageComponent} from "./components/pages/pedidos-page/pedidos-page.component";
 import {AvaliacoesPageComponent} from "./components/pages/avaliacoes-page/avaliacoes-page.component";
 import {ItensListComponent} from "./components/pages/itens/itens-list/itens-list.component";
@@ -17,6 +17,10 @@ import {CategoriasInfoComponent} from "./components/pages/categorias/categorias-
 import {MesasListComponent} from "./components/pages/mesas/mesas-list/mesas-list.component";
 import {MesasInfoComponent} from "./components/pages/mesas/mesas-info/mesas-info.component";
 import {MesasEditComponent} from "./components/pages/mesas/mesas-edit/mesas-edit.component";
+import {ComandasInfoComponent} from "./components/pages/comandas/comandas-info/comandas-info.component";
+import {ComandasListComponent} from "./components/pages/comandas/comandas-list/comandas-list.component";
+import {ComandasEditComponent} from "./components/pages/comandas/comandas-edit/comandas-edit.component";
+import {ComandasHistoryComponent} from "./components/pages/comandas/comandas-history/comandas-history.component";
 const routes: Routes = [
   {
     path: '',
@@ -85,6 +89,32 @@ const routes: Routes = [
       {
         path: 'comandas',
         component: ComandasPageComponent,
+        children: [
+          {
+            path: '',
+            component: ComandasListComponent
+          },
+          {
+            path: 'comanda',
+            component: ComandasEditComponent
+          },
+          {
+            path: 'comanda/:id',
+            component: ComandasInfoComponent
+          },
+          {
+            path: 'comanda/:id/edit',
+            component: ComandasEditComponent
+          },
+          {
+            path: 'historico',
+            component: ComandasHistoryComponent
+          },
+          {
+            path: 'historico/:id',
+            component: ComandasInfoComponent
+          }
+        ]
       },
       {
         path: 'pedidos',

@@ -1,0 +1,56 @@
+<div class="flex h-full">
+  <div class="p-4 w-full overflow-y-auto">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full font-dmSans text-left table-fixed text-sm">
+        <thead class="text-sm text-white uppercase tracking-tight bg-[#DBC164] dark:text-white">
+        <tr>
+          <th scope="col" class="px-4 py-3 w-28 text-center">
+            Comanda
+          </th>
+          <th scope="col" class="px-6 py-3 font-black">
+            Cliente
+          </th>
+          <th scope="col" class="px-6 py-3 font-black">
+            Mesa
+          </th>
+          <th scope="col" class="px-3 py-3 font-black w-28 text-center">
+            Status
+          </th>
+          <th scope="col" class="px-6 py-3 text-right">
+            Opções
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let comanda of comandas; let i = index;"
+            class="border-b text-[#543d08]"
+            [class]="i % 2 === 0 ? 'bg-[#f0e5bd] border-[#f0e5bd]' : 'bg-[#e0d2a1] border-[#e0d2a1]'">
+          <td class="px-5 py-4 text-center">
+            <fa-icon icon="id-badge" size="lg"></fa-icon>
+          </td>
+          <th scope="row" class="px-6 py-4 font-semibold tracking-tight whitespace-nowrap">
+            {{ comanda.cliente }}
+          </th>
+          <th scope="row" class="px-6 py-4 font-semibold tracking-tight whitespace-nowrap">
+            Mesa {{ comanda.mesa.name }}
+          </th>
+          <td class="px-5 py-3 font-semibold tracking-tight whitespace-nowrap">
+            <div class="flex rounded-lg comanda-status-{{ comanda.status }} justify-center px-2">
+              <p class="font-dmSans font-bold tracking-tighter text-sm text-white">{{ comanda.status | titlecase }}</p>
+            </div>
+          </td>
+          <td class="flex justify-end px-6 py-4 gap-2 text-right items-center">
+            <fa-icon icon="eye" size="xl" class="cursor-pointer" routerLink="comanda/{{ comanda.id }}"></fa-icon>
+            <fa-icon *ngIf="comanda.status === ComandaStatus.ABERTA; else statusFechada" icon="lock-open" size="xl" class="cursor-pointer"></fa-icon>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #statusFechada>
+  <fa-icon icon="lock" size="xl" class="cursor-pointer text-red-500"></fa-icon>
+  <fa-icon icon="circle-dollar-to-slot" size="xl" class=" cursor-pointer"></fa-icon>
+</ng-template>

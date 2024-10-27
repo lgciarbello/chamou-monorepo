@@ -1,0 +1,21 @@
+<div class="flex flex-col grow justify-between bg-white drop-shadow-cart-item rounded-[0.3rem] px-4 py-3 gap-1">
+  <div class="flex grow justify-between items-center">
+    <div class="flex gap-2 items-center">
+      <p class="leading-4 font-bioRhyme font-bold text-md text-black tracking-tighter">{{ titulo }}</p>
+      <div class="flex items-center rounded-[7px] py-[3px] px-2 card-pedido-{{ pedido.status }} ">
+        <p class="leading-4 font-bioRhyme font-semibold text-sm text-white -tracking-[1px]">{{ pedido.status | titlecase }}</p>
+      </div>
+    </div>
+    <p class="leading-4 font-bioRhyme font-bold text-md text-[#454545] tracking-tighter">{{ pedido.precoTotal | currency:undefined:undefined:undefined:'pt-BR' }}</p>
+  </div>
+  <div class="flex flex-col grow">
+    <ng-container *ngFor="let item of pedido.itens">
+      <div class="flex grow justify-between items-baseline">
+        <p class="pl-1 font-cutive text-[12px] text-[#454545]"> - {{ item.quantidade }}x {{ item.nome }}</p>
+        <p class="leading-4 font-bioRhyme font-normal text-sm text-[#454545] tracking-tighter">
+          {{ (item.preco * item.quantidade) | currency:undefined:undefined:undefined:'pt-BR' }}
+        </p>
+      </div>
+    </ng-container>
+  </div>
+</div>

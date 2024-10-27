@@ -1,7 +1,6 @@
-import {ComandaStatus} from "../constants/comanda-status.enum";
+import {ComandaList} from "./comanda-list.interface";
+import {PedidoComandaResponse} from "./pedido-comanda-response.interface";
 
-export interface ComandaResponse {
-  id: string;
-  cliente: string;
-  status: ComandaStatus;
+export interface ComandaResponse extends ComandaList {
+  pedidos: PedidoComandaResponse[];
 }

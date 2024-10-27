@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ComandaResponse} from "../../../interfaces/comanda-response.interface";
+import {ComandaList} from "../../../interfaces/comanda-list.interface";
 
 @Component({
   selector: 'app-mesa-comanda-card',
@@ -7,7 +7,7 @@ import {ComandaResponse} from "../../../interfaces/comanda-response.interface";
   styleUrl: './mesa-comanda-card.component.scss'
 })
 export class MesaComandaCardComponent {
-  @Input({ required: true }) comanda!: ComandaResponse;
+  @Input({ required: true }) comanda!: ComandaList;
 
   @Output('clicked') public click = new EventEmitter<string>();
 

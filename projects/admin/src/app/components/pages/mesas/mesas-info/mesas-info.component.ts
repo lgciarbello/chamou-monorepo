@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MesaService} from "../../../../services/mesa.service";
 import {lastValueFrom} from "rxjs";
 import {MesaResponse} from "../../../../interfaces/mesa-response.interface";
-import {ComandaResponse} from "../../../../interfaces/comanda-response.interface";
-import {ComandaStatus} from "../../../../constants/comanda-status.enum";
 
 @Component({
   selector: 'app-mesas-info',
@@ -14,16 +12,9 @@ import {ComandaStatus} from "../../../../constants/comanda-status.enum";
 export class MesasInfoComponent implements OnInit {
 
   mesa!: MesaResponse | null;
-  comanda1 = {
-    cliente: 'João',
-    status: ComandaStatus.ABERTA
-  } as ComandaResponse;
-  comanda2 = {
-    cliente: 'Ricardo',
-    status: ComandaStatus.FECHADA
-  } as ComandaResponse;
 
   constructor(private readonly route: ActivatedRoute,
+              private readonly router: Router,
               private readonly mesaService: MesaService) {
   }
 
@@ -39,7 +30,10 @@ export class MesasInfoComponent implements OnInit {
     })
   }
 
-  onComandaClick(comndaId: string) {
+  onComandaClick(comandaId: string) {
+    if (comandaId) {
+      this.router.navigate(['/comandas/comanda', comandaId]);
+    }
 
   }
 }
