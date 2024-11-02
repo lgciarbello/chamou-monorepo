@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComandaPedidoCardComponent } from './comanda-pedido-card.component';
+import { PedidoCardComponent } from './pedido-card.component';
 
 describe('ComandaPedidoCardComponent', () => {
-  let component: ComandaPedidoCardComponent;
-  let fixture: ComponentFixture<ComandaPedidoCardComponent>;
+  let component: PedidoCardComponent;
+  let fixture: ComponentFixture<PedidoCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ComandaPedidoCardComponent]
+      declarations: [PedidoCardComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(ComandaPedidoCardComponent);
+
+    fixture = TestBed.createComponent(PedidoCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

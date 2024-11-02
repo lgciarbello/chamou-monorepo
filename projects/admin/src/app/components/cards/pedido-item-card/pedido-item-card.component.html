@@ -1,0 +1,13 @@
+<div class="flex gap-8 p-2 align-middle rounded-lg bg-white drop-shadow-cart-item justify-between">
+  <div class="flex gap-3">
+    <fa-icon icon="utensils" size="lg" class="text-[#C6B065]"></fa-icon>
+    <div class="flex gap-1">
+      <p class="font-dmSans font-bold tracking-tighter text-[#BC3434]">{{ item.quantidade }}x</p>
+      <p class="font-dmSans font-bold tracking-tighter">{{ item.nome }}</p>
+    </div>
+    <div class="flex rounded-lg bg-[#DFB933] items-center px-2">
+      <p class="font-dmSans font-bold tracking-tighter text-sm text-white leading-4">{{ item.categoria.nome }}</p>
+    </div>
+  </div>
+ <p class="font-dmSans font-bold text-gray-500 tracking-tighter">{{ item.preco | currency:undefined:undefined:undefined:'pt-BR'}}</p>
+</div>

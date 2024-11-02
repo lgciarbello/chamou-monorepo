@@ -1,0 +1,11 @@
+<app-default-info-page title="Histórico" backButtonTitle="Voltar para Comandas" backButtonRoute="..">
+  <ng-container form-content>
+    <div class="flex flex-wrap gap-4 p-4">
+      <ng-container *ngIf="pedidos">
+        <app-pedido-card *ngFor="let pedido of pedidos"
+                         routerLink="pedido/{{ pedido.id }}"
+                         [pedido]="pedido" [index]="1" [mostrarPreco]="false"></app-pedido-card>
+      </ng-container>
+    </div>
+  </ng-container>
+</app-default-info-page>

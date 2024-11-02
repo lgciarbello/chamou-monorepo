@@ -14,7 +14,7 @@ import { ItensPageComponent } from './components/pages/itens/itens-page/itens-pa
 import { CategoriasPageComponent } from './components/pages/categorias/categorias-page/categorias-page.component';
 import { MesasPageComponent } from './components/pages/mesas/mesas-page/mesas-page.component';
 import { ComandasPageComponent } from './components/pages/comandas/comandas-page/comandas-page.component';
-import { PedidosPageComponent } from './components/pages/pedidos-page/pedidos-page.component';
+import { PedidosPageComponent } from './components/pages/pedidos/pedidos-page/pedidos-page.component';
 import { AvaliacoesPageComponent } from './components/pages/avaliacoes-page/avaliacoes-page.component';
 import { ItemCardComponent } from './components/cards/item-card/item-card.component';
 import { ItensListComponent } from './components/pages/itens/itens-list/itens-list.component';
@@ -37,8 +37,14 @@ import { MesaComandaCardComponent } from './components/cards/mesa-comanda-card/m
 import { ComandasListComponent } from './components/pages/comandas/comandas-list/comandas-list.component';
 import { ComandasInfoComponent } from './components/pages/comandas/comandas-info/comandas-info.component';
 import { ComandasEditComponent } from './components/pages/comandas/comandas-edit/comandas-edit.component';
-import { ComandaPedidoCardComponent } from './components/cards/comanda-pedido-card/comanda-pedido-card.component';
+import { PedidoCardComponent } from './components/cards/pedido-card/pedido-card.component';
 import { ComandasHistoryComponent } from './components/pages/comandas/comandas-history/comandas-history.component';
+import { PedidosListComponent } from './components/pages/pedidos/pedidos-list/pedidos-list.component';
+import { PedidosEditComponent } from './components/pages/pedidos/pedidos-edit/pedidos-edit.component';
+import { PedidosInfoComponent } from './components/pages/pedidos/pedidos-info/pedidos-info.component';
+import { PedidosHistoryComponent } from './components/pages/pedidos/pedidos-history/pedidos-history.component';
+import { ItemCreateCardComponent } from './components/cards/item-create-card/item-create-card.component';
+import { PedidoItemCardComponent } from './components/cards/pedido-item-card/pedido-item-card.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -70,8 +76,14 @@ registerLocaleData(localePt, 'pt-BR');
     ComandasListComponent,
     ComandasInfoComponent,
     ComandasEditComponent,
-    ComandaPedidoCardComponent,
-    ComandasHistoryComponent
+    PedidoCardComponent,
+    ComandasHistoryComponent,
+    PedidosListComponent,
+    PedidosEditComponent,
+    PedidosInfoComponent,
+    PedidosHistoryComponent,
+    ItemCreateCardComponent,
+    PedidoItemCardComponent
   ],
   imports: [
     BrowserModule,

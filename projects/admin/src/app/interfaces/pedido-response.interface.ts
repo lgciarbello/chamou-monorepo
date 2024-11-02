@@ -1,11 +1,13 @@
 import {PedidoStatus} from "../../../../chamou/src/app/constants/pedido.status.enum";
-import {ItemComanda} from "../../../../chamou/src/app/interfaces/item/item-comanda.interface";
 import {IdNameMap} from "../../../../chamou/src/app/interfaces/generic/id-name-map.interface";
+import {ComandaList} from "./comanda-list.interface";
+import {ItemComanda} from "./item-comanda.interface";
 
-export interface PedidoComandaResponse {
+export interface PedidoResponse {
   id: string;
+  comanda: ComandaList;
+  mesa: IdNameMap;
   itens: ItemComanda[];
   status: PedidoStatus;
-  mesa: IdNameMap;
   precoTotal: number;
 }

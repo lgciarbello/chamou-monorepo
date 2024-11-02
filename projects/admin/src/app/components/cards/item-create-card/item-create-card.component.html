@@ -1,0 +1,48 @@
+<ng-container [formGroup]="form">
+  <ng-container [formArrayName]="arrayName">
+    <ng-container [formGroupName]="index">
+      <div class="flex bg-white/95 font-dmSans justify-between rounded-md px-4 py-2 drop-shadow-card">
+        <div class="flex gap-4 items-center grow">
+          <fa-icon icon="utensils" size="xl" class="text-[#97741e]"></fa-icon>
+          <div class="flex flex-col w-[25%]">
+            <label for="categoria" class="font-medium text-gray-700 tracking-tight">Categoria</label>
+            <ng-select class="font-medium tracking-tight rounded-md border-gray-300 drop-shadow-title focus:border-amber-300 focus:ring-amber-300"
+                       labelForId="categoria" placeholder="Selecione uma categoria..." formControlName="categoria"
+                       [items]="categoria$ | async">
+              <ng-template ng-label-tmp let-categoria="item">
+                <fa-icon [icon]="categoria.icone"></fa-icon> &nbsp; {{ categoria?.nome }}
+              </ng-template>
+              <ng-template ng-option-tmp let-categoria="item">
+                <fa-icon [icon]="categoria.icone"></fa-icon> &nbsp; {{ categoria?.nome }}
+              </ng-template>
+            </ng-select>
+          </div>
+          <div class="flex flex-col w-[25%]">
+            <label for="item" class="font-medium text-gray-700 tracking-tight">Item</label>
+            <ng-select class="font-medium tracking-tight rounded-md border-gray-300 drop-shadow-title focus:border-amber-300 focus:ring-amber-300"
+                       labelForId="item" placeholder="Selecione um item..." formControlName="itemModelo"
+                       [items]="itens" notFoundText="Sem itens encontrados">
+              <ng-template ng-label-tmp let-item="item">
+                <p>{{ item?.nome }}</p>
+              </ng-template>
+              <ng-template ng-option-tmp let-item="item">
+                <p>{{ item?.nome }}</p>
+              </ng-template>
+            </ng-select>
+          </div>
+          <div class="flex flex-col w-[15%]">
+            <label for="item" class="font-medium text-gray-700 tracking-tight">Quantidade</label>
+            <input class="font-medium tracking-tight rounded-md border-gray-300 drop-shadow-title focus:border-amber-300 focus:ring-amber-300"
+                   type="number" min="0" max="20" formControlName="quantidade"/>
+          </div>
+        </div>
+        <div class="flex">
+          <button class="text-red-500" (click)="onDelete()">
+            <fa-icon icon="trash-can" size="xl"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>
+

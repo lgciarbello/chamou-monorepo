@@ -48,4 +48,12 @@ export class ItemModeloService {
       }
     });
   }
+
+  listByCategoria(categoriaId: string): Observable<ItemModeloResponse[]> {
+    return this._http.get<ItemModeloResponse[]>(`${this.baseUrl}/list/categoria/${categoriaId}`, {
+      headers: {
+        'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token")
+      }
+    })
+  }
 }

@@ -15,8 +15,8 @@
               <p class="font-dmSans font-semibold text-base text-gray-500 tracking-tighter leading-3">Mesa {{ comanda.mesa.name }}</p>
             </div>
             <div class="flex flex-wrap gap-2 px-1 pb-1">
-              <app-comanda-pedido-card *ngFor="let pedido of comanda.pedidos; let i=index;"
-                                       [pedido]="pedido" [index]="i"></app-comanda-pedido-card>
+              <app-pedido-card *ngFor="let pedido of comanda.pedidos; let i=index;"
+                                       [pedido]="pedido" [index]="i"></app-pedido-card>
             </div>
           </div>
         </div>

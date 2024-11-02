@@ -1,0 +1,60 @@
+<app-default-info-page [title]="title" [backButtonTitle]="backButtonTitle" [backButtonRoute]="backRoute">
+  <ng-container form-content>
+    <form class="flex flex-col gap-10" [formGroup]="pedidosForm">
+      <div class="flex flex-col font-dmSans w-[45%]">
+        <label for="comanda" class="font-medium text-gray-700 tracking-tight">Comandas</label>
+        <ng-select class="font-medium tracking-tight rounded-md border-gray-300 drop-shadow-title focus:border-amber-300 focus:ring-amber-300"
+                   labelForId="comanda" placeholder="Selecione uma comanda..." formControlName="comanda"
+                   [items]="comandas$ | async">
+          <ng-template ng-label-tmp let-comanda="item">
+            <p>{{ comanda.cliente }} - Mesa {{ comanda.mesa?.name }}</p>
+          </ng-template>
+          <ng-template ng-option-tmp let-comanda="item">
+            <p>{{ comanda.cliente }} - Mesa {{ comanda.mesa?.name }}</p>
+          </ng-template>
+        </ng-select>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="flex items-end justify-between pr-1">
+          <p class="font-dmSans font-bold text-xl tracking-tighter text-gray-700">Itens</p>
+          <button class="flex gap-2 items-center text-[#DBC164] rounded-lg" (click)="addFormItem()">
+            <fa-icon icon="plus" size="lg"></fa-icon>
+            <p class="font-dmSans font-semibold text-lg tracking-tighter">Adicionar Item</p>
+          </button>
+        </div>
+        <div class="flex flex-col grow gap-2 bg-gray-200 rounded-md min-h-72 shadow-inner">
+          <ng-container formArrayName="itens">
+            <ng-container *ngIf="itensForm.getRawValue().length !== 0; else semItens">
+              <div class="flex grow flex-col gap-2 p-2">
+                <ng-container *ngFor="let itensForm of itensForm.controls; let i = index;">
+                  <app-item-create-card [style]="{'z-index': 1000 - i }" [form]="pedidosForm"
+                                        arrayName="itens" [index]="i.toString()" [formGroupName]="i"
+                                        (delete-clicked)="deleteItem(i)">
+                  </app-item-create-card>
+                </ng-container>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-template #semItens>
+    <div class="flex flex-col gap-1 grow items-center justify-center text-gray-600 rounded-md m-2 border-2 border-dashed border-gray-400">
+      <fa-icon icon="xmark-circle" size="2x"></fa-icon>
+      <p class="font-dmSans font-medium text-lg tracking-tight">Não há itens adicionados.</p>
+    </div>
+  </ng-template>
+
+  <ng-container buttons-content>
+    <button type="submit" (click)="onSubmit()" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-amber-500 rounded-md">
+      <fa-icon icon="save"></fa-icon>
+      Salvar
+    </button>
+    <button type="submit" [routerLink]="backRoute" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-red-500 rounded-md">
+      <fa-icon icon="xmark" size="lg"></fa-icon>
+      Cancelar
+    </button>
+  </ng-container>
+</app-default-info-page>

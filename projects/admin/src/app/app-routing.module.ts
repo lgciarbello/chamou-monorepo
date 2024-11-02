@@ -6,7 +6,7 @@ import {ItensPageComponent} from "./components/pages/itens/itens-page/itens-page
 import {CategoriasPageComponent} from "./components/pages/categorias/categorias-page/categorias-page.component";
 import {MesasPageComponent} from "./components/pages/mesas/mesas-page/mesas-page.component";
 import {ComandasPageComponent} from "./components/pages/comandas/comandas-page/comandas-page.component";
-import {PedidosPageComponent} from "./components/pages/pedidos-page/pedidos-page.component";
+import {PedidosPageComponent} from "./components/pages/pedidos/pedidos-page/pedidos-page.component";
 import {AvaliacoesPageComponent} from "./components/pages/avaliacoes-page/avaliacoes-page.component";
 import {ItensListComponent} from "./components/pages/itens/itens-list/itens-list.component";
 import {AuthGuard} from "./guards/auth.guard";
@@ -21,6 +21,10 @@ import {ComandasInfoComponent} from "./components/pages/comandas/comandas-info/c
 import {ComandasListComponent} from "./components/pages/comandas/comandas-list/comandas-list.component";
 import {ComandasEditComponent} from "./components/pages/comandas/comandas-edit/comandas-edit.component";
 import {ComandasHistoryComponent} from "./components/pages/comandas/comandas-history/comandas-history.component";
+import {PedidosListComponent} from "./components/pages/pedidos/pedidos-list/pedidos-list.component";
+import {PedidosEditComponent} from "./components/pages/pedidos/pedidos-edit/pedidos-edit.component";
+import {PedidosInfoComponent} from "./components/pages/pedidos/pedidos-info/pedidos-info.component";
+import {PedidosHistoryComponent} from "./components/pages/pedidos/pedidos-history/pedidos-history.component";
 const routes: Routes = [
   {
     path: '',
@@ -119,6 +123,32 @@ const routes: Routes = [
       {
         path: 'pedidos',
         component: PedidosPageComponent,
+        children: [
+          {
+            path: '',
+            component: PedidosListComponent
+          },
+          {
+            path: 'pedido',
+            component: PedidosEditComponent
+          },
+          {
+            path: 'pedido/:id',
+            component: PedidosInfoComponent
+          },
+          {
+            path: 'pedido/:id/edit',
+            component: PedidosEditComponent
+          },
+          {
+            path: 'historico',
+            component: PedidosHistoryComponent
+          },
+          {
+            path: 'historico/:id',
+            component: PedidosInfoComponent
+          }
+        ]
       },
       {
         path: 'avaliacoes',
