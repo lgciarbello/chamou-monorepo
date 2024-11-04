@@ -15,7 +15,7 @@ import { CategoriasPageComponent } from './components/pages/categorias/categoria
 import { MesasPageComponent } from './components/pages/mesas/mesas-page/mesas-page.component';
 import { ComandasPageComponent } from './components/pages/comandas/comandas-page/comandas-page.component';
 import { PedidosPageComponent } from './components/pages/pedidos/pedidos-page/pedidos-page.component';
-import { AvaliacoesPageComponent } from './components/pages/avaliacoes-page/avaliacoes-page.component';
+import { AvaliacoesPageComponent } from './components/pages/avaliacoes/avaliacoes-page/avaliacoes-page.component';
 import { ItemCardComponent } from './components/cards/item-card/item-card.component';
 import { ItensListComponent } from './components/pages/itens/itens-list/itens-list.component';
 import {NgOptimizedImage, registerLocaleData} from "@angular/common";
@@ -45,6 +45,9 @@ import { PedidosInfoComponent } from './components/pages/pedidos/pedidos-info/pe
 import { PedidosHistoryComponent } from './components/pages/pedidos/pedidos-history/pedidos-history.component';
 import { ItemCreateCardComponent } from './components/cards/item-create-card/item-create-card.component';
 import { PedidoItemCardComponent } from './components/cards/pedido-item-card/pedido-item-card.component';
+import { AvaliacoesDashboardComponent } from './components/pages/avaliacoes/avaliacoes-dashboard/avaliacoes-dashboard.component';
+import {StarRatingModule} from "angular-star-rating";
+import { AvaliacoesInfoComponent } from './components/pages/avaliacoes/avaliacoes-info/avaliacoes-info.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -83,7 +86,9 @@ registerLocaleData(localePt, 'pt-BR');
     PedidosInfoComponent,
     PedidosHistoryComponent,
     ItemCreateCardComponent,
-    PedidoItemCardComponent
+    PedidoItemCardComponent,
+    AvaliacoesDashboardComponent,
+    AvaliacoesInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +100,8 @@ registerLocaleData(localePt, 'pt-BR');
     NgxCurrencyDirective,
     NgSelectModule,
     DragDropModule,
-    QRCodeModule
+    QRCodeModule,
+    StarRatingModule.forRoot()
   ],
   providers: [
     {

@@ -7,7 +7,7 @@ import {CategoriasPageComponent} from "./components/pages/categorias/categorias-
 import {MesasPageComponent} from "./components/pages/mesas/mesas-page/mesas-page.component";
 import {ComandasPageComponent} from "./components/pages/comandas/comandas-page/comandas-page.component";
 import {PedidosPageComponent} from "./components/pages/pedidos/pedidos-page/pedidos-page.component";
-import {AvaliacoesPageComponent} from "./components/pages/avaliacoes-page/avaliacoes-page.component";
+import {AvaliacoesPageComponent} from "./components/pages/avaliacoes/avaliacoes-page/avaliacoes-page.component";
 import {ItensListComponent} from "./components/pages/itens/itens-list/itens-list.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {LoginGuard} from "./guards/login.guard";
@@ -25,6 +25,9 @@ import {PedidosListComponent} from "./components/pages/pedidos/pedidos-list/pedi
 import {PedidosEditComponent} from "./components/pages/pedidos/pedidos-edit/pedidos-edit.component";
 import {PedidosInfoComponent} from "./components/pages/pedidos/pedidos-info/pedidos-info.component";
 import {PedidosHistoryComponent} from "./components/pages/pedidos/pedidos-history/pedidos-history.component";
+import {
+  AvaliacoesDashboardComponent
+} from "./components/pages/avaliacoes/avaliacoes-dashboard/avaliacoes-dashboard.component";
 const routes: Routes = [
   {
     path: '',
@@ -153,6 +156,12 @@ const routes: Routes = [
       {
         path: 'avaliacoes',
         component: AvaliacoesPageComponent,
+        children: [
+          {
+            path: '',
+            component: AvaliacoesDashboardComponent
+          }
+        ]
       }
     ]
   },

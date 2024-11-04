@@ -1,0 +1,75 @@
+<div class="p-4 h-full">
+  <div class="grid h-full grid-cols-10 grid-rows-6 gap-6">
+    <div class="flex justify-center items-center col-span-3 row-span-2 drop-shadow-card bg-white rounded-lg p-3">
+      <div class="flex flex-col gap-2 items-center">
+        <ng-container *ngIf="avaliacaoTotal">
+          <star-rating starType="svg" [rating]="avaliacaoTotal.mediaTotal" [readOnly]="true"
+                       size="large" staticColor="ok" [showHalfStars]="true"></star-rating>
+          <div class="flex gap-2 items-center">
+            <p class="font-dmSans font-extrabold text-3xl">{{ avaliacaoTotal.mediaTotal }}/5</p>
+            <p class="font-dmSans font-medium tracking-tight">de {{ avaliacaoTotal.totalAvaliacoes }} avaliações</p>
+            <fa-icon class="text-[#97741E]" icon="info-circle" size="lg"></fa-icon>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-span-7 row-span-6 drop-shadow-card bg-white rounded-lg p-3">
+      <div class="flex flex-col gap-5 font-dmSans">
+        <div class="flex justify-between">
+          <p class="font-bold text-[#97741E] text-lg tracking-tighter">Últimas avaliações</p>
+        </div>
+        <div class="flex flex-col gap-2 px-0.5">
+          <ng-container *ngIf="avaliacoes">
+            <div *ngFor="let avaliacao of avaliacoes"
+                 class="flex justify-between items-center rounded-md bg-white drop-shadow-cart-item px-2 py-1">
+              <div class="flex gap-2.5">
+                <p class="font-medium tracking-tight">{{ avaliacao.cliente ? avaliacao.cliente : 'Anônimo' }}</p>
+                <div class="flex gap-2">
+                  <star-rating starType="svg" [rating]="avaliacao.mediaPontuacao" [readOnly]="true"
+                               size="medium" staticColor="ok" [showHalfStars]="true"></star-rating>
+                  <p class="font-bold">{{ avaliacao.mediaPontuacao }}/5</p>
+                </div>
+              </div>
+              <div class="flex gap-2.5">
+                <button class="flex gap-1 items-center text-[#97741E]" routerLink="avaliacao/{{ avaliacao.id }}">
+                  <p class="font-semibold tracking-tighter">Ver mais</p>
+                  <fa-icon icon="angle-right"></fa-icon>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-3 row-span-4 drop-shadow-card bg-white rounded-lg p-3 overflow-y-auto">
+      <div class="flex flex-col gap-4 font-dmSans">
+        <div class="flex items-center gap-2">
+          <p class="font-bold text-[#97741E] text-lg tracking-tighter">Pontuação por perguntas</p>
+          <fa-icon class="text-[#97741E]" icon="info-circle"></fa-icon>
+        </div>
+        <div class="flex flex-col gap-2 px-0.5">
+          <ng-container *ngIf="perguntaPontuacoes">
+            <div *ngFor="let perguntaPontuacao of perguntaPontuacoes" class="flex gap-2.5 justify-between items-center">
+              <p class="font-medium tracking-tight leading-5">{{ perguntaPontuacao.pergunta }}</p>
+              <div class="flex gap-2">
+                <star-rating starType="svg" [rating]="perguntaPontuacao.pontuacao" [readOnly]="true"
+                             size="medium" staticColor="ok" [showHalfStars]="true"></star-rating>
+                <p class="font-bold">{{ perguntaPontuacao.pontuacao }}/5</p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+<!--    <div class="col-span-7 row-span-2 drop-shadow-card bg-white rounded-lg p-3">-->
+<!--      <div class="flex justify-between font-dmSans text-[#97741E]">-->
+<!--        <p class="font-bold text-lg tracking-tighter">Perguntas</p>-->
+<!--        <button class="flex gap-2 items-center">-->
+<!--          <fa-icon icon="pen-to-square"></fa-icon>-->
+<!--          <p class="font-semibold text-lg tracking-tighter">Editar Perguntas</p>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+</div>
+
