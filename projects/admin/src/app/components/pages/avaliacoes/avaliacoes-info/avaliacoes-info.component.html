@@ -1,1 +1,39 @@
-<p>avaliacoes-info works!</p>
+<app-default-info-page title="Avaliação" backButtonTitle="Voltar para Avaliações" backButtonRoute="../..">
+  <ng-container form-content>
+    <ng-container *ngIf="avaliacao">
+      <div class="flex flex-col gap-6">
+        <div class="flex">
+          <div class="flex flex-col">
+            <p class="font-dmSans font-extrabold tracking-tighter text-xl">Cliente</p>
+            <p class="font-dmSans font-semibold text-base text-gray-500 tracking-tighter leading-3">
+              {{ avaliacao.comanda ? avaliacao.comanda.name : 'Anônimo' }}
+            </p>
+          </div>
+        </div>
+        <div class="flex grow overflow-x-auto">
+          <div class="flex grow flex-col gap-4">
+            <div class="flex items-center justify-between font-dmSans">
+              <p class="font-extrabold tracking-tighter text-xl">Perguntas</p>
+              <div *ngIf="mediaPontuacao" class="flex gap-2 items-center">
+                <star-rating starType="svg" [rating]="mediaPontuacao" [readOnly]="true"
+                             size="large" staticColor="ok" [showHalfStars]="true"></star-rating>
+                <p class="font-bold text-xl">{{ mediaPontuacao }}/5</p>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 px-0.5 pb-1 font-dmSans">
+              <div *ngFor="let perguntas of avaliacao.perguntasRespostas"
+                   class="flex justify-between items-center rounded-md bg-white drop-shadow-cart-item px-2 py-1">
+                <p class="font-medium tracking-tight">{{ perguntas.pergunta.name }}</p>
+                <div class="flex gap-2">
+                  <star-rating starType="svg" [rating]="perguntas.resposta.valor" [readOnly]="true"
+                               size="medium" staticColor="ok" [showHalfStars]="true"></star-rating>
+                  <p class="font-bold">{{ perguntas.resposta.valor }}/5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</app-default-info-page>

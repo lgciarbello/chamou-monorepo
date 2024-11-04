@@ -28,6 +28,7 @@ import {PedidosHistoryComponent} from "./components/pages/pedidos/pedidos-histor
 import {
   AvaliacoesDashboardComponent
 } from "./components/pages/avaliacoes/avaliacoes-dashboard/avaliacoes-dashboard.component";
+import {AvaliacoesInfoComponent} from "./components/pages/avaliacoes/avaliacoes-info/avaliacoes-info.component";
 const routes: Routes = [
   {
     path: '',
@@ -160,6 +161,10 @@ const routes: Routes = [
           {
             path: '',
             component: AvaliacoesDashboardComponent
+          },
+          {
+            path: 'avaliacao/:id',
+            component: AvaliacoesInfoComponent
           }
         ]
       }
