@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class NavbarComponent {
   @Input({ required: true }) public titulo: string = '';
-  @Input({ required: true }) public numeroMesa: number = 0;
+  @Input({ required: true }) public numeroMesa!: string | undefined;
 
   @Output('clicked') clickEmitter = new EventEmitter<any>();
 

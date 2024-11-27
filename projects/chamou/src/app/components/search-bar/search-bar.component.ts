@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
+import {FormControl} from "@angular/forms";
 
 
 @Component({
@@ -8,6 +9,8 @@ import {faSearch} from "@fortawesome/free-solid-svg-icons/faSearch";
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarComponent {
+
+  @Input({ required: true }) formControl!: FormControl;
 
   protected readonly faSearch = faSearch;
 }

@@ -4,6 +4,7 @@ import {IdNameMap} from "../../../../chamou/src/app/interfaces/generic/id-name-m
 
 export interface PedidoComandaResponse {
   id: string;
+  numero: number;
   itens: ItemComanda[];
   status: PedidoStatus;
   mesa: IdNameMap;

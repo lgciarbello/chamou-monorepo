@@ -8,6 +8,7 @@
                        [quantidade]="item.quantidade"
                        [customizacoes]="item.customizacoes"
                        [descricao]="item.descricao"
+                       [imageLink]="item.imagePath"
                        (editarItem)="onCartItemEdit($event, i)"
                        (excluirItem)="onCartItemDelete(i)">
         </app-cart-item>

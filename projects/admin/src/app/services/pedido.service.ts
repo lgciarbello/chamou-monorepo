@@ -7,7 +7,7 @@ import {LocalStorageService} from "../../../../chamou/src/app/services/localstor
 import {PedidoCreateRequest} from "../interfaces/pedido-create-request.interface";
 import {PedidoCreateResponse} from "../interfaces/pedido-create-response.interface";
 import {PedidoResponse} from "../interfaces/pedido-response.interface";
-import {ComandaList} from "../interfaces/comanda-list.interface";
+import {PedidoStatus} from "../../../../chamou/src/app/constants/pedido.status.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +54,41 @@ export class PedidoService {
         'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token")
       }
     })
+  }
+
+  preparar(pedidoId: string): Observable<PedidoCreateResponse> {
+    return this.http.put<PedidoCreateResponse>(
+      `${this.baseUrl}/${pedidoId}/atualizar-status/${PedidoStatus.PREPARANDO}`, {}, {
+        headers: {
+        'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token")
+      }
+    })
+  }
+
+  finalizar(pedidoId: string): Observable<PedidoCreateResponse> {
+    return this.http.put<PedidoCreateResponse>(
+      `${this.baseUrl}/${pedidoId}/atualizar-status/${PedidoStatus.PRONTO}`, {}, {
+        headers: {
+          'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token")
+        }
+    })
+  }
+
+  entregar(pedidoId: string): Observable<PedidoCreateResponse> {
+    return this.http.put<PedidoCreateResponse>(
+      `${this.baseUrl}/${pedidoId}/atualizar-status/${PedidoStatus.ENTREGUE}`, {}, {
+        headers: {
+          'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token")
+        }
+      })
+  }
+
+  cancelar(pedidoId: string): Observable<PedidoCreateResponse> {
+    return this.http.put<PedidoCreateResponse>(
+      `${this.baseUrl}/${pedidoId}/atualizar-status/${PedidoStatus.CANCELADO}`, {}, {
+        headers: {
+          'Authorization': 'Bearer ' + this.localstorageService.getItem("chamou-token")
+        }
+      })
   }
 }

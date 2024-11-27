@@ -7,7 +7,6 @@ import {lastValueFrom, Observable} from "rxjs";
 import {PedidoComandaResponse} from "../../../interfaces/pedido/pedido-comanda-response.interface";
 import {AlertModalInput} from "../../../interfaces/modal/alert-modal-input.interface";
 import {ModalService} from "../../../services/modal.service";
-import {Comanda} from "../../../interfaces/comanda/comanda.interface";
 
 @Component({
   selector: 'app-comanda-modal',

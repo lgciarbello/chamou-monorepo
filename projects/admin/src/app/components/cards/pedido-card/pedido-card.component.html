@@ -2,11 +2,11 @@
 (click)="onCardClick()">
   <div class="flex justify-between items-start">
     <div class="flex flex-col">
-      <p class="font-dmSans font-bold text-lg tracking-tighter -mb-1.5">Pedido {{ index }}</p>
+      <p class="font-dmSans font-bold text-lg tracking-tighter -mb-1.5">Pedido {{ pedido.numero }}</p>
       <p *ngIf="!mostrarPreco" class="font-dmSans font-bold text-sm text-gray-500 tracking-tighter">Mesa {{ pedido.mesa.name }}</p>
     </div>
-    <div class="flex items-center my-0.5 rounded-[7px] px-2 py-0.5 pedido-{{ 'AGUARDANDO' }} ">
-      <p class="font-dmSans font-semibold text-sm text-white tracking-tighter">{{ 'AGUARDANDO' | titlecase }}</p>
+    <div class="flex items-center my-0.5 rounded-[7px] px-2 py-0.5 pedido-{{ pedido.status }} ">
+      <p class="font-dmSans font-semibold text-sm text-white tracking-tighter">{{ pedido.status | titlecase }}</p>
     </div>
   </div>
   <div class="flex flex-col pb-1"

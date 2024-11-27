@@ -1,5 +1,5 @@
-<app-default-info-page title="Pedido"
-                       backButtonTitle="Voltar para Comandas" backButtonRoute="../..">
+<app-default-info-page title="Pedido {{ pedido?.numero }}"
+                       backButtonTitle="Voltar para Comandas" [backButtonRoute]="backButtonRoute">
   <ng-container form-content>
     <ng-container *ngIf="pedido">
       <div class="flex flex-col gap-8">
@@ -17,7 +17,7 @@
              <app-pedido-item-card *ngFor="let item of pedido.itens" [item]="item"></app-pedido-item-card>
               <div class="flex px-1 pt-0.5 justify-between">
                 <p class="font-dmSans font-bold text-xl tracking-tighter">Total</p>
-                <p class="font-dmSans font-bold text-lg tracking-tighter">{{ 10 | currency:undefined:undefined:undefined:'pt-BR' }}</p>
+                <p class="font-dmSans font-bold text-lg tracking-tighter">{{ pedido.precoTotal | currency:undefined:undefined:undefined:'pt-BR' }}</p>
               </div>
             </div>
           </div>
@@ -42,14 +42,17 @@
           <fa-icon icon="pen-to-square" size="lg"></fa-icon>
           Editar
         </button>
-        <button class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-[#DFB933] rounded-md">
+        <button class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-[#DFB933] rounded-md"
+                (click)="prepararPedido()">
           <fa-icon icon="fire-burner" size="lg"></fa-icon>
           Iniciar Preparo
         </button>
       </ng-container>
-      <button *ngIf="pedido.status !== PedidoStatus.ENTREGUE" class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-gray-400 rounded-md">
+      <button *ngIf="pedido.status !== PedidoStatus.ENTREGUE"
+              class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-gray-400 rounded-md"
+              (click)="cancelarPedido">
         <fa-icon icon="xmark"></fa-icon>
-        Cancelar
+        Cancelar Pedido
       </button>
     </ng-container>
   </ng-container>
@@ -57,15 +60,17 @@
 
 <ng-template #pedidoPreparando>
   <ng-container *ngIf="pedido?.status === PedidoStatus.PREPARANDO">
-    <button class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-[#3FBB26] rounded-md">
+    <button class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-[#3FBB26] rounded-md"
+            (click)="finalizarPreparo()">
       <fa-icon icon="check"></fa-icon>
       Finalizar Preparo
     </button>
   </ng-container>
   <ng-container *ngIf="pedido?.status === PedidoStatus.PRONTO">
-    <button class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-[#2689BB] rounded-md">
+    <button class="flex gap-2 py-2 px-3 font-dmSans font-semibold text-lg text-white tracking-tighter bg-[#2689BB] rounded-md"
+            (click)="entregarPedido()">
       <fa-icon icon="check"></fa-icon>
-      Concluir
+      Entregar Pedido
     </button>
   </ng-container>
 

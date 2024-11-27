@@ -14,6 +14,7 @@ import {PedidoStatus} from "../../../../../../../chamou/src/app/constants/pedido
 export class PedidosInfoComponent implements OnInit {
 
   pedido!: PedidoResponse | null;
+  backButtonRoute: string = "../..";
   protected readonly PedidoStatus = PedidoStatus;
 
   constructor(private readonly route: ActivatedRoute,
@@ -21,6 +22,13 @@ export class PedidosInfoComponent implements OnInit {
               private readonly pedidoService: PedidoService) {}
 
   ngOnInit() {
+    this.route.url.subscribe(urlSegments => {
+      const urlLength = urlSegments.filter(urlSegment => urlSegment.path === 'historico').length;
+
+      if (urlLength) {
+        this.backButtonRoute = '..';
+      }
+    })
     this.route.params.subscribe(params => {
       if (params['id']) {
         lastValueFrom(this.pedidoService.get(params['id'])).then(pedido => {
@@ -35,19 +43,48 @@ export class PedidosInfoComponent implements OnInit {
 
   protected readonly ComandaStatus = ComandaStatus;
 
-  // fecharComanda() {
-  //   if (this.pedido) {
-  //     this.pedidoService.fechar(this.pedido.id).subscribe({
-  //       next: (response) => {
-  //         console.log(response);
-  //         //TODO implements toast
-  //         this.router.navigate(['../..'], { relativeTo: this.route });
-  //       },
-  //       error: (error) => {
-  //         console.log(error);
-  //         //TODO implements toast
-  //       }
-  //     })
-  //   }
-  // }
+  prepararPedido() {
+    if (this.pedido) {
+      this.pedidoService.preparar(this.pedido.id).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.router.navigate(['../..'], { relativeTo: this.route });
+        }
+      })
+    }
+  }
+
+  finalizarPreparo() {
+    if (this.pedido) {
+      this.pedidoService.finalizar(this.pedido.id).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.ngOnInit();
+          // this.router.navigate(['../..'], { relativeTo: this.route });
+        }
+      })
+    }
+  }
+
+  entregarPedido() {
+    if (this.pedido) {
+      this.pedidoService.entregar(this.pedido.id).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.router.navigate(['../..'], { relativeTo: this.route });
+        }
+      })
+    }
+  }
+
+  cancelarPedido() {
+    if (this.pedido) {
+      this.pedidoService.cancelar(this.pedido.id).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.router.navigate(['../..'], { relativeTo: this.route });
+        }
+      })
+    }
+  }
 }

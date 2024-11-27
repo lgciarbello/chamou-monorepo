@@ -1,5 +1,7 @@
 <div class="flex space-x-1">
   <app-navbar-button iconName="star" titulo="Avaliação" (clicked)="openModal($event)" ></app-navbar-button>
-  <app-navbar-button iconName="receipt" titulo="Comanda" (clicked)="openModal($event)"></app-navbar-button>
-  <app-navbar-button iconName="hand" titulo="Garçom" (clicked)="openModal($event)"></app-navbar-button>
+  <ng-container *ngIf="hasMesa">
+    <app-navbar-button iconName="receipt" titulo="Comanda" (clicked)="openModal($event)"></app-navbar-button>
+    <app-navbar-button iconName="hand" titulo="Garçom" (clicked)="openModal($event)"></app-navbar-button>
+  </ng-container>
 </div>

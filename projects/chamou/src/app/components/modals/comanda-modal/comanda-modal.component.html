@@ -5,7 +5,7 @@
                          (mainButtonClicked)="fecharComanda()">
     <div class="flex flex-col gap-2">
       <ng-container *ngFor="let pedido of pedidos; let i = index">
-        <app-card-pedido titulo="Pedido {{ i + 1 }}" [pedido]="pedido"></app-card-pedido>
+        <app-card-pedido titulo="Pedido {{ pedido.numero }}" [pedido]="pedido"></app-card-pedido>
       </ng-container>
     </div>
   </app-button-text-modal>

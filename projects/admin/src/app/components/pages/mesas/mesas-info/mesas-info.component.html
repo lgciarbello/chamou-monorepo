@@ -14,12 +14,20 @@
               <app-mesa-comanda-card *ngFor="let comanda of mesa.comandas" [comanda]="comanda" (clicked)="onComandaClick($event)"></app-mesa-comanda-card>
             </div>
           </div>
-          <div class="flex flex-col gap-2 pb-2">
-            <p class="font-dmSans font-extrabold tracking-tighter text-xl">QR Code</p>
+          <div class="flex flex-col gap-3 pb-2">
+            <div class="flex items-center justify-between">
+              <p class="font-dmSans font-extrabold tracking-tighter text-xl">QR Code</p>
+              <a class="font-dmSans font-semibold tracking-tighter px-2 py-0.5 rounded-lg bg-[#DCB164] text-white"
+                 [href]="qrCodeDownloadLink"
+                 download="qrcode">
+                Baixar
+              </a>
+            </div>
             <div class="flex">
               <div class="p-4 bg-white rounded-lg drop-shadow-card justify-center text-center">
-                <qrcode *ngIf="mesa.status !== 'BLOQUEADA'; else qrcode_bloqueado" qrdata="data" [width]="384" [margin]="4"
-                        imageSrc="assets/images/logo-chamou-amigao.svg"
+                <qrcode *ngIf="mesa.status !== 'BLOQUEADA'; else qrcode_bloqueado" [qrdata]="qrCodeLink" [width]="384" [margin]="4"
+                        imageSrc="assets/images/chamou-amigao.png"
+                        (qrCodeURL)="onChangeURL($event)"
                         [imageHeight]="60" [imageWidth]="60"
                         colorDark="#aa9652"></qrcode>
               </div>

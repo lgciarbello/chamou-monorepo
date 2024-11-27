@@ -10,7 +10,6 @@ import {ItemModalOutput} from "../../../interfaces/modal/item-modal-output.inter
 })
 export class ItemModalComponent implements OnInit {
   @Input() public customizacoes: string[] = [];
-  @Input() public imagePath: string = '/assets/img/bolinho.jpg';
 
   hasCustomizations: boolean = false;
 
@@ -37,7 +36,7 @@ export class ItemModalComponent implements OnInit {
       titulo: this.data.titulo,
       preco: this.data.preco,
       descricao: this.data.descricao,
-      imagePath: this.imagePath,
+      imagePath: this.data.imagePath,
       customizacoes: this.customizacoes,
       quantidade: this.data.quantidade,
     } as ItemModalOutput;

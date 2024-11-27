@@ -48,6 +48,10 @@ import { PedidoItemCardComponent } from './components/cards/pedido-item-card/ped
 import { AvaliacoesDashboardComponent } from './components/pages/avaliacoes/avaliacoes-dashboard/avaliacoes-dashboard.component';
 import {StarRatingModule} from "angular-star-rating";
 import { AvaliacoesInfoComponent } from './components/pages/avaliacoes/avaliacoes-info/avaliacoes-info.component';
+import {provideFirebaseApp, initializeApp} from "@angular/fire/app";
+import {getStorage, provideStorage} from "@angular/fire/storage";
+import {environment} from "../environments/environment.development";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -88,7 +92,7 @@ registerLocaleData(localePt, 'pt-BR');
     ItemCreateCardComponent,
     PedidoItemCardComponent,
     AvaliacoesDashboardComponent,
-    AvaliacoesInfoComponent
+    AvaliacoesInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,13 +105,16 @@ registerLocaleData(localePt, 'pt-BR');
     NgSelectModule,
     DragDropModule,
     QRCodeModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    AngularFireStorageModule
   ],
   providers: [
     {
       provide: DEFAULT_CURRENCY_CODE,
       useValue: 'BRL'
     },
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   bootstrap: [AppComponent]
 })

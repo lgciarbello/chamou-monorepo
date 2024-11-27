@@ -1,7 +1,9 @@
 <nav class="bg-[#DBC164] flex items-center justify-between px-5 h-16 drop-shadow-card z-50">
   <div>
     <p class="leading-4 font-bioRhyme font-extrabold text-xl text-white tracking-tighter drop-shadow-title">{{ titulo }}</p>
-    <p class="leading-4 font-bioRhyme font-bold text-md text-[#4B4B4B] tracking-tighter">Mesa {{ numeroMesa }}</p>
+    <ng-container *ngIf="numeroMesa">
+      <p class="leading-4 font-bioRhyme font-bold text-md text-[#4B4B4B] tracking-tighter">Mesa {{ numeroMesa }}</p>
+    </ng-container>
   </div>
-  <app-navbar-menu (clicked)="onMenuClick($event)"></app-navbar-menu>
+  <app-navbar-menu [hasMesa]="numeroMesa" (clicked)="onMenuClick($event)"></app-navbar-menu>
 </nav>

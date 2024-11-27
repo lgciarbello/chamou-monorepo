@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MesaService} from "../../../../services/mesa.service";
 import {lastValueFrom} from "rxjs";
 import {MesaResponse} from "../../../../interfaces/mesa-response.interface";
+import {SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-mesas-info',
@@ -12,6 +13,8 @@ import {MesaResponse} from "../../../../interfaces/mesa-response.interface";
 export class MesasInfoComponent implements OnInit {
 
   mesa!: MesaResponse | null;
+  qrCodeLink: string = "http://localhost:4200/mesa/";
+  public qrCodeDownloadLink!: SafeUrl;
 
   constructor(private readonly route: ActivatedRoute,
               private readonly router: Router,
@@ -21,6 +24,7 @@ export class MesasInfoComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params['id']) {
+        this.qrCodeLink = this.qrCodeLink + params['id'];
         lastValueFrom(this.mesaService.get(params['id'])).then(mesa => {
           if (mesa) {
             this.mesa = mesa;
@@ -35,5 +39,9 @@ export class MesasInfoComponent implements OnInit {
       this.router.navigate(['/comandas/comanda', comandaId]);
     }
 
+  }
+
+  onChangeURL(url: SafeUrl) {
+    this.qrCodeDownloadLink = url;
   }
 }

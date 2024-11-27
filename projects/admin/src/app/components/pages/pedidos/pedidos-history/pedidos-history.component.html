@@ -3,7 +3,7 @@
     <div class="flex flex-wrap gap-4 p-4">
       <ng-container *ngIf="pedidos">
         <app-pedido-card *ngFor="let pedido of pedidos"
-                         routerLink="pedido/{{ pedido.id }}"
+                         routerLink="{{ pedido.id }}"
                          [pedido]="pedido" [index]="1" [mostrarPreco]="false"></app-pedido-card>
       </ng-container>
     </div>

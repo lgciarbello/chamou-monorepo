@@ -18,4 +18,10 @@
       </div>
     </ng-container>
   </div>
+  <ng-container *ngIf="pedido.status !== PedidoStatus.ENTREGUE && pedido.tempoEspera !== 0">
+    <div class="flex items-center justify-between font-bioRhyme font-medium tracking-tighter">
+      <p class="text-gray-500 text-sm">Tempo médio de espera: </p>
+      <p class="text-red-500 font-bold">{{ pedido.tempoEspera }} min</p>
+    </div>
+  </ng-container>
 </div>

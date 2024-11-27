@@ -5,6 +5,7 @@ import {ItemComanda} from "./item-comanda.interface";
 
 export interface PedidoResponse {
   id: string;
+  numero: number;
   comanda: ComandaList;
   mesa: IdNameMap;
   itens: ItemComanda[];

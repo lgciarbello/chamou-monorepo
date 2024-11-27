@@ -71,6 +71,7 @@ export class PedidosEditComponent implements OnInit, AfterViewInit {
       const itemModeloResponse = {
         id: item.itemModeloId,
         nome: item.nome,
+        preco: item.preco
       } as ItemModeloResponse;
 
       return {
@@ -103,23 +104,26 @@ export class PedidosEditComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    let precoTotal = 0;
     const itensForm: any[] = this.pedidosForm.value.itens;
+
+    console.log(itensForm);
     const itens: ItemPedido[] = itensForm.map(item => {
       const itemPedido = {
         itemModeloId: item.itemModelo.id,
         quantidade: item.quantidade
       } as ItemPedido;
 
+      precoTotal += item.itemModelo.preco * item.quantidade;
       if (item.itemId) itemPedido.id = item.itemId;
 
       return itemPedido;
     });
 
-    console.log(this.pedidosForm.controls['comanda'].value);
-
     const pedidoCreateRequest: PedidoCreateRequest = {
       comandaId: this.pedidosForm.controls['comanda'].value.id,
-      itens: itens
+      itens: itens,
+      precoTotal: precoTotal,
     } as PedidoCreateRequest;
 
     console.log(pedidoCreateRequest);
@@ -154,7 +158,7 @@ export class PedidosEditComponent implements OnInit, AfterViewInit {
     this.pedidoService.update(request).subscribe({
       next: (response) => {
         console.log(response);
-        this.router.navigate(['..'], { relativeTo: this.route });
+        this.router.navigate(['..'], { relativeTo: this.route, });
         //TODO implements toast
       },
       error: (error) => {

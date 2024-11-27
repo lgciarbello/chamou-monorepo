@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {ModalService} from "../../services/modal.service";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-navbar-menu',
@@ -7,11 +6,9 @@ import {ModalService} from "../../services/modal.service";
   styleUrl: './navbar-menu.component.scss'
 })
 export class NavbarMenuComponent {
-  lastModalOpened!: HTMLDialogElement | null;
+  @Input({ required: true }) hasMesa!: any;
 
   @Output() clicked = new EventEmitter<string>();
-
-  constructor(private readonly _modalService: ModalService) {}
 
   openModal(event: string) {
     this.clicked.emit(event);
