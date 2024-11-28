@@ -131,7 +131,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "/chamou",
+            "outputPath": "dist/chamou",
             "index": "projects/chamou/src/index.html",
             "browser": "projects/chamou/src/main.ts",
             "polyfills": [
