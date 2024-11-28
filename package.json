@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve chamou",
-    "build": "ng build chamou",
-    "build:prod": "ng build chamou --configuration production",
+    "build:chamou": "ng build chamou",
+    "build:admin": "ng build admin",
     "watch": "ng build chamou --watch --configuration development",
     "test": "ng test"
   },
