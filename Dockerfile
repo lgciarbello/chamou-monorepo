@@ -12,7 +12,7 @@ RUN npm run build:admin
 FROM nginx:latest
 
 # Copia o arquivo de configuração personalizado do nginx
-COPY ./docker/nginx-default.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx-default.conf /etc/nginx/conf.d/default.conf
 
 # Copia as pastas do projeto para dentro do contêiner
 COPY --from=builder /dist/chamou /usr/share/nginx/html/chamou
