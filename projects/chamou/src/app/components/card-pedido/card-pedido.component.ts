@@ -19,7 +19,6 @@ export class CardPedidoComponent implements OnInit{
 
   ngOnInit() {
     console.log(this.pedido);
-    // this.pedido.status = <PedidoStatus>this.titlePipe.transform(this.pedido.status);
   }
 
   onClick() {

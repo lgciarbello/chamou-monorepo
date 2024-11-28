@@ -18,10 +18,16 @@
       </div>
     </ng-container>
   </div>
-  <ng-container *ngIf="pedido.status !== PedidoStatus.ENTREGUE && pedido.tempoEspera !== 0">
+  <ng-container *ngIf="pedido.status !== PedidoStatus.ENTREGUE && pedido.tempoEspera !== 0; else semTempoMedio">
     <div class="flex items-center justify-between font-bioRhyme font-medium tracking-tighter">
       <p class="text-gray-500 text-sm">Tempo médio de espera: </p>
       <p class="text-red-500 font-bold">{{ pedido.tempoEspera }} min</p>
     </div>
   </ng-container>
 </div>
+
+<ng-template #semTempoMedio>
+  <div class="flex items-center justify-between font-bioRhyme font-medium tracking-tighter">
+    <p class="text-[#987C1B] text-sm">Não há dados suficientes para o cálculo do tempo médio. </p>
+  </div>
+</ng-template>
