@@ -1,5 +1,5 @@
 export const environment = {
-  apiUrl: 'https://chamou-server.chamou-app.internal:8080/chamou',
+  apiUrl: 'https://chamou-server.chamou-app.internal:8080/backend/chamou',
   firebase: {
     apiKey: "AIzaSyAa5WgW1wCV_9PkKS7HyIQcdolpjqK82ao",
     authDomain: "chamou-amigao.firebaseapp.com",
