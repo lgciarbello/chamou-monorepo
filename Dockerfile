@@ -1,6 +1,6 @@
 FROM node:20-alpine as builder
 
-WORKDIR /dist
+WORKDIR /build
 
 RUN npm cache clean --force
 COPY . .
@@ -15,8 +15,8 @@ FROM nginx:latest
 COPY ./nginx-default.conf /etc/nginx/conf.d/default.conf
 
 # Copia as pastas do projeto para dentro do contêiner
-COPY --from=builder /dist/chamou /usr/share/nginx/html/chamou
-COPY --from=builder /dist/admin /usr/share/nginx/html/admin
+COPY --from=builder /build/dist/chamou /usr/share/nginx/html/chamou
+COPY --from=builder /build/dist/admin /usr/share/nginx/html/admin
 
 # Expõe as portas
 EXPOSE 80
