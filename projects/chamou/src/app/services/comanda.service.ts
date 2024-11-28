@@ -1,5 +1,5 @@
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment.development";
+import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {Comanda} from "../interfaces/comanda/comanda.interface";
 import {Injectable} from "@angular/core";

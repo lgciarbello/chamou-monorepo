@@ -1,6 +1,6 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {environment} from "../../environments/environment.development";
+import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {Pergunta} from "../interfaces/avaliacao/pergunta.interface";
 import {AvaliacaoRequest} from "../interfaces/avaliacao/avaliacao-request.interface";

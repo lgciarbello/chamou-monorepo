@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {environment} from "../../../../chamou/src/environments/environment.development";
+import {environment} from "../../../../chamou/src/environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PedidoComandaResponse} from "../interfaces/pedido-comanda-response.interface";

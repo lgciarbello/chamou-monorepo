@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment.development";
+import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {PedidoCreateRequest} from "../interfaces/pedido/pedido-create-request.interface";
 import {PedidoCreateResponse} from "../interfaces/pedido/pedido-create-response.interface";
