@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ComandaList} from "../interfaces/comanda-list.interface";
-import {environment} from "../../environments/environment.development";
+import {environment} from "../../environments/environment";
 import {LocalStorageService} from "../../../../chamou/src/app/services/localstorage.service";
 import {ComandaRequest} from "../interfaces/comanda-request.interface";
 import {ComandaResponse} from "../interfaces/comanda-response.interface";

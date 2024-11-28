@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment.development";
+import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {ItemModeloResponse} from "../interfaces/item-modelo-response.interface";
 import {LocalStorageService} from "../../../../chamou/src/app/services/localstorage.service";

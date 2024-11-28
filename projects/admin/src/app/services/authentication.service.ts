@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthenticationRequest} from "../interfaces/authentication-request.interface";
-import {environment} from "../../environments/environment.development";
+import {environment} from "../../environments/environment";
 import {map, Observable} from "rxjs";
 import {AuthenticationResponse} from "../interfaces/authentication-response.interface";
 import {LocalStorageService} from "../../../../chamou/src/app/services/localstorage.service";

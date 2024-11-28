@@ -40,7 +40,7 @@ import {GarcomModalComponent} from './components/modals/garcom-modal/garcom-moda
 import {MainPageComponent} from './components/pages/main-page/main-page.component';
 import {LoadingPageComponent} from './components/pages/loading-page/loading-page.component';
 import {ComandaNomeModalComponent} from './components/modals/comanda-nome-modal/comanda-nome-modal.component';
-import {environment} from "../../../admin/src/environments/environment.development";
+import {environment} from "../../../admin/src/environments/environment";
 import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getStorage, provideStorage} from "@angular/fire/storage";
 

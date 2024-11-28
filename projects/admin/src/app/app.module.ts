@@ -50,7 +50,7 @@ import {StarRatingModule} from "angular-star-rating";
 import { AvaliacoesInfoComponent } from './components/pages/avaliacoes/avaliacoes-info/avaliacoes-info.component';
 import {provideFirebaseApp, initializeApp} from "@angular/fire/app";
 import {getStorage, provideStorage} from "@angular/fire/storage";
-import {environment} from "../environments/environment.development";
+import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 
 registerLocaleData(localePt, 'pt-BR');

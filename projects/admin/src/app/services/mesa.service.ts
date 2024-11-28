@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment.development";
+import {environment} from "../../environments/environment";
 import {LocalStorageService} from "../../../../chamou/src/app/services/localstorage.service";
 import {Observable, of} from "rxjs";
 import {MesaList} from "../interfaces/mesa-list.interface";
