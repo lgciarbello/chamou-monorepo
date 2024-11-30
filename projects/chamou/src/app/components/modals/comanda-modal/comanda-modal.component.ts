@@ -7,6 +7,8 @@ import {lastValueFrom, Observable} from "rxjs";
 import {PedidoComandaResponse} from "../../../interfaces/pedido/pedido-comanda-response.interface";
 import {AlertModalInput} from "../../../interfaces/modal/alert-modal-input.interface";
 import {ModalService} from "../../../services/modal.service";
+import {InfoModalInput} from "../../../interfaces/modal/info-modal-input.interface";
+import {InfoModalComponent} from "../info-modal/info-modal.component";
 
 @Component({
   selector: 'app-comanda-modal',
@@ -47,7 +49,19 @@ export class ComandaModalComponent implements OnInit{
       .afterClosed().subscribe(isAccept => {
         if (isAccept) {
           lastValueFrom(this._comandaService.fecharComanda(this.data.comandaId))
-            .then(() => this.dialogRef.close(true));
+            .then(() => {
+              this.dialogRef.close(true);
+
+              const data: InfoModalInput = {
+                title: "Comanda encerrada",
+                icon: "check-circle",
+                message: "Sua comanda foi encerrada! Um atendente já está a caminho para realizar o pagamento.",
+                buttonText: "Ok",
+              };
+
+              this._modalService.openAny(InfoModalComponent, data);
+
+            });
         }
     });
   }

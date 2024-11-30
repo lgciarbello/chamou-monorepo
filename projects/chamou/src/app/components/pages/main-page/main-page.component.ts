@@ -27,6 +27,8 @@ import {MesaResponse} from "../../../interfaces/mesa/mesa-response.interface";
 import {IdNameMap} from "../../../interfaces/generic/id-name-map.interface";
 import {ComandaNomeModalComponent} from "../../modals/comanda-nome-modal/comanda-nome-modal.component";
 import {FormControl} from "@angular/forms";
+import {InfoModalInput} from "../../../interfaces/modal/info-modal-input.interface";
+import {InfoModalComponent} from "../../modals/info-modal/info-modal.component";
 
 @Component({
   selector: 'app-main-page',
@@ -150,7 +152,7 @@ export class MainPageComponent implements OnInit {
       preco: event.preco,
       titulo: event.nome,
       tituloBotao: "Adicionar",
-      quantidade: 0,
+      quantidade: 1,
     } as ItemModalInput;
 
     const itemModal = this._modalService.openItemModal(itemModalInput);
@@ -256,6 +258,7 @@ export class MainPageComponent implements OnInit {
                   .then(() => this.createPedido(itens))
                   .then(pedido => {
                     console.log(pedido);
+                    this.createPedidoRealizadoModal();
                     this.clearVariables();
                   });
               }
@@ -264,6 +267,7 @@ export class MainPageComponent implements OnInit {
           this.createPedido(itens)
             .then(pedido => {
               console.log(pedido);
+              this.createPedidoRealizadoModal();
               this.clearVariables();
             });
         }
@@ -281,6 +285,17 @@ export class MainPageComponent implements OnInit {
     const pedidoResponse$ = this._pedidoService.create(pedido);
 
     return await lastValueFrom(pedidoResponse$)
+  }
+
+  createPedidoRealizadoModal() {
+    const data: InfoModalInput = {
+      title: "Pedido realizado",
+      icon: "check-circle",
+      message: "Seu pedido foi enviado para a cozinha!",
+      buttonText: "Ok",
+    };
+
+    this._modalService.openAny(InfoModalComponent, data);
   }
 
   async createComanda(nome: string): Promise<Comanda> {

@@ -15,7 +15,7 @@ export class QuantitySelectorComponent {
   }
 
   onMinusPress() {
-    if (this.quantity > 0) {
+    if (this.quantity > 1) {
       this.quantity -= 1;
       this.emitQuantity();
     }
