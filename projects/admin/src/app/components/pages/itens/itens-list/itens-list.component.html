@@ -1,7 +1,5 @@
-<div class="flex h-full overflow-y-auto">
+<div class="flex flex-wrap gap-4 p-4">
   <ng-container *ngIf="(itens$ | async) as itens; else carregandoItens">
-    <div class="grid w-full grid-cols gap-4 p-4"
-         style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
       <ng-container *ngFor="let item of itens">
         <app-item-card [id]="item.id"
                        [titulo]="item.nome"
@@ -11,7 +9,6 @@
 
         </app-item-card>
       </ng-container>
-    </div>
   </ng-container>
 </div>
 

@@ -1,5 +1,5 @@
 <app-default-info-page title="Pedido {{ pedido?.numero }}"
-                       backButtonTitle="Voltar para Comandas" [backButtonRoute]="backButtonRoute">
+                       [backButtonTitle]="backButtonTitle" [backButtonRoute]="backButtonRoute">
   <ng-container form-content>
     <ng-container *ngIf="pedido">
       <div class="flex flex-col gap-8">

@@ -4,6 +4,7 @@ import {MesaService} from "../../../../services/mesa.service";
 import {lastValueFrom} from "rxjs";
 import {MesaResponse} from "../../../../interfaces/mesa-response.interface";
 import {SafeUrl} from "@angular/platform-browser";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-mesas-info',
@@ -13,7 +14,7 @@ import {SafeUrl} from "@angular/platform-browser";
 export class MesasInfoComponent implements OnInit {
 
   mesa!: MesaResponse | null;
-  qrCodeLink: string = "http://localhost:4200/mesa/";
+  qrCodeLink: string = `${environment.frontEndUrl}/mesa/`;
   public qrCodeDownloadLink!: SafeUrl;
 
   constructor(private readonly route: ActivatedRoute,

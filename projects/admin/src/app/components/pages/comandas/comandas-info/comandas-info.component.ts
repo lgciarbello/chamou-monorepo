@@ -13,12 +13,22 @@ import {ComandaStatus} from "../../../../constants/comanda-status.enum";
 export class ComandasInfoComponent implements OnInit{
 
   comanda!: ComandaResponse | null;
+  backButtonRoute: string = "../..";
+  backButtonTitle: string = "Voltar para Comandas";
 
   constructor(private readonly route: ActivatedRoute,
               private readonly router: Router,
               private readonly comandaService: ComandaService) {}
 
   ngOnInit() {
+    this.route.url.subscribe(urlSegments => {
+      const urlLength = urlSegments.filter(urlSegment => urlSegment.path === 'historico').length;
+
+      if (urlLength) {
+        this.backButtonRoute = '..';
+        this.backButtonTitle = 'Voltar para Histórico';
+      }
+    })
     this.route.params.subscribe(params => {
       if (params['id']) {
         lastValueFrom(this.comandaService.get(params['id'])).then(comanda => {

@@ -14,6 +14,7 @@ import {PedidoStatus} from "../../../../../../../chamou/src/app/constants/pedido
 export class PedidosInfoComponent implements OnInit {
 
   pedido!: PedidoResponse | null;
+  backButtonTitle: string = "Voltar para Pedidos";
   backButtonRoute: string = "../..";
   protected readonly PedidoStatus = PedidoStatus;
 
@@ -27,6 +28,7 @@ export class PedidosInfoComponent implements OnInit {
 
       if (urlLength) {
         this.backButtonRoute = '..';
+        this.backButtonTitle = 'Voltar para Histórico';
       }
     })
     this.route.params.subscribe(params => {

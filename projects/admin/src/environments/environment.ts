@@ -1,5 +1,6 @@
 export const environment = {
   apiUrl: 'https://chamou-backend.koyeb.app/chamou',
+  frontEndUrl: 'https://chamou.koyeb.app/',
   firebase: {
     apiKey: "AIzaSyAa5WgW1wCV_9PkKS7HyIQcdolpjqK82ao",
     authDomain: "chamou-amigao.firebaseapp.com",

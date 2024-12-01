@@ -1,5 +1,6 @@
 export const environment = {
   apiUrl: 'http://localhost:8080/chamou',
+  frontEndUrl: 'http://localhost:4200/',
   firebase: {
     apiKey: "AIzaSyAa5WgW1wCV_9PkKS7HyIQcdolpjqK82ao",
     authDomain: "chamou-amigao.firebaseapp.com",

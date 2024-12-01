@@ -18,7 +18,15 @@ export class CategoriasInfoComponent implements OnInit, AfterViewInit {
   categoriaId!: string;
   categoriasForm!: FormGroup;
 
-  protected readonly freeFaIcons: IconProp[] = ['burger', 'check-circle'];
+  protected readonly freeFaIcons: IconProp[] = [
+    'apple-whole', 'bacon', 'beer-mug-empty', 'blender', 'bone', 'bottle-droplet', 'bottle-water', 'bowl-food',
+    'bowl-rice', 'bread-slice', 'burger', 'cake-candles', 'candy-cane', 'carrot', 'champagne-glasses', 'cheese',
+    'check-circle', 'cloud-meatball', 'cookie', 'cubes-stacked', 'drumstick-bite', 'egg', 'fish', 'fish-fins',
+    'flask', 'glass-water', 'glass-water-droplet', 'hotdog', 'ice-cream', 'jar', 'jar-wheat', 'lemon',
+    'martini-glass', 'martini-glass-citrus', 'martini-glass-empty', 'mug-hot', 'mug-saucer', 'pepper-hot',
+    'pizza', 'plate-wheat', 'seedling', 'shrimp', 'stroopwafel', 'wheat-awn', 'wheat-awn-circle-exclamation',
+    'whiskey-glass', 'wine-bottle', 'wine-glass', 'wine-glass-empty'
+  ];
 
   constructor(private readonly categoriaService: CategoriaService,
               private readonly route: ActivatedRoute,
