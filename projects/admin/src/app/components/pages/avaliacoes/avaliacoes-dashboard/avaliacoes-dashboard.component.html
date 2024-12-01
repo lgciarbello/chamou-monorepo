@@ -6,7 +6,7 @@
           <star-rating starType="svg" [rating]="avaliacaoTotal.mediaTotal" [readOnly]="true"
                        size="large" staticColor="ok" [showHalfStars]="true"></star-rating>
           <div class="flex gap-2 items-center">
-            <p class="font-dmSans font-extrabold text-3xl">{{ avaliacaoTotal.mediaTotal }}/5</p>
+            <p class="font-dmSans font-extrabold text-3xl">{{ avaliacaoTotal.mediaTotal | number : '1.1-1' }}/5</p>
             <p class="font-dmSans font-medium tracking-tight">de {{ avaliacaoTotal.totalAvaliacoes }} avaliações</p>
             <fa-icon class="text-[#97741E]" icon="info-circle" size="lg"></fa-icon>
           </div>
@@ -54,7 +54,7 @@
               <div class="flex gap-2">
                 <star-rating starType="svg" [rating]="perguntaPontuacao.pontuacao" [readOnly]="true"
                              size="medium" staticColor="ok" [showHalfStars]="true"></star-rating>
-                <p class="font-bold">{{ perguntaPontuacao.pontuacao }}/5</p>
+                <p class="font-bold">{{ perguntaPontuacao.pontuacao | number : '1.1-1'}}/5</p>
               </div>
             </div>
           </ng-container>
