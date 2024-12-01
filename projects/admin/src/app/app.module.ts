@@ -106,7 +106,7 @@ registerLocaleData(localePt, 'pt-BR');
     DragDropModule,
     QRCodeModule,
     StarRatingModule.forRoot(),
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   providers: [
     {

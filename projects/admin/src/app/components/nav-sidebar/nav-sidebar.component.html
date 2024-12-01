@@ -9,49 +9,64 @@
           </svg>
         </button>
         <a routerLink="." class="flex gap-2.5 ms-2 md:me-24">
-<!--          <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />-->
           <img ngSrc="assets/images/logo-chamou-amigao.svg" class="h-8 w-8" alt="Chamou, Amigão?"
                height="368" width="340"/>
           <span class="self-center font-dmSans font-black tracking-tighter leading-3 text-xl text-[#97741E] whitespace-nowrap dark:text-white">Chamou, Amigão?</span>
         </a>
       </div>
       <div class="flex items-center">
-        <div class="flex items-center ms-3">
-          <div>
-            <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
-              <span class="sr-only">Open user menu</span>
-              <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
-            </button>
+        <button id="dropdownButton" type="button" class="text-[#6B7280]" aria-expanded="false"
+                data-dropdown-toggle="dropdownMenu"
+                data-dropdown-offset-distance=25 data-dropdown-offset-skidding="-170"
+                (click)="getNotificacoes()">
+            <fa-icon icon="bell" size="xl"></fa-icon>
+            <div *ngIf="true" class="absolute block w-4 h-4 bg-red-500 border-2 border-white rounded-full top-[0.7rem] end-[1rem] dark:border-gray-900"></div>
+        </button>
+        <div id="dropdownMenu" class="z-20 hidden w-full max-w-sm max-h-96 overflow-auto font-dmSans bg-white divide-y divide-gray-100 rounded-lg shadow" aria-labelledby="dropdownButton">
+          <div class="block px-4 py-2 font-medium text-left text-white rounded-t-lg bg-[#DBC164] dark:bg-gray-800 dark:text-white">
+            Notificações
           </div>
-          <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
-            <div class="px-4 py-3" role="none">
-              <p class="text-sm text-gray-900 dark:text-white" role="none">
-                Neil Sims
-              </p>
-              <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                neil.sims
-              </p>
-            </div>
-            <ul class="py-1" role="none">
-              <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
-              </li>
-              <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
-              </li>
-              <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
-              </li>
-              <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
-              </li>
-            </ul>
+          <div class="divide-y divide-gray-100 dark:divide-gray-700">
+            <ng-container *ngIf="notificacoes; else semNotificacoes">
+              <div *ngFor="let notificacao of notificacoes"
+                   class="flex px-4 py-3 items-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded-lg">
+                <div class="flex flex-shrink-0 items-center">
+                  <div [class]="{'bg-[#DBC164]': notificacao.icone === 'receipt',
+                                 'bg-red-400': notificacao.icone === 'id-badge',
+                                 'bg-blue-400': notificacao.icone === 'hand'}"
+                       class="flex rounded-xl bg-[#DBC164] text-white px-3 py-2.5">
+                    <fa-icon [icon]="notificacao.icone" size="xl"></fa-icon>
+                  </div>
+                </div>
+                <div class="w-full ps-3">
+                  <div class="font-bold tracking-tight text-sm mb-1 dark:text-gray-400">{{ notificacao.titulo }}</div>
+                  <div class="text-xs text-gray-500 dark:text-blue-500">{{ notificacao.descricao }}</div>
+                </div>
+              </div>
+            </ng-container>
           </div>
+  <!--          <a href="#" class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">-->
+  <!--            <div class="inline-flex items-center">-->
+  <!--              <svg class="w-4 h-4 me-2 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">-->
+  <!--                <path d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/>-->
+  <!--              </svg>-->
+  <!--              View all-->
+  <!--            </div>-->
+  <!--          </a>-->
         </div>
       </div>
     </div>
   </div>
 </nav>
+
+<ng-template #semNotificacoes>
+  <div class="flex px-4 py-6 items-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded-lg">
+    <div class="flex flex-col gap-1 justify-center items-center w-full text-gray-400">
+      <fa-icon icon="sad-tear" size="2x"></fa-icon>
+      <div class="font-semibold tracking-tight mb-1 dark:text-gray-400">Não há notificações</div>
+    </div>
+  </div>
+</ng-template>
 
 <aside id="logo-sidebar" class="fixed bottom-0 left-0 z-40 w-64 h-[calc(100dvh-5rem)] mt-[5rem] ml-4 drop-shadow-card transition-transform -translate-x-full sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
   <div class="flex flex-col justify-between h-full px-3 py-4 rounded-t-2xl overflow-y-auto bg-white dark:bg-gray-800">
