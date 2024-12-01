@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {environment} from "../../../../chamou/src/environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PedidoComandaResponse} from "../interfaces/pedido-comanda-response.interface";
@@ -8,6 +7,7 @@ import {PedidoCreateRequest} from "../interfaces/pedido-create-request.interface
 import {PedidoCreateResponse} from "../interfaces/pedido-create-response.interface";
 import {PedidoResponse} from "../interfaces/pedido-response.interface";
 import {PedidoStatus} from "../../../../chamou/src/app/constants/pedido.status.enum";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

@@ -18,9 +18,9 @@
         <button id="dropdownButton" type="button" class="text-[#6B7280]" aria-expanded="false"
                 data-dropdown-toggle="dropdownMenu"
                 data-dropdown-offset-distance=25 data-dropdown-offset-skidding="-170"
-                (click)="getNotificacoes()">
+                (click)="handleNotificacoes()">
             <fa-icon icon="bell" size="xl"></fa-icon>
-            <div *ngIf="true" class="absolute block w-4 h-4 bg-red-500 border-2 border-white rounded-full top-[0.7rem] end-[1rem] dark:border-gray-900"></div>
+            <div *ngIf="hasNovasNotificacoes" class="absolute block w-4 h-4 bg-red-500 border-2 border-white rounded-full top-[0.7rem] end-[1rem] dark:border-gray-900"></div>
         </button>
         <div id="dropdownMenu" class="z-20 hidden w-full max-w-sm max-h-96 overflow-auto font-dmSans bg-white divide-y divide-gray-100 rounded-lg shadow" aria-labelledby="dropdownButton">
           <div class="block px-4 py-2 font-medium text-left text-white rounded-t-lg bg-[#DBC164] dark:bg-gray-800 dark:text-white">
@@ -63,7 +63,7 @@
   <div class="flex px-4 py-6 items-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded-lg">
     <div class="flex flex-col gap-1 justify-center items-center w-full text-gray-400">
       <fa-icon icon="sad-tear" size="2x"></fa-icon>
-      <div class="font-semibold tracking-tight mb-1 dark:text-gray-400">Não há notificações</div>
+      <div class="font-semibold tracking-tight mb-1 dark:text-gray-400">Não há notificações disponíveis</div>
     </div>
   </div>
 </ng-template>
