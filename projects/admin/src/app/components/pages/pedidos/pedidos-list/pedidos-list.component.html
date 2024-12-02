@@ -1,12 +1,19 @@
-<div class="h-full overflow-y-auto">
-  <div class="flex flex-wrap gap-4 p-4 overflow-y-auto">
-    <ng-container *ngIf="pedidos">
-      <app-pedido-card *ngFor="let pedido of pedidos"
-                       routerLink="pedido/{{ pedido.id }}"
-                       [pedido]="pedido" [index]="1" [mostrarPreco]="false"></app-pedido-card>
-    </ng-container>
-  </div>
+<div class="h-full overflow-y-auto p-3">
+  <ng-container *ngIf="pedidos; else carregandoPedidos">
+    <div class="flex flex-wrap gap-4 p-1 overflow-y-auto">
+        <app-pedido-card *ngFor="let pedido of pedidos"
+                         routerLink="pedido/{{ pedido.id }}"
+                         [pedido]="pedido" [index]="1" [mostrarPreco]="false"></app-pedido-card>
+    </div>
+  </ng-container>
 </div>
+
+<ng-template #carregandoPedidos>
+  <div class="flex flex-col gap-2 w-full h-full justify-center items-center bg-gray-100">
+    <fa-icon class="text-[#c6b065]" icon="arrows-rotate" size="3x" animation="spin"></fa-icon>
+    <p class="font-dmSans font-semibold text-xl text-[#b59f5a] tracking-tight">Carregando Pedidos...</p>
+  </div>
+</ng-template>
 
 
 

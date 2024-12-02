@@ -1,11 +1,11 @@
-<div class="flex flex-col h-full justify-between p-4">
-  <div class="flex flex-wrap gap-5 overflow-y-auto">
-    <ng-container *ngIf="(mesas$ | async) as mesas">
-      <ng-container *ngFor="let mesa of mesas">
-        <app-mesa-card [mesa]="mesa" (cardClicked)="onMesaClick($event)"></app-mesa-card>
-      </ng-container>
-    </ng-container>
-  </div>
+<div class="flex flex-col h-full justify-between p-4 rounded-lg">
+  <ng-container *ngIf="(mesas$ | async) as mesas; else carregandoMesas">
+    <div class="flex flex-wrap gap-5 overflow-y-auto">
+        <ng-container *ngFor="let mesa of mesas">
+          <app-mesa-card [mesa]="mesa" (cardClicked)="onMesaClick($event)"></app-mesa-card>
+        </ng-container>
+    </div>
+  </ng-container>
   <div class="sticky bottom-0 rounded-lg border-2 border-gray-300 px-2 py-1">
     <div class="flex gap-4">
       <div class="flex gap-1.5 items-center">
@@ -23,3 +23,11 @@
     </div>
   </div>
 </div>
+
+<ng-template #carregandoMesas>
+  <div class="flex flex-col gap-2 w-full h-full justify-center items-center bg-gray-100">
+    <fa-icon class="text-[#c6b065]" icon="arrows-rotate" size="3x" animation="spin"></fa-icon>
+    <p class="font-dmSans font-semibold text-xl text-[#b59f5a] tracking-tight">Carregando Mesas...</p>
+  </div>
+</ng-template>
+
