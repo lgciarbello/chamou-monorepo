@@ -50,7 +50,7 @@ export class PedidosInfoComponent implements OnInit {
       this.pedidoService.preparar(this.pedido.id).subscribe({
         next: (response) => {
           console.log(response);
-          this.router.navigate(['../..'], { relativeTo: this.route });
+          this.ngOnInit();
         }
       })
     }

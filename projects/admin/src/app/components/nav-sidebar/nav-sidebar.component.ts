@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NotificacaoService} from "../../services/notificacao.service";
 import {Notificacao} from "../../interfaces/notificacao.interface";
 import {retry, Subject, switchMap, takeUntil, timer} from "rxjs";
+import {Router} from "@angular/router";
+import {LocalStorageService} from "../../../../../chamou/src/app/services/localstorage.service";
 
 @Component({
   selector: 'app-nav-sidebar',
@@ -15,7 +17,9 @@ export class NavSidebarComponent implements OnInit, OnDestroy {
 
   stopPolling = new Subject<void>();
 
-  constructor(private readonly notificacaoService: NotificacaoService) {
+  constructor(private readonly notificacaoService: NotificacaoService,
+              private readonly router: Router,
+              private readonly localStorageService: LocalStorageService) {
   }
 
   ngOnInit() {
@@ -54,5 +58,10 @@ export class NavSidebarComponent implements OnInit, OnDestroy {
   handleNotificacoes() {
     this.hasNovasNotificacoes = false;
     this.getNotificacoes();
+  }
+
+  logout() {
+    this.localStorageService.removeItem("chamou-token");
+    this.router.navigate(['/login']);
   }
 }

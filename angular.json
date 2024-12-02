@@ -33,7 +33,7 @@
             "tsConfig": "projects/admin/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/admin/src/favicon.ico",
+              "projects/admin/src/assets/favicon.ico",
               "projects/admin/src/assets"
             ],
             "styles": [

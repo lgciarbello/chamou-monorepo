@@ -21,4 +21,52 @@ export class ComandasListComponent implements OnInit{
   }
 
   protected readonly ComandaStatus = ComandaStatus;
+
+  abrirComanda(comandaId: string) {
+    if (comandaId) {
+      this.comandaService.abrir(comandaId).subscribe({
+        next: (response) => {
+          console.log(response);
+          //TODO implements toast
+          this.ngOnInit();
+        },
+        error: (error) => {
+          console.log(error);
+          //TODO implements toast
+        }
+      })
+    }
+  }
+
+  fecharComanda(comandaId: string) {
+    if (comandaId) {
+      this.comandaService.fechar(comandaId).subscribe({
+        next: (response) => {
+          console.log(response);
+          //TODO implements toast
+          this.ngOnInit()
+        },
+        error: (error) => {
+          console.log(error);
+          //TODO implements toast
+        }
+      })
+    }
+  }
+
+  pagarComanda(comandaId: string) {
+    if (comandaId) {
+      this.comandaService.pagar(comandaId).subscribe({
+        next: (response) => {
+          console.log(response);
+          //TODO implements toast
+          this.ngOnInit();
+        },
+        error: (error) => {
+          console.log(error);
+          //TODO implements toast
+        }
+      })
+    }
+  }
 }

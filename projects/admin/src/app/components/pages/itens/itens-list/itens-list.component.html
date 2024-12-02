@@ -1,5 +1,6 @@
-<div class="flex flex-wrap gap-4 p-4">
-  <ng-container *ngIf="(itens$ | async) as itens; else carregandoItens">
+<div class="h-full overflow-y-auto">
+  <div class="flex flex-wrap gap-4 p-4">
+    <ng-container *ngIf="(itens$ | async) as itens; else carregandoItens">
       <ng-container *ngFor="let item of itens">
         <app-item-card [id]="item.id"
                        [titulo]="item.nome"
@@ -9,8 +10,10 @@
 
         </app-item-card>
       </ng-container>
-  </ng-container>
+    </ng-container>
+  </div>
 </div>
+
 
 <ng-template #carregandoItens>
   <div class="flex flex-col gap-2 w-full justify-center items-center bg-gray-100">

@@ -41,7 +41,12 @@
           </td>
           <td class="flex justify-end px-6 py-4 gap-2 text-right items-center">
             <fa-icon icon="eye" size="xl" class="cursor-pointer" routerLink="comanda/{{ comanda.id }}"></fa-icon>
-            <fa-icon *ngIf="comanda.status === ComandaStatus.ABERTA; else statusFechada" icon="lock-open" size="xl" class="cursor-pointer"></fa-icon>
+            <fa-icon *ngIf="comanda.status === ComandaStatus.ABERTA" icon="lock-open" size="xl"
+                     class="cursor-pointer" (click)="fecharComanda(comanda.id)"></fa-icon>
+            <ng-container *ngIf="comanda.status === ComandaStatus.FECHADA">
+              <fa-icon icon="lock" size="xl" class="cursor-pointer text-red-500" (click)="abrirComanda(comanda.id)"></fa-icon>
+              <fa-icon icon="circle-dollar-to-slot" size="xl" class=" cursor-pointer" (click)="pagarComanda(comanda.id)"></fa-icon>
+            </ng-container>
           </td>
         </tr>
         </tbody>
@@ -49,8 +54,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #statusFechada>
-  <fa-icon icon="lock" size="xl" class="cursor-pointer text-red-500"></fa-icon>
-  <fa-icon icon="circle-dollar-to-slot" size="xl" class=" cursor-pointer"></fa-icon>
-</ng-template>

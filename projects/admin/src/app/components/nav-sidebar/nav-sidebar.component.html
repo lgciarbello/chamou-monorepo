@@ -91,13 +91,16 @@
       </li>
     </ul>
     <div class="flex flex-col gap-1 font-dmSans font-semibold tracking-tighter text-lg">
-      <app-sidebar-item titulo="Ajustes" icone="gear" routeLink="ajustes"></app-sidebar-item>
-      <app-sidebar-item titulo="Sair" icone="door-open" routeLink="login"></app-sidebar-item>
-<!--      <app-sidebar-item titulo="Recolher" -->
-<!--                        icone="arrow-right-from-bracket" -->
-<!--                        routeLink="recolher"-->
-<!--                        transform="rotate-180">-->
-<!--      </app-sidebar-item>-->
+      <a routerLinkActive="bg-[#c6b065] text-white drop-shadow-card"
+         class="flex items-center left p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#DBC164]
+          hover:text-white hover:drop-shadow-card dark:hover:bg-gray-700 group cursor-pointer"
+         (click)="logout()">
+        <span class="ml-1 flex items-center justify-center w-5 h-5 text-gray-500 group-hover:text-white group-:text-white"
+              routerLinkActive="text-white">
+          <fa-icon icon="door-open" size="lg"></fa-icon>
+        </span>
+        <span class="flex-1 ms-3 whitespace-nowrap">{{ 'Sair' }}</span>
+      </a>
     </div>
   </div>
 </aside>

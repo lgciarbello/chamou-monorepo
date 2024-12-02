@@ -65,10 +65,17 @@ export class ComandaService {
     })
   }
 
+  abrir(comandaId: string): Observable<ComandaList> {
+    return this.http.put<ComandaList>(`${this.baseUrl}/${comandaId}/abrir`, null);
+  }
+
   fechar(comandaId: string): Observable<ComandaList> {
     return this.http.put<ComandaList>(`${this.baseUrl}/${comandaId}/fechar`, null);
   }
 
+  pagar(comandaId: string): Observable<ComandaList> {
+    return this.http.put<ComandaList>(`${this.baseUrl}/${comandaId}/pagar`, null);
+  }
 
 
 }

@@ -43,13 +43,45 @@ export class ComandasInfoComponent implements OnInit{
 
   protected readonly ComandaStatus = ComandaStatus;
 
+  abrirComanda() {
+    if (this.comanda) {
+      this.comandaService.abrir(this.comanda.id).subscribe({
+        next: (response) => {
+          console.log(response);
+          //TODO implements toast
+          this.ngOnInit();
+        },
+        error: (error) => {
+          console.log(error);
+          //TODO implements toast
+        }
+      })
+    }
+  }
+
   fecharComanda() {
     if (this.comanda) {
       this.comandaService.fechar(this.comanda.id).subscribe({
         next: (response) => {
           console.log(response);
           //TODO implements toast
-          this.router.navigate(['../..'], { relativeTo: this.route });
+          this.ngOnInit();
+        },
+        error: (error) => {
+          console.log(error);
+          //TODO implements toast
+        }
+      })
+    }
+  }
+
+  pagarComanda() {
+    if (this.comanda) {
+      this.comandaService.pagar(this.comanda.id).subscribe({
+        next: (response) => {
+          console.log(response);
+          //TODO implements toast
+          this.ngOnInit();
         },
         error: (error) => {
           console.log(error);
