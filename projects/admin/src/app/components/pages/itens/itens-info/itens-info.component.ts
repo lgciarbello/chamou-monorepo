@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoriaService} from "../../../../services/categoria.service";
-import {last, lastValueFrom, Observable} from "rxjs";
+import {lastValueFrom, Observable} from "rxjs";
 import {CategoriaResponse} from "../../../../interfaces/categoria-response.interface";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ItemModeloRequest} from "../../../../interfaces/item-modelo.request.interface";
@@ -9,6 +9,7 @@ import {IdNameMap} from "../../../../../../../chamou/src/app/interfaces/generic/
 import {ItemModeloService} from "../../../../services/item-modelo.service";
 import {ItemModelo} from "../../../../../../../chamou/src/app/interfaces/item/item-modelo.interface";
 import {NgSelectComponent} from "@ng-select/ng-select";
+import {FirebaseStorageService} from "../../../../services/firebase-storage.service";
 
 @Component({
   selector: 'app-itens-info',
@@ -21,13 +22,19 @@ export class ItensInfoComponent implements OnInit, AfterViewInit {
   itemId!: string;
   itensForm!: FormGroup;
   categorias$!: Observable<CategoriaResponse[]>;
+  file!: File;
+
+  loadingFile: boolean = false;
+  fileSent: boolean = false;
 
   @ViewChild(NgSelectComponent) private selectComponent!: NgSelectComponent;
+  @ViewChild('foto') private fotoInput!: ElementRef<HTMLInputElement>;
 
   constructor(private readonly categoriaService: CategoriaService,
               private readonly itemModeloService: ItemModeloService,
               private readonly route: ActivatedRoute,
-              private readonly router: Router) {}
+              private readonly router: Router,
+              private readonly firebaseStorageService: FirebaseStorageService) {}
 
   ngOnInit() {
     this.initForm();
@@ -46,7 +53,15 @@ export class ItensInfoComponent implements OnInit, AfterViewInit {
         this.itemId = params['id'];
         lastValueFrom(this.itemModeloService.get(this.itemId)).then(itemModelo => {
           if (itemModelo) {
+            console.log("item modelo", itemModelo);
             this.setForm(itemModelo);
+
+            const list = new DataTransfer();
+            const file = new File([], itemModelo.foto.substring(6));
+            list.items.add(file);
+
+            this.fotoInput.nativeElement.files = list.files;
+
             this.selectComponent.writeValue(itemModelo.categoria.name);
           }
         })
@@ -60,6 +75,7 @@ export class ItensInfoComponent implements OnInit, AfterViewInit {
       categoria: new FormControl(null, Validators.required),
       descricao: new FormControl('', Validators.required),
       preco: new FormControl('', [Validators.required]),
+      foto: new FormControl(null),
     });
   }
 
@@ -68,6 +84,7 @@ export class ItensInfoComponent implements OnInit, AfterViewInit {
     this.itensForm.get('categoria')?.setValue(itemModelo.categoria);
     this.itensForm.get('descricao')?.setValue(itemModelo.descricao);
     this.itensForm.get('preco')?.setValue(itemModelo.preco);
+    this.itensForm.get('foto')?.setValue(itemModelo.foto);
 
     console.log(itemModelo);
   }
@@ -84,7 +101,8 @@ export class ItensInfoComponent implements OnInit, AfterViewInit {
         name: this.itensForm.value.categoria.name
       } as IdNameMap,
       descricao: this.itensForm.value.descricao,
-      preco: this.itensForm.value.preco
+      preco: this.itensForm.value.preco,
+      foto: this.itensForm.value.foto
     }
 
     console.log(itemModeloRequest);
@@ -126,5 +144,20 @@ export class ItensInfoComponent implements OnInit, AfterViewInit {
       }
 
     });
+  }
+
+  onFileChange(event: any) {
+    this.fileSent = false;
+    this.loadingFile = true;
+
+    this.file = event.target.files[0];
+    const filePath = `itens/${this.file.name}`;
+
+    this.firebaseStorageService.uploadFile(this.file, filePath)
+      .then(() => {
+        this.itensForm.get('foto')?.setValue(filePath);
+        this.loadingFile = false;
+        this.fileSent = true;
+      });
   }
 }

@@ -5,5 +5,6 @@ export interface ItemModeloRequest {
   nome: string;
   descricao: string;
   preco: number;
+  foto: string;
   categoria: IdNameMap;
 }

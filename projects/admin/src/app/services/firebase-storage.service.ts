@@ -1,23 +1,24 @@
 import {Injectable} from "@angular/core";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {getDownloadURL} from "@angular/fire/storage";
-import {lastValueFrom} from "rxjs";
+import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseStorageService {
 
-  constructor(private readonly storage: AngularFireStorage) {}
+  constructor(private readonly storage: Storage) {}
 
   async uploadFile(input: Blob | File, path: string): Promise<string> {
     // input.
-    const uploadTask = await this.storage.upload(path, input);
+    const storageRef = ref(this.storage, path)
+    const uploadTask = await uploadBytes(storageRef, input);
     return getDownloadURL(uploadTask.ref);
   }
 
   async retrieveFileURL(path: string): Promise<string> {
-    const ref = this.storage.ref(path);
-    return lastValueFrom(ref.getDownloadURL());
+    console.log(this.storage);
+
+    const storageRef = ref(this.storage, path);
+    return getDownloadURL(storageRef);
   }
 }
